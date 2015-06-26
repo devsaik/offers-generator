@@ -1,6 +1,6 @@
 'use strict';
 
-var paths = require('./.yo-rc.json')['generator-gulp-angular'].props.paths;
+var paths = require('./.yo-rc.json')['offers-generator'].props.paths;
 
 // An example configuration file.
 exports.config = {
@@ -12,7 +12,7 @@ exports.config = {
   capabilities: {
     'browserName': 'chrome'
   },
-  
+
   baseUrl: 'http://localhost:3000',
 
   // Spec patterns are relative to the current working directly when

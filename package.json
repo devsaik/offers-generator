@@ -1,20 +1,20 @@
 {
-  "name": "generator-gulp-angular",
-  "version": "0.13.0-dev",
+  "name": "offers-generator",
+  "version": "0.1",
   "preferGlobal": true,
-  "description": "Yeoman generator for AngularJS with Gulp",
+  "description": "Yeoman generator for Offers Module",
   "keywords": "yeoman-generator, angular, gulp, restangular, ui-router, bootstrap, angular-material, foundation, sass, less, es6, babel, traceur, typescript, coffeescript, jade, haml, webpack, jshint",
   "license": "MIT",
-  "author": "Matthieu Lux & Mehdy Dara",
+  "author": "Saik",
   "contributors": [
-    "Matthieu Lux <matthieu.lux@gmail.com> (https://github.com/Swiip)",
+    "saianirudh kantabathina <emailsaik@gmail.com> (https://github.com/devsaik)",
     "Mehdy Dara <mdara@eleven-labs.com> (http://eleven-labs.com/)"
   ],
   "files": [
     "app"
   ],
   "main": "app/index.js",
-  "repository": "Swiip/generator-gulp-angular",
+  "repository": "devsaik/offers-generator",
   "scripts": {
     "pretest": "./scripts/prepare-test.sh",
     "test": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- test/node test/template && ./node_modules/.bin/mocha test/inception/test-inception.js -ig protractor",

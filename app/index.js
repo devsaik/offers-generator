@@ -27,7 +27,7 @@ var GulpAngularGenerator = yeoman.generators.Base.extend({
     if (!this.options['skip-welcome-message']) {
       this.log(yosay(
         chalk.red('Welcome!') + '\n' +
-        chalk.yellow('You\'re using the fantastic generator for scaffolding an application with Angular and Gulp!')
+        chalk.yellow('You\'re using the fantastic generator for scaffolding an application with offers module included')
       ));
     }
   }
