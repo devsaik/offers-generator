@@ -7,7 +7,7 @@
 
   /** @ngInject */
   function githubContributor($log, $http) {
-    var apiHost = 'https://api.github.com/repos/devsaik/offers-generator';
+    var apiHost = 'https://api.github.com/repos/devsaik/generator-offers';
 
     var service = {
       apiHost: apiHost,

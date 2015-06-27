@@ -1,6 +1,6 @@
 {
-  "name": "offers-generator",
-  "version": "0.1",
+  "name": "generator-offers",
+  "version": "0.1.0",
   "preferGlobal": true,
   "description": "Yeoman generator for Offers Module",
   "keywords": "yeoman-generator, angular, gulp, restangular, ui-router, bootstrap, angular-material, foundation, sass, less, es6, babel, traceur, typescript, coffeescript, jade, haml, webpack, jshint",

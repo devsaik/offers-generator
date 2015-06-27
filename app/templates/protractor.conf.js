@@ -1,6 +1,6 @@
 'use strict';
 
-var paths = require('./.yo-rc.json')['offers-generator'].props.paths;
+var paths = require('./.yo-rc.json')['generator-offers'].props.paths;
 
 // An example configuration file.
 exports.config = {
