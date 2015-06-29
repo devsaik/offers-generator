@@ -1,0 +1,49 @@
+body.ngdialog-open .popup-channel-statistic {
+  .ngdialog-content {
+    height: 580px !important;
+  }
+  .controls {
+    .decorations {
+      height: 394px;
+    }
+  }
+  .withoutStatistic {
+    width: 650px;
+    margin: 100px auto;
+    padding-bottom: 100px;
+    .icon {
+      width: 120px;
+      height: 176px;
+      float: left;
+      margin: 30px 30px 0 0;
+      &:before {
+        content: "\f05e";
+        font-size: 1000%;
+        font-family: FontAwesome;
+      }
+    }
+    .small {
+      color: #000;
+      font-size: 50px;
+      line-height: 50px;
+      text-align: left;
+    }
+    .big {
+      color: #024A7C;
+      font-size: 70px;
+      line-height: 70px;
+      font-weight: bold;
+      text-align: left;
+    }
+  }
+  @media (max-width: 850px) {
+    .withoutStatistic {
+      width: 500px;
+      margin: 20px auto 0;
+      text-align: center;
+      .icon {
+        float: none;
+      }
+    }
+  }
+}

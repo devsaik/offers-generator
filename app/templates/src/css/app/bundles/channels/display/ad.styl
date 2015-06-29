@@ -1,0 +1,32 @@
+.display-campaign-ad-form {
+  clearfix();
+
+  .content {
+    float: left;
+    width: 100%;
+    padding: 40px 0;
+
+    @media screen and (min-width: $md) {
+      margin-right: -430px;
+      padding-right: 430px;
+    }
+  }
+
+  .ad-preview {
+    width: 430px;
+    overflow: hidden;
+
+    .bg { width: 430px; }
+
+    .shadow-bg {
+      position: absolute;
+      top: auto;
+      right: -1px;
+      width: 430px;
+      height: 100%;
+      background: rgba(0,0,0,.8);
+    }
+  }
+
+  .row-buttons { margin-top: 100px; }
+}

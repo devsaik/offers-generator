@@ -1,0 +1,32 @@
+@import "main-settings.styl";
+@import "geo.styl";
+@import "banner.styl";
+@import "accept.styl";
+@import "statistic.styl";
+@import "ad.styl";
+@import "gallery.styl";
+@import "start-or-save.styl";
+
+.display-channel-container {
+  clearfix();
+
+  slide-panels {
+    display: block;
+
+    panel {
+      display: block;
+
+      .active {
+        display: block;
+      }
+
+      .inactive {
+        display: none;
+      }
+    }
+  }
+}
+
+.popup-channel.display {
+  padding: 1% 0;
+}

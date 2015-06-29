@@ -1,0 +1,303 @@
+/* status colors */
+.status-colors {
+  &.incomplete { color: status-incomplete-color; }
+  &.archived { color: status-archived-color; }
+  &.paused { color: status-paused-color; }
+  &.rejected { color: status-rejected-color; }
+  &.pending { color: status-pending-color; }
+  &.expired { color:  status-expired-color; }
+  &.running { color:  status-running-color; }
+}
+
+.pp-portable-app {
+
+  /* first item in list / offer create */
+  .offer-card-create {
+    display: table-cell;
+    vertical-align: middle;
+    width: 1%;
+    height: 290px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background: #fff;
+    text-align: center;
+    text-decoration: none;
+
+    .plus {
+      color: #EFEFEF;
+      font-size: 192px;
+      line-height: 0.5;
+    }
+
+    .text {
+      resetMP();
+      font-size: 19px;
+      color: #728088;
+    }
+  }
+
+  /* fa icons */
+  .offer-card {
+
+    .fa {
+      color: #58595b;
+      font-size: 18px;
+
+      &.red { color: #a81910; }
+      &.green { color: #00a518; }
+      &.purple { color: #7038AA; }
+    }
+
+    .fa-eye {
+      font-size: 21px;
+    }
+  }
+
+  .offer-status-label {
+    /* status */
+    &.running {
+      background-color: status-running-color;
+      &:before { border-top-color: darken(status-running-color, 35%); }
+    }
+    &.expired {
+      background-color: status-expired-color;
+      &:before { border-top-color: darken(status-expired-color, 35%); }
+    }
+    &.paused {
+      background-color: status-paused-color;
+      &:before { border-top-color: darken(status-paused-color, 35%); }
+    }
+    &.pending {
+      background-color: status-pending-color;
+      &:before { border-top-color: darken(status-pending-color, 35%); }
+    }
+    &.archived {
+      background-color: status-archived-color;
+      &:before { border-top-color: darken(status-archived-color, 35%); }
+    }
+    &.incomplete {
+      background-color: status-incomplete-color;
+      &:before { border-top-color: darken(status-incomplete-color, 35%); }
+    }
+
+    &.rejected {
+      display: block !important;
+      background-color: status-rejected-color;
+      width: auto;
+      right: 15px;
+
+      &:before { border-top-color: darken(status-rejected-color, 35%); }
+      &:after {
+        content: 'Rejected';
+        font: 20px/33px $fontLato;
+      }
+    }
+  }
+
+  /* front side */
+  .offer-card {
+
+    /* status */
+    .running { border-color: status-running-color; }
+    .expired { border-color: status-expired-color; }
+    .paused { border-color: status-paused-color; }
+    .pending { border-color: status-pending-color; }
+    .rejected { border-color: status-rejected-color; }
+    .archived { border-color: status-archived-color; }
+    .incomplete { border-color: status-incomplete-color; }
+
+    /* icon with svg */
+    .icon-svg {
+      &.spend { width: 10px; }
+      &.bitly { width: 17px; }
+      &.paused { width: 13px; }
+      &.edit { width: 18px; }
+      &.incomplete { width: 18px; }
+    }
+
+    /* icons */
+    .card-icons {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      .icon {
+        float: left;
+        width: 33px;
+        height: 26px;
+        margin-left: 1px;
+        line-height: 26px;
+        text-align: center;
+        background: #efefef;
+        &:first-child { border-bottom-left-radius: 3px; }
+      }
+
+      img { vertical-align: -2px; }
+    }
+
+    /* title */
+    .card-title {
+      resetMP();
+      padding-top: 10px;
+      font-size: 25px;
+
+      .fa { color: #fff; }
+    }
+
+    /* description */
+    .card-descr {
+      margin: 10px 0 15px;
+      font-size: 14px;
+    }
+
+    /* details */
+    .card-details {
+      border-radius: 3px;
+      background: #efefef;
+    }
+
+    /* dates */
+    .card-dates {
+      clearfix();
+      position: relative;
+      border-bottom: 1px solid #fff;
+
+      &:before {
+        content: '>';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -9.5px 0 0 -4.5px;
+        font-weight: bold;
+      }
+
+      p {
+        resetMP();
+        float: left;
+        width: 50%;
+        padding: 10px 0;
+        text-align: center;
+        font-size: 14px;
+      }
+    }
+
+
+    /* stats */
+    .card-stats {
+      clearfix();
+
+      .item {
+        float: left;
+        width: 50%;
+        padding-top: 10px;
+        padding-bottom: 12px;
+        box-sizing: border-box;
+
+        &:hover {
+          color: #fff;
+          background: #313e4e;
+        }
+
+        &:first-child { border-right: #fff solid 1px; }
+
+        &__content {
+          margin-top: 10px;
+          font-size: 25px;
+          font-weight: bold;
+          line-height: 1;
+          text-align: center;
+        }
+      }
+    }
+
+    /* actions */
+    .card-actions {
+      position: absolute;
+      left: 0;
+      bottom: 18px;
+      width: 100%;
+      padding: 0 18px;
+      box-sizing: border-box;
+    }
+  }
+
+
+  /* back side */
+  .offer-card .back-side {
+
+    .top {
+      padding: 0 20px;
+      margin-bottom: 10px;
+      font-weight: 300;
+
+      .fa {color: #fff;}
+    }
+
+    /* title */
+    .card-title {
+      resetMP();
+      .pp-btn { font-size: 14px; }
+    }
+
+    /* list */
+    .card-list {
+      resetMP();
+
+      li {
+        clearfix();
+        list-style-type: none;
+        padding: 8px 0;
+        font-size: 14px;
+
+        & + li {
+          border-top: #dbdbdb solid 1px;
+        }
+      }
+
+      .icon {
+        float: left;
+        margin-left: 8px;
+        text-decoration: none;
+
+        &.attention { display: none; }
+        &:hover { text-decoration: none; }
+      }
+
+      .add { color: #0088cf; }
+    }
+
+    .card-date {
+      resetMP();
+      text-align: center;
+      color: #000;
+      font-size: 14px;
+    }
+
+    .card-actions {
+
+      .inner {
+        overflow: hidden;
+        border-radius: 3px;
+      }
+
+      .pp-btn {
+        display: block;
+        border-radius: 0;
+        padding: 0 10px;
+
+        &:not(.big) {
+          float: right;
+          border-left: #fff solid 1px;
+        }
+
+        &.big {
+          display: block;
+          overflow: hidden;
+          & + .pp-btn  { float: right; }
+        }
+      }
+
+      .fa { color: #fff; }
+    }
+  }
+}

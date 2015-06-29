@@ -1,0 +1,39 @@
+.accept-form {
+  padding: 40px 0;
+
+  .text { font-size: 25px; }
+
+  .usn {
+    input { display: none; }
+
+    b {
+      position: relative;
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border-radius: 10px;
+      border: #008bc0 solid 1px;
+      margin-right: 3px;
+    }
+
+    input:checked + b:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      margin: -3px 0 0 -3px;
+      border-radius: 3px;
+      background: #008bc0;
+    }
+
+    display: inline-block;
+    font: 700 25px/1.2 $fontLato;
+  }
+
+  .row-buttons {
+    clearfix();
+    margin-top:   55px;
+  }
+}

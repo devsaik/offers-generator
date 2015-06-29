@@ -1,60 +1,41 @@
 'use strict';
 
-var path = require('path');
 var gulp = require('gulp');
-var conf = require('./conf');
-
 var browserSync = require('browser-sync');
 
 function isOnlyChange(event) {
   return event.type === 'changed';
 }
 
-gulp.task('watch', [<%- watchTaskDeps.join(', ') %>], function () {
+module.exports = function(options) {
+  gulp.task('watch', ['inject', 'yml'], function () {
 
-  gulp.watch([path.join(conf.paths.src, '/*.html'), 'bower.json'], ['inject']);
+    gulp.watch([options.config.srcOneLevelHTML, 'bower.json'], ['inject']);
 
-<% if (props.cssPreprocessor.extension === 'css') { -%>
-  gulp.watch(path.join(conf.paths.src, '/app/**/*.css'), function(event) {
-<% } else { -%>
-  gulp.watch([
-    path.join(conf.paths.src, '/app/**/*.css'),
-    path.join(conf.paths.src, '/app/**/*.<%- props.cssPreprocessor.extension %>')
-  ], function(event) {
-<% } -%>
-    if(isOnlyChange(event)) {
-<% if (props.cssPreprocessor.key === 'none') { -%>
-      browserSync.reload(event.path);
-<% } else { -%>
-      gulp.start('styles');
-<% } -%>
-    } else {
-      gulp.start('inject');
-    }
-  });
+    gulp.watch([
+      options.config.srcStyles.allStyles
 
-<% if (props.jsPreprocessor.srcExtension !== 'es6') { -%>
-<%   if (props.jsPreprocessor.extension === 'js') { -%>
-  gulp.watch(path.join(conf.paths.src, '/app/**/*.js'), function(event) {
-<%   } else { -%>
-  gulp.watch([
-    path.join(conf.paths.src, '/app/**/*.js'),
-    path.join(conf.paths.src, '/app/**/*.<%- props.jsPreprocessor.extension %>')
-  ], function(event) {
-<%   } -%>
-    if(isOnlyChange(event)) {
+    ], function(event) {
+      if(isOnlyChange(event)) {
+        gulp.start('styles');
+      } else {
+        gulp.start('inject');
+      }
+    });
+
+    gulp.watch([options.config.appJS], function(event) {
+      if(isOnlyChange(event)) {
+        gulp.start('scripts');
+      } else {
+        gulp.start('inject');
+      }
+    });
+    gulp.watch([options.config.config_json,options.config.config_yml], function() {
       gulp.start('scripts');
-    } else {
-      gulp.start('inject');
-    }
-  });
-<% } -%>
+    });
 
-<% if (props.htmlPreprocessor.key !== 'none') { -%>
-  gulp.watch(path.join(conf.paths.src, '/app/**/*.<%- props.htmlPreprocessor.extension %>'), ['markups']);
-
-<% } -%>
-  gulp.watch(path.join(conf.paths.src, '/app/**/*.html'), function(event) {
-    browserSync.reload(event.path);
+    gulp.watch(options.config.htmltemplates, function(event) {
+      browserSync.reload(event.path);
+    });
   });
-});
+};

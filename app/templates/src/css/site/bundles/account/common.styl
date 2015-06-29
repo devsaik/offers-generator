@@ -1,0 +1,112 @@
+@import "account.styl";
+@import "list.styl";
+@import "sidebar.styl";
+
+.account-bundle {
+  clearfix();
+  padding: 40px 0 80px;
+
+  .menu {
+    clearfix();
+    padding: 0 35px;
+
+    .btn {
+      padding: 0 8px;
+      border-radius: 2px 2px 0 0;
+      font-weight: 300;
+      text-transform: uppercase;
+      border-bottom: none;
+      color: #4c4c4c;
+      font-size: 11px;
+    }
+
+    .setup { vertical-align: -3px }
+    &.edit .btn { background: #fff }
+  }
+
+  .menu-filters {
+
+      a {
+        margin-right: 20px;
+        position: relative;
+        display: inline-block;
+        font-size: 12px;
+
+        &.active { font-weight: bold }
+
+        & + a:before {
+          content: '|';
+          position: absolute;
+          right: 100%;
+          margin-right: 7px;
+        }
+      }
+  }
+
+  .account-block {
+    position: relative;
+    margin-bottom: 40px;
+    padding: 20px 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    background: #fff;
+
+    .title {
+      resetMP();
+      color: #333;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .pre-title {
+      resetMP();
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #3b3b3b;
+    }
+  }
+
+  .form {
+    color: #757B81;
+    font-size: 13px;
+  }
+
+  df-field,
+  .df-field {
+    padding-left: 90px;
+  }
+
+  df-label {
+    float: left;
+    width: 80px;
+    margin-left: -90px;
+    padding-top: 3px;
+    text-align: right;
+
+    i {
+      display: block;
+      margin-top: 5px;
+      font-size: 10px;
+      line-height: 0.9;
+    }
+  }
+
+  .columns-two {
+    df-field {
+      float: left;
+      width: 50%;
+    }
+  }
+
+  .choice-buttons {
+
+    .row {
+      resetMP();
+      margin-bottom: 5px;
+      padding-left: 18px;
+
+      input { margin-left: -18px; }
+    }
+
+    input { vertical-align: -2px; }
+  }
+}

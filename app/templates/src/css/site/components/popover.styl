@@ -1,0 +1,322 @@
+.ns-popover {
+  z-index: 100;
+  font-family: $fontHelvetica;
+
+  .close {
+    position: absolute;
+    top: 5px;
+    right: 25px;
+    font-size: 13px;
+    color: #8e8e8e;
+    cursor: pointer;
+
+    &:hover { color: #000; }
+  }
+
+  .inner {
+    border: 1px solid #bdbdbd;
+    border-radius: 6px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(255,255,255,1) inset;
+    background: #f2f2f2;
+    background: linear-gradient(top, rgba(247,247,247,1) 0%,rgba(236,236,236,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(247,247,247,1)), color-stop(100%,rgba(236,236,236,1)));
+  }
+
+  .arrow {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent;
+
+    &.bottom { border-top: 13px solid #f2f2f2; }
+    &.top { border-bottom: 13px solid #f2f2f2; }
+    &.right {
+      border-top: 13px solid transparent;
+      border-bottom: 13px solid transparent;
+      border-left: 13px solid #f2f2f2;
+      border-right: none;
+    }
+  }
+}
+
+/* popover refund */
+.popover-refund {
+  position: relative;
+  width: 300px;
+  padding-bottom: 15px;
+  box-sizing: border-box;
+
+  .arrow {
+    top: 100%;
+    left: 20px;
+    margin-top: -16px;
+  }
+
+  .inner {
+    padding: 20px;
+  }
+
+  .row-question {
+
+    span {
+      float: left;
+      margin-top: 5px;
+      font-size: 13.5px;
+    }
+
+    df-input {
+      float: right;
+      width: 65px;
+
+      input {
+        height: 32px;
+        line-height: 32px;
+      }
+    }
+  }
+
+  .row-buttons {
+    margin-top: 18px;
+
+    .btn {
+      height: 38px;
+      line-height: 38px;
+      padding: 0 16px;
+      font-size: 15px;
+    }
+  }
+}
+
+/* popover more info */
+.popover-more-info {
+  padding-top: 15px;
+  width: 620px;
+
+  .arrow {
+    top: 0;
+    left: 50%;
+    margin: 2px 0 0 -13px;
+  }
+
+  th { border-top: none; }
+  td { font-size: 11px; }
+}
+
+/* popover search */
+.popover-search {
+  padding-right: 15px;
+  width: 520px;
+
+  .arrow {
+    top: 50%;
+    left: 100%;
+    margin: -13px 0 0 -16px;
+  }
+
+  .inner { padding: 25px 20px 10px 20px; }
+
+  .col {
+    float: left;
+    width: 50%;
+  }
+
+  .pp-form__row { margin-bottom: 15px }
+
+  df-field,
+  .df-field {
+    padding-left: 150px;
+  }
+
+  df-label {
+    float: left;
+    width: 140px;
+    margin-left: -150px;
+    padding-top: 8px;
+    text-align: right;
+  }
+
+  .columns-two {
+    df-input { width: 45%; }
+  }
+
+  .row-buttons {
+    text-align: right;
+
+    .btn {
+      height: 36px;
+      line-height: 36px;
+      font-size: 13.5px;
+    }
+  }
+}
+
+.popover-calendar {
+  width: 360px;
+  padding-bottom: 15px;
+
+  .arrow {
+    top: 100%;
+    left: 50%;
+    margin: -16px 0 0 -13px;
+  }
+
+  .close { right: 15px; }
+  .inner { padding: 15px; }
+  .title { font-size: 12px; }
+    
+  df-datepicker {
+    float: left;
+    width: 85%;
+  }
+
+  .btn {
+    float: right;
+    height: 29px;
+    line-height: 31px;
+    font-size: 14px;
+  }
+}
+
+.popover-download {
+  width: 660px;
+  padding-bottom: 15px;
+
+  .arrow {
+    top: 100%;
+    left: 50%;
+    margin: -16px 0 0 -13px;
+  }
+
+  .close { right: 15px; }
+  .inner { padding: 15px; }
+  .title { font-size: 12px; }
+
+  .col {
+    float: left;
+    width: 40%;
+    margin-right: 2%;
+  }
+
+  df-datepicker {
+    display: block;
+    margin-top: 5px;
+  }
+
+  .btn {
+    float: right;
+    height: 29px;
+    margin-top: 22px;
+    line-height: 31px;
+    font-size: 14px;
+  }
+}
+
+.popover-addUser {
+  width: 650px;
+
+  &.account-bundle {
+    padding: 15px 0 0 0;
+
+    df-field,
+    .df-field {
+      padding-left: 120px;
+    }
+
+    df-label {
+      width: 110px;
+      margin-left: -120px;
+    }
+  }
+
+  .inner {
+    clearfix();
+    position: relative;
+    padding: 15px;
+  }
+
+  .close { right: 15px; }
+
+  .arrow {
+    bottom: 100%;
+    right: 40px;
+  }
+
+  .col {
+    float: left;
+    width: 45%;
+    & + .col { float: right }
+  }
+
+  .pp-form__row { margin-top: 15px; }
+
+  select {
+    width: 100%;
+    height: 34px;
+    padding: 7px;
+    border: 1px solid #666;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 3px #7c7c7c, 0 1px 0 rgba(0,0,0,0.25);
+    box-sizing: border-box;
+    color: #555;
+  }
+
+  .row-buttons {
+    margin-top: 20px;
+    text-align: right;
+
+    .btn {
+      height: 38px;
+      line-height: 38px;
+      padding: 0 16px;
+      font-size: 15px;
+    }
+  }
+
+  .text {
+    margin-top: 15px;
+    color: #595959;
+    font-size: 12px;
+  }
+}
+
+.popover-account-hold {
+  position: relative;
+  width: 225px;
+  padding-top: 15px;
+  box-sizing: border-box;
+
+  &.second .arrow {
+    left: auto;
+    right: 40px;
+  }
+
+  .arrow {
+    bottom: 100%;
+    left: 20px;
+    margin-bottom: -1px;
+  }
+
+  .inner {
+    position: relative;
+    padding: 20px;
+  }
+
+  .title {
+    resetMP();
+    font-size: 13.5px;
+  }
+
+  .row-buttons {
+    clearfix();
+    margin-top: 25px;
+
+    .btn {
+      height: 38px;
+      line-height: 38px;
+      padding: 0 16px;
+      font-size: 15px;
+    }
+  }
+}

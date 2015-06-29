@@ -1,0 +1,53 @@
+.pp-popup {
+  &.popup-channel-rejected {
+
+    .pp-popup__header { padding-right: 45px }
+    .ngdialog-content { max-width: 820px;}
+    .inner { overflow: auto; }
+
+    .pp-popup__inner {
+      clearfix();
+      padding: 90px 40px 40px;
+    }
+
+    .img-box {
+      img-box();
+      margin: 0;
+      max-width: 150px;
+      text-align: center;
+    }
+
+    .description {
+      font: 300 25px/1.2 $fontLato;
+
+      .green {
+        color: #00a518;
+      }
+
+      p {
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+
+      .copied-message {
+        margin-top: 40px;
+      }
+
+      .no-flash {
+        margin-top: 40px;
+      }
+    }
+
+    .row-buttons {
+      margin-top: 40px;
+      clearfix();
+
+      .pp-btn {
+        float: left;
+        min-width: 85px;
+        font-weight: 300;
+        & + .pp-btn { float: right; }
+      }
+    }
+  }
+}

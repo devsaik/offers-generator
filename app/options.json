@@ -53,7 +53,7 @@
     "type": "Boolean",
     "required": false,
     "desc": "use default configurations",
-    "defaults": false
+    "defaults": true
   },
   {
     "name": "advanced",

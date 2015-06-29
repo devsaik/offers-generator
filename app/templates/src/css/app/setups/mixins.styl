@@ -1,0 +1,49 @@
+/* reset margin and padding */
+resetMP() {
+  margin: 0;
+  padding: 0;
+}
+
+/* clearfix */
+clearfix() {
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+/* setup behavior image in box */
+img-box() {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* user select none behavior */
+user-select(){
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+/* list with inline-blocks */
+list_ib(elem) {
+  font-size: 0;
+  display: table;
+  elem {display: inline-block; vertical-align: top;}
+}
+
+/* stretchable list with  inline-block */
+list_jst(elem) {
+  text-align: justify;
+  line-height: 0
+  font-size: 0;
+  &:after {content: ''; display: inline-block; width: 100%; height: 0; visibility: hidden;}
+  > elem {display: inline-block; vertical-align: top; text-align: left;}
+}

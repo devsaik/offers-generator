@@ -1,0 +1,40 @@
+html { overflow: visible; }
+
+/* offers stabilization */
+.offers.dashboard {
+  .pp-portable-app {
+
+    select { width: auto; }
+
+    figure img {
+      width: auto;
+      display: inline-block;
+    }
+
+    .row {
+      width: auto;
+      max-width: initial;
+      min-width: initial;
+      overflow: inherit;
+    }
+  }
+
+  /* fixed line-items */
+  .pp-portable-app:not(.pp-popup) {
+    width: auto;
+    max-width: 1200px;
+    margin: 0 auto 60px;
+  }
+
+  /* form setup */
+  .pp-form__label,
+  df-label {
+    font: 600 14px/1.2 $fontLato;
+
+    .tooltip {
+      opacity: 1;
+      padding: 0;
+      z-index: auto;
+    }
+  }
+}

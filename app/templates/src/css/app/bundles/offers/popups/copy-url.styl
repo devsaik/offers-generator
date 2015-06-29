@@ -1,0 +1,71 @@
+.pp-popup {
+  &.popup-offer-copy-url {
+
+    .pp-popup__header { padding-right: 45px }
+    .ngdialog-content { max-width: 600px; max-height: 300px;}
+    .inner { overflow: auto; }
+
+    .pp-popup__inner {
+      clearfix();
+      padding: 90px 40px 40px;
+    }
+
+    .img-box {
+      margin: 0;
+      img-box();
+      text-align: center;
+    }
+
+    .description {
+      font: 300 18px/1.2 $fontLato;
+      .green {
+        color: #00a518;
+      }
+
+      p {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .copied-message {
+        margin-top: 40px;
+      }
+
+      .no-flash {
+        margin-top: 40px;
+      }
+    }
+
+    .row-buttons {
+      clearfix();
+
+      .pp-btn {
+        float: right;
+        min-width: 85px;
+        height: 32px;
+      }
+
+      df-input {
+        display: block;
+        margin-right: 85px;
+        input[disabled] {
+          background-color: #E6E6E6;
+        }
+      }
+    }
+
+    slide-panels {
+      display: block;
+
+      panel {
+        .inactive {
+          display: none;
+        }
+        .active {
+          display: block;
+        }
+      }
+    }
+
+  }
+}

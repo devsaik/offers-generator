@@ -1,0 +1,324 @@
+.account-bundle {
+
+  .sidebar {
+    padding-top: 0;
+
+    .account-block { margin-bottom: 10px; }
+
+    .menu {
+      padding: 0 10px 0 0;
+
+      .color-blue {
+        margin-top: 4px;
+        font-size: 12px;
+      }
+
+      span {
+        float: left;
+        margin-top: 5px;
+        font-weight: bold;
+        font-size: 12px;
+      }
+
+      .back { margin-right: 5px; }
+    }
+  }
+
+  .receipt-preview {
+
+    h2 {
+      font-size: 16.5px;
+      color: #333;
+    }
+
+    .map {
+      img-box();
+      margin-top: 25px;
+    }
+
+    .storeLogo {
+      width: 60px;
+      height: 80px;
+      float: right;
+    }
+    p {
+      font-size: 11px;
+      line-height: 16px;
+      color: rgb(126, 126, 126);
+
+    }
+    .receiptItems {
+      margin: 15px -12px 0 -12px;
+      padding: 18px 35px;
+      background: rgba(0, 0, 0, 0.03);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07) inset, 0 1px 1px rgba(255, 255, 255, 0.7);
+      font-size: 11px;
+      line-height: 18px;
+
+      li {
+        list-style: none;
+      }
+      h4 {
+        float: left;
+        font-size: 12px;
+        font-weight: 500;
+        color: #3b3b3b;
+        margin: 0;
+      }
+      strong {
+        float: right;
+        font-size: 12px;
+        font-weight: 500;
+        color: #3b3b3b;
+      }
+    }
+    .receiptTotal, .receiptMarketing {
+      color: #7e7e7e;
+      font-size: 11px;
+      margin: 10px 0 0 0;
+
+      img {
+        margin-right: 6px;
+        position: relative;
+        top: 6px;
+      }
+
+      strong {
+        font-size: 15px;
+        font-weight: 500;
+        float: right;
+        color: #3b3b3b;
+        position: relative;
+        top: 4px;
+      }
+
+      a {
+        color: #7e7e7e;
+        &:hover { color: #595959; }
+      }
+    }
+    .receiptMarketing {
+      margin-top: 12px;
+
+      p {
+        margin-top: 10px;
+        line-height: 14px;
+        float: left;
+        width: 75%;
+      }
+      img {
+        float: right;
+      }
+    }
+    .receiptDate {
+      margin-top: 28px;
+      overflow: hidden;
+
+      span, em {
+        float: left;
+        font-style: normal;
+        text-transform: uppercase;
+        font-size: 10px;
+        color: rgba(0, 0, 0, 0.3);
+      }
+
+      .auth-code {
+        margin-left: 57px;
+      }
+
+      em {
+        float: right;
+      }
+    }
+
+    .edit-screen {
+
+      .choice-image {
+
+        .img-box {
+          float: left;
+          max-width: 57px;
+          height: 57px;
+          margin-right: 12px;
+          padding: 3px;
+          border: 1px solid #c5c5c5;
+          border-radius: 3px;
+          background: #fff;
+        }
+
+        .btn {
+          position: relative;
+          min-width: 80px;
+          height: 29px;
+          line-height: 29px;
+        }
+
+        input {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          cursor: pointer;
+        }
+
+        .link-no-border { font-size: 11.25px; }
+      }
+
+      .row-buttons { margin-top: 30px; }
+    }
+  }
+
+  .plan-block {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+
+    dl {
+      clearfix();
+      resetMP();
+      height: 44px;
+      line-height: 44px;
+      background-image: url(../assets/img/sparkpay/bottombar.png);
+      background-repeat: no-repeat;
+      background-size: 100%;
+      color: #ededed;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.47);
+
+      dd {
+        float: left;
+        margin-left: 13px;
+      }
+      dt {
+        float: right;
+        text-align: right;
+        margin-right: 13px;
+        overflow: hidden;
+        text-transform: uppercase;
+      }
+    }
+    ul {
+      resetMP();
+      padding: 12px 0 9px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      background-color: #fff;
+
+      li {
+        padding: 0 10px;
+        list-style: none;
+        line-height: 21px;
+        color: #666;
+        font-size: 13px;
+        font-weight: 300;
+      }
+    }
+    &.switch-plan-block {
+      opacity: 0.8;
+      cursor: pointer;
+      &:hover { opacity: 1; }
+
+      dl {
+        background-image: url(../assets/img/sparkpay/switchbar.png);
+        color: #000;
+        text-shadow: 1px 1px 1px #fff;
+      }
+
+      ul { display: none }
+    }
+  }
+
+  .edit-screen {
+
+    .pp-form__row { margin-bottom: 15px; }
+
+    .row-buttons {
+      text-align: right;
+
+      .btn {
+        height: 38px;
+        line-height: 38px;
+        font-size: 15px;
+      }
+
+    }
+  }
+}
+
+.popup-confirm {
+
+  .bg {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.4);
+  }
+
+  .form {
+    position: fixed;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    margin-top: -275px;
+    margin-left: -300px;
+    padding: 3px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.11);
+    border-radius: 6px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    color: #616161;
+    font-size: 12px;
+  }
+
+  .btn-close {
+    position: absolute;
+    top: 11px;
+    right: 12px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .row-header {
+    resetMP();
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 1px 0 #000;
+    border: 1px solid #0e2d53;
+    border-radius: 3px 3px 0 0;
+    padding: 8px 12px;
+    background: #024d80;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#044a7c), color-stop(100%,#142356));
+    background: linear-gradient(to bottom, #044a7c 0%,#142356 100%);
+  }
+
+  .row-text {
+    padding: 15px 12px 30px;
+    color: #333;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: center;
+  }
+
+  .row-buttons {
+    border-top: 1px solid #ccc;
+    padding: 10px 0 18px;
+    margin: 0 12px;
+    text-align: right;
+
+    .btn {
+      height 36px;
+      line-height: 36px;
+      margin-left: 3px;
+      font-size: 13px;
+    }
+  }
+}

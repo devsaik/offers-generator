@@ -1,0 +1,40 @@
+body {
+  background-color: #eee;
+}
+
+.wrapper {
+  resetMP();
+  clearfix();
+  max-width: 1210px;
+  margin: 0 auto;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+
+/* truncate */
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* link no border */
+.link-no-border {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* colors */
+.color-blue { color: #0962AC }
+.color-green { color: #3f8c51 }
+
+#loading-bar .bar {
+  background: #FFE800 !important;
+}
+
+  #loading-bar-spinner .spinner-icon {
+    border-top-color: #FFE800 !important;
+    border-left-color: #FFE800 !important;
+  }

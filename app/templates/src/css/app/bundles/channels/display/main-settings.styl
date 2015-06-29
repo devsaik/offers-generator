@@ -1,0 +1,118 @@
+.main-settings {
+
+  .pp-form {
+    float: left;
+    width: 100%;
+    padding: 40px 0;
+
+    @media screen and (min-width: $md) {
+      margin-right: -315px;
+      padding-right: 315px;
+    }
+  }
+
+  .ad-preview {
+    width: 315px;
+    padding-top: 40px;
+
+    .bg { width: 315px; }
+  }
+
+  .items-row {
+    clearfix();
+    position: relative;
+    margin: 0 -20px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      height: 100%;
+      border-right: #dbdbdb solid 1px;
+    }
+
+    .col-xs-6 { padding: 0 20px; }
+  }
+
+  /* row with datepicker */
+  .row-datepicker {
+    position: relative;
+
+    .label {
+      float: left;
+      width: 34px;
+      line-height: 31px;
+      font-weight: bold;
+      color: #757B81;
+    }
+
+    .pp-datepicker {
+      display: block;
+      margin-left: 50px;
+      width: auto;
+    }
+
+    .date-range {
+      position: absolute;
+      left: -8px;
+      top: 8px;
+      z-index: 10;
+      cursor: pointer;
+
+      .fa {
+        color: #f79a00;
+      }
+      .inner {
+        display: none
+      }
+
+      &:hover .inner {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 100%;
+        width: 200px;
+        padding: 5px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        color: #fff;
+        background: #f79a00;
+      }
+    }
+  }
+
+  .row-budget-type.extend {
+    df-selectbox {
+      float: left;
+      width: 65%;
+    }
+
+    df-input {
+      float: right;
+      width: 30%;
+    }
+
+    df-error { clear: both; }
+  }
+
+  advanced-targeting.placeholder .placeholder { display: block !important; }
+
+  /* row buttons */
+  .row-buttons {
+    clearfix();
+    margin-top: 100px;
+  }
+}
+
+.facebook-form {
+  .row-buttons {
+    margin-top: 40px;
+  }
+}
+
+.facebook-campaign-ad-form {
+  input {
+    background: #fff !important;
+  }
+}

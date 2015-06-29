@@ -1,0 +1,67 @@
+.pp-btn {
+  border: none;
+  outline: none;
+  text-decoration: none;
+  -webkit-appearance: none;
+  display: inline-block;
+  height: 36px;
+  padding: 0 20px;
+  border-radius: 3px;
+  font: 18px / 34px $fontLato;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  &.small {
+    height: 18px;
+    font: 9px / 17px $fontLato;
+  }
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    outline: none !important;
+    text-decoration: none !important;
+  }
+
+  /* light green */
+  &.lgreen {
+    background-color: #00a518;
+  }
+
+  &.gray {
+    background-color: #727f88;
+  }
+
+  /* dark gray */
+  &.dgray {
+    background-color: #313e4e;
+  }
+
+  /* light gray */
+  &.lgray {
+    background-color: #efefef;
+  }
+
+  &.blue {
+    background-color: #0b4270;
+  }
+
+  &.red {
+    background-color: #cc0e1d;
+  }
+
+  &.turquoise {
+    background-color: $color-turquoise;
+  }
+
+  /* disabled */
+  &:disabled {
+    background-color: #efefef;
+    opacity: 0.5;
+  }
+}

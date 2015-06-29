@@ -1,0 +1,97 @@
+body {
+  overflow-y: scroll;
+  height: 100%;
+  max-height: 100%;
+  display: block;
+  position: relative;
+}
+
+.wrapper {
+  resetMP();
+  max-width: 1210px;
+  margin: 0 auto;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+
+/* setup general classes */
+.offers-bundle {
+  font-family: $fontLato;
+  font-size: 16px;
+  line-height: 1.2;
+  color: #333;
+
+  ng-include,
+  ui-view {
+    display: block;
+  }
+
+  /* truncate */
+  .truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* link no border */
+  .link-no-border {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  /* colors */
+  .color-lgreen {
+    color: #5ec700;
+  }
+  .color-red {
+    color: #a81910;
+  }
+
+  .pp-btn.block {
+    display block
+  }
+  .col-md-12 .pp-btn {
+    margin-top: 20px;
+  }
+  .invisible {
+    visibility hidden
+  }
+}
+
+.pp-loading-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 100;
+
+  .loading-bar-spinner {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    z-index: 101;
+    font-size: 42px;
+    margin-top: -35px;
+    margin-left: -35px;
+
+    .spinner-icon {
+      width: 70px;
+      height: 70px;
+      border: solid 10px transparent;
+      border-top-color: #ffe800;
+      border-left-color: #ffe800;
+      border-radius: 100%;
+      -webkit-animation: loading-bar-spinner 400ms linear infinite;
+      -moz-animation: loading-bar-spinner 400ms linear infinite;
+      -ms-animation: loading-bar-spinner 400ms linear infinite;
+      -o-animation: loading-bar-spinner 400ms linear infinite;
+      animation: loading-bar-spinner 400ms linear infinite;
+    }
+  }
+}

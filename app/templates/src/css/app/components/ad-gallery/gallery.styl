@@ -1,0 +1,107 @@
+.ad-gallery {
+  position: relative;
+  box-sizing: border-box;
+  padding: 20px 30px 0;
+  border-radius: 4px;
+  background: #efefef;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+
+  &__list {
+    overflow: hidden;
+    font-size: 0;
+
+    .inner {
+      position: relative;
+      transition: left 0.3s ease;
+    }
+
+    .inner-row {
+      resetMP();
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 63px;
+    height: 63px;
+    margin: 0 20px 20px 0;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+
+    &.select:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border: $color-turquoise solid 3px;
+    }
+
+    img {
+      max-width: 125%;
+      height: auto;
+    }
+  }
+
+  .add {
+    position: absolute;
+    z-index: 1;
+    left: 30px;
+    top: 20px;
+    width: 63px;
+    height: 63px;
+    border-radius: 4px;
+    background: #738089;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 63px;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    width: 30px;
+    height: 30px;
+    color: #738089;
+    font: 30px/1 $fontLato;
+    text-align: center;
+    text-decoration: none;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -8.5px 0 0 -4px;
+    }
+
+    &.arrow-left {
+      right: 100%;
+      margin-right: -30px;
+      &:after {
+        sprite($ad-carousel__gray-arrow-left);
+      }
+    }
+
+    &.arrow-right {
+      left: 100%;
+      margin-left: -30px;
+      &:after {
+        sprite($ad-carousel__gray-arrow-right);
+      }
+    }
+  }
+}

@@ -1,52 +1,74 @@
 'use strict';
 
-var path = require('path');
 var gulp = require('gulp');
-var conf = require('./conf');
 
 var $ = require('gulp-load-plugins')();
 
 var wiredep = require('wiredep').stream;
-var _ = require('lodash');
 
-<% if (props.cssPreprocessor.key !== 'none') { -%>
-gulp.task('inject', ['scripts', 'styles'], function () {
-  var injectStyles = gulp.src([
-    path.join(conf.paths.tmp, '/serve/app/**/*.css'),
-    path.join('!' + conf.paths.tmp, '/serve/app/vendor.css')
-  ], { read: false });
-<% } else { -%>
-gulp.task('inject', ['scripts'], function () {
-  var injectStyles = gulp.src([
-    path.join(conf.paths.src, '/app/**/*.css')
-  ], { read: false });
-<% } -%>
+module.exports = function(options) {
+    var injectOptions = {
+      ignorePath: [options.config.srcDir, options.config.tempServe],
+      addRootSlash: false
+    };
+    var injectAssetOptions = {
+      ignorePath: [options.config.srcDir, options.config.tempServe],
+      addRootSlash: false,
+      name: 'head'
+    };
+    var injectAssetScripts = gulp.src([
+      options.config.assetsJS,
+      // options.config.assetsJS,
+      '!' + options.config.assetsOffersJS
+    ]);
+    var injectMainOptions= {
+      ignorePath: [options.config.srcDir, options.config.tempServe],
+      addRootSlash: false,
+      name: 'main' };
 
-  var injectScripts = gulp.src([
-<% if (props.jsPreprocessor.srcExtension !== 'es6') { -%>
-    path.join(conf.paths.src, '/app/**/*.module.js'),
-    path.join(conf.paths.src, '/app/**/*.js'),
-<% } if (props.jsPreprocessor.key !== 'none') { -%>
-    path.join(conf.paths.tmp, '/serve/app/**/*.module.js'),
-    path.join(conf.paths.tmp, '/serve/app/**/*.js'),
-<% } -%>
-    path.join('!' + conf.paths.src, '/app/**/*.spec.js'),
-    path.join('!' + conf.paths.src, '/app/**/*.mock.js')
-<% if (props.jsPreprocessor.srcExtension === 'js' || props.jsPreprocessor.srcExtension === 'coffee') { -%>
-  ])
-  .pipe($.angularFilesort()).on('error', conf.errorHandler('AngularFilesort'));
-<% } else { -%>
-  ], { read: false });
-<% } -%>
+    var injectMainCSS = gulp.src([
+      options.config.inject.mainCSS
+    ]);
+    var injectCustomThemeOptions= {
+    ignorePath: [options.config.srcDir, options.config.tempServe],
+    addRootSlash: false,
+    name: 'custom' };
+    var injectCustomThemeCSS = gulp.src([
+      options.config.inject.customThemeCSS
+    ]);
 
-  var injectOptions = {
-    ignorePath: [conf.paths.src, path.join(conf.paths.tmp, '/serve')],
-    addRootSlash: false
-  };
 
-  return gulp.src(path.join(conf.paths.src, '/*.html'))
-    .pipe($.inject(injectStyles, injectOptions))
-    .pipe($.inject(injectScripts, injectOptions))
-    .pipe(wiredep(_.extend({}, conf.wiredep)))
-    .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve')));
-});
+  gulp.task('inject:assetjs',function(){
+    return gulp.src(options.config.srcHTML).pipe($.inject(injectAssetScripts, injectAssetOptions))
+      .pipe(gulp.dest(options.config.tempServe));
+
+  });
+  gulp.task('inject', ['scripts', 'styles', 'yml', 'templates' ], function () {
+    var injectStyles = gulp.src([
+      options.config.inject.tempCSS,
+      '!' + options.config.inject.mainCSS,
+      '!' + options.config.inject.customThemeCSS,
+      options.config.inject.tempNonVendorCSS
+    ], { read: false });
+
+    var injectScripts = gulp.src([
+      options.config.appJS,
+      '!' + options.config.assetsOffersJS,
+      '!' + options.config.appSpecJS,
+      '!' + options.config.appMockJS
+    ])
+    .pipe($.angularFilesort()).on('error', options.errorHandler('AngularFilesort'));
+
+
+
+    return gulp.src(options.config.srcHTML)
+      .pipe($.inject(injectStyles, injectOptions))
+      .pipe($.inject(injectMainCSS, injectMainOptions))
+      .pipe($.inject(injectCustomThemeCSS, injectCustomThemeOptions))
+      .pipe($.inject(injectScripts, injectOptions))
+      .pipe($.inject(injectAssetScripts, injectAssetOptions))
+      .pipe(wiredep(options.wiredep))
+      .pipe(gulp.dest(options.config.tempServe));
+
+  });
+};

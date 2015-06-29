@@ -1,0 +1,69 @@
+.btn {
+  border: none;
+  outline: none;
+  text-decoration: none;
+  -webkit-appearance: none;
+  display: inline-block;
+  height: 25px;
+  padding: 0 10px;
+  border-radius: 3px;
+  font: bold 10px/25px $fontHelvetica;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+
+  /* white */
+  &.white {
+    border: 1px solid #A6A6A6;
+    box-shadow: inset 0 1px 1px -1px #ffffff, 0 1px 1px rgba(0,0,0,0.3);
+    color: #4c4c4c;
+    text-shadow: #fff 0 1px 1px;
+    background: #f3f3f3;
+    background: linear-gradient(to bottom, #d7d7d7 0%, #ffffff 100%);
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #d7d7d7), color-stop(1, #ffffff));
+
+    &:hover,
+    &:focus {
+      background: #dddddd;
+      background: linear-gradient(to bottom, #d0d0d0 0%, #f4f4f4 100%);
+      background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #d0d0d0), color-stop(1, #f4f4f4));
+    }
+
+    &:active {
+      box-shadow: inset 0 1px 1px #7c7c7c;
+      background: #cccccc;
+      background: linear-gradient(to bottom, #b9b9b9 0%, #f0f0f0 100%);
+      background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #b9b9b9), color-stop(1, #f0f0f0));
+    }
+  }
+
+  /* green */
+  &.green {
+    border: 1px solid #2A7A0C;
+    box-shadow: inset 0 1px 1px 0 #b2f08e, 0 1px 1px #7c7c7c;
+    color: #fff;
+    text-shadow: 0 -1px 0 #1D4F0A;
+    background: #2f8809;
+    background: linear-gradient(to bottom, #64d225 0%,#2f8809 50%,#246c06 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#64d225), color-stop(50%,#2f8809), color-stop(100%,#246c06));
+
+    &:hover,
+    &:focus {
+      background-color: #398C15;
+      background: linear-gradient(to bottom, #5DCB22 5%, #1C610A 100%);
+      background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #5DCB22), color-stop(1, #1C610A) );
+    }
+
+    &:active {
+      box-shadow: inset 0 1px 1px 0 #3ea616;
+      background-color: #2F8012;
+      background: linear-gradient(to bottom, #52B31E 5%, #1B610A 100%);
+      background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #52B31E), color-stop(1, #1B610A) );
+    }
+  }
+}

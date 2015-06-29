@@ -1,0 +1,26 @@
+@import "main-settings.styl";
+@import "manage-list.styl";
+
+.free {
+  .ngdialog-manual-close {display: none;}
+}
+
+.free-channel-container {
+  clearfix();
+
+  slide-panels {
+    display: block;
+
+    panel {
+      display: block;
+
+      .active {
+        display: block;
+      }
+
+      .inactive {
+        display: none;
+      }
+    }
+  }
+}

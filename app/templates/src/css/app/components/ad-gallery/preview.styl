@@ -1,0 +1,231 @@
+/* ad preview */
+ad-preview {
+  user-select();
+  position: relative;
+
+  .disable {
+    #preview-mask {
+      display: none;
+    }
+    .ui-elements {
+      display: none;
+    }
+  }
+
+  .devicePreview {
+    max-height: 568px;
+    -webkit-transition: all 250ms ease-in-out;
+    -moz-transition: all 250ms ease-in-out;
+    -ms-transition: all 250ms ease-in-out;
+    -o-transition: all 250ms ease-in-out;
+    transition: all 250ms ease-in-out;
+
+    &.landscape {
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      transform: rotate(90deg);
+    }
+  }
+
+  .ad-title {
+    position: absolute;
+    z-index: 1;
+    top: 35px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+
+    p {
+      resetMP();
+      color: #fff;
+      font: 14px / 1.2 $fontLato;
+    }
+
+    .big {
+      font-size: 23px;
+      font-weight: 300;
+    }
+  }
+
+  .ad-info {
+    position: absolute;
+    top: 85px;
+    right: 65px;
+    &.visible {
+      z-index: 2
+    }
+
+    .inner {
+      display: table-cell;
+      vertical-align: middle;
+      width: 300px;
+      height: 50px;
+    }
+
+    .plus-container {
+      cursor: pointer;
+
+
+      .plus {
+        background-color: transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.1;
+      }
+    }
+
+    p {
+      resetMP();
+      color: #000;
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .name {
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .description {
+      font-size: 14px;
+    }
+  }
+
+  .img-box {
+    padding-top: 15px !important;
+    cursor: move;
+    &.disable {
+      cursor: default
+    }
+
+    /*position: relative;*/
+    //padding-left: 15px !important;
+    /*margin-left: 15px !important;*/
+    /*overflow: hidden;*/
+    /*text-align: left !important;*/
+    /*width: 500px;*/
+
+    #preview-img {
+      max-width: none !important;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      &.automove {
+        transition: all 0.2s ease-in 0s;
+      }
+    }
+    #preview-mask {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
+    .ui-elements {
+      position: absolute;
+      bottom: 130px;
+      left: 50%;
+      width: 300px;
+      margin-left: -150px;
+      z-index: 15;
+
+      a {
+        position: absolute;
+        top: 53px;
+        display: block;
+        color: #fff;
+        font-size: 17px;
+        line-height: 36px;
+        width: 165px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 3px;
+        &:hover {
+          opacity: 0.9;
+        }
+        &.cancel {
+          left: -37px;
+          background: #738089;
+        }
+        &.save {
+          right: -37px;
+          background: #1589C2;
+        }
+      }
+
+      .minus, .plus {
+        position: absolute;
+        top: 0;
+        background: #dbdbdb;
+        color: #727f88;
+        font: bold 19px / 22px $fontLato;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+      .minus {
+        left: -37px;
+        border-radius: 45% 0 0 45%;
+        padding: 3px 11px 7px 15px;
+      }
+      .plus {
+        right: -37px;
+        border-radius: 0 45% 45% 0;
+        padding: 5px 17px 5px 9px;
+      }
+      .slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 32px;
+        background: #dbdbdb;
+        cursor: pointer;
+
+        .ruler {
+          position: absolute;
+          width: calc(100% - 10px);
+          height: 6px;
+          top: 50%;
+          left: 5px;
+          margin-top: -3px;
+          border-radius: 3px;
+          background: $color-turquoise;
+        }
+
+        #slider-wrap {
+          position: relative;
+          width: calc(100% - 24px);
+          margin: 0 0 0 1px;
+          height: 32px;
+        }
+
+        #slider-point {
+          position: absolute;
+          top: 5px;
+          left: 100%;
+          width: 22px;
+          height: 22px;
+          border-radius: 100%;
+          box-shadow: 0 0 1px 1px #dbdbdb;
+          background: #727f88;
+          color: #fff;
+          font-size: 10px;
+          font-weight: bold;
+          line-height: 20px;
+          text-align: center;
+          cursor: move;
+          &:hover {
+            opacity: 0.9;
+          }
+          &.automove {
+            transition: all 0.2s ease-in 0s;
+          }
+        }
+      }
+    }
+  }
+}

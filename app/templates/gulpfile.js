@@ -1,29 +1,32 @@
-/**
- *  Welcome to your gulpfile!
- *  The gulp tasks are splitted in several files in the gulp directory
- *  because putting all here was really too long
- */
-
 'use strict';
 
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 var wrench = require('wrench');
+var config = require('./gulp.config')();
 
-/**
- *  This will load all js or coffee files in the gulp directory
- *  in order to load all gulp tasks
- */
+var options = {
+  config:config,
+  errorHandler: function(title) {
+    return function(err) {
+      gutil.log(gutil.colors.red('[' + title + ']'), err.toString());
+      this.emit('end');
+    };
+  },
+  wiredep: {
+    directory: 'bower_components'
+    /*todo: load from cdn,Sai */
+    /*,
+    exclude: [/jquery/, /bootstrap\.js/, /bootstrap\.css/]*/
+  }
+};
+
 wrench.readdirSyncRecursive('./gulp').filter(function(file) {
   return (/\.(js|coffee)$/i).test(file);
 }).map(function(file) {
-  require('./gulp/' + file);
+  require('./gulp/' + file)(options);
 });
 
-
-/**
- *  Default task clean temporaries directories and launch the
- *  main optimization build task
- */
 gulp.task('default', ['clean'], function () {
-  gulp.start('build');
+    gulp.start('build');
 });

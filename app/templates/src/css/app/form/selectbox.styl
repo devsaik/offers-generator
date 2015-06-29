@@ -1,0 +1,336 @@
+.pp-selectbox {
+  outline: 0;
+
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+
+  &.h-none .pp-selectbox__list {
+    max-height: none
+  }
+
+  select-item {
+    display: block;
+  }
+
+  option-item {
+    display: block;
+  }
+
+  &__wrapper {
+    position: relative;
+
+    &.disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+
+    /* simple select */
+    .item-selected {
+      padding: 8px 18px 7px 7px;
+      box-sizing: border-box;
+      border-radius: 3px;
+      color: #fff;
+      background: #727f88;
+      font: 300 14px / 1.2 $fontLato;
+      cursor: pointer;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      right: 7px;
+      margin-top: -8.5px;
+      font: 600 14px / 1.2 $fontLato;
+      -moz-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      -webkit-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+      transform: rotate(90deg);
+    }
+
+    /* multiple select */
+    .tags-selected {
+      resetMP();
+      clearfix();
+      list-style-type: none;
+      min-height: 31px;
+      border-radius: 3px;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.26);
+      background: transparent;
+      font-size: 0;
+      position: relative;
+
+      .placeholder {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 8px 18px 7px 7px;
+        box-sizing: border-box;
+        border-radius: 3px;
+        color: #fff;
+        background: #727f88;
+        font: 300 14px / 1.2 $fontLato;
+        cursor: pointer;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &:after {
+          content: '>';
+          position: absolute;
+          top: 50%;
+          right: 7px;
+          margin-top: -8.5px;
+          font: 600 14px/1.2 'Lato', Helvetica, sans-serif;
+          -moz-transform: rotate(90deg);
+          -ms-transform: rotate(90deg);
+          -webkit-transform: rotate(90deg);
+          -o-transform: rotate(90deg);
+          transform: rotate(90deg);
+        }
+      }
+
+      .icon {
+        position: absolute;
+        top: 6px;
+        right: 7px;
+        color: #58595b;
+        font-size: 18px;
+      }
+
+      .tag {
+        position: relative;
+        float: left;
+        margin: 3px;
+        padding: 3px 15px 3px 3px;
+        border-radius: 3px;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
+        background: #727f88;
+        color: #fff;
+        font: 300 14px / 1.2 $fontLato;
+      }
+
+      .tag-close {
+        position: absolute;
+        right: 3px;
+        top: 0;
+        cursor: pointer;
+
+        &:hover {
+          color: #000
+        }
+      }
+
+      .tag-input {
+
+        input {
+          padding: 0 10px;
+          box-shadow: none;
+          background: transparent;
+          font: 300 14px / 31px $fontLato;
+          color: #000;
+        }
+      }
+    }
+  }
+
+  /* dropdown */
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 30;
+    min-width: 100%;
+    /*background: #f8f5f8;*/
+  }
+
+  /* search */
+  &__search {
+    resetMP();
+  }
+
+  /* list */
+  &__list {
+    resetMP();
+    list-style-type: none;
+    min-width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 3px 15px 5px rgba(0, 0, 0, .1);
+
+    div[ui-scroll] {
+      max-height: 315px !important;
+      padding: 0 !important;
+    }
+
+    .slimScrollBar { right: 0 !important; }
+
+    .sub {
+      .sub-item {
+        padding-left: 30px
+      }
+      .sub-title {
+        border-top: none
+      }
+    }
+
+    .sub-item,
+    .sub-title {
+      resetMP();
+      margin-top: 1px;
+      padding: 7px;
+      /*border-top: #646464 solid 1px;*/
+      color: #000;
+      background: #efefef;
+      font: 300 14px / 1.2 $fontLato;
+    }
+
+    .sub-title {
+      font-weight: bold
+    }
+
+    .sub-item {
+      display: block;
+      cursor: pointer;
+      padding-right: 24px;
+      white-space: nowrap;
+
+      &:first-child {
+        /*border-top: none*/
+        position: relative;
+        overflow: hidden;
+        margin-top: 0;
+
+        &:after {
+          content: '';
+          position: absolute;
+          z-index: 0;
+          top: 0;
+          left: 5%;
+          width: 90%;
+          height: 0;
+          box-shadow: 0 1px 10px 2px #969696;
+        }
+        span {
+          position: relative;
+          z-index: 1;
+        }
+      }
+
+      &.selected,
+      &:hover {
+        color: #fff;
+        background: #008ac0;
+      }
+    }
+  }
+}
+
+/* styles for colored selectbox */
+.pp-selectbox.colored {
+
+  .item-selected {
+    padding: 7px 15px;
+    border-radius: 0 0 3px 3px;
+    border-top: #fff solid 3px;
+    font: 300 18px / 1.2 $fontLato;
+  }
+
+  &.ALL .item-selected,
+  .ALL.sub-item {
+    border-color: #fff;
+  }
+  .ALL.sub-item:hover,
+  .ALL.sub-item.selected {
+    background: #fff;
+    color: #000;
+  }
+
+  &.INCOMPLETE .item-selected,
+  .INCOMPLETE.sub-item {
+    border-color: status-incomplete-color;
+  }
+  .INCOMPLETE.sub-item:hover,
+  .INCOMPLETE.sub-item.selected {
+    background: status-incomplete-color;
+  }
+
+  &.RUNNING .item-selected,
+  .RUNNING.sub-item {
+    border-color: status-running-color;
+  }
+  .RUNNING.sub-item:hover,
+  .RUNNING.sub-item.selected {
+    background: status-running-color;
+  }
+
+  &.PAUSED .item-selected,
+  .PAUSED.sub-item {
+    border-color: status-paused-color;
+  }
+  .PAUSED.sub-item:hover,
+  .PAUSED.sub-item.selected {
+    background: status-paused-color;
+  }
+
+  &.PENDING .item-selected,
+  .PENDING.sub-item {
+    border-color: status-pending-color;
+  }
+  .PENDING.sub-item:hover,
+  .PENDING.sub-item.selected {
+    background: status-pending-color;
+  }
+
+  &.REJECTED .item-selected,
+  .REJECTED.sub-item {
+    border-color: status-rejected-color;
+  }
+  .REJECTED.sub-item:hover,
+  .REJECTED.sub-item.selected {
+    background: status-rejected-color;
+  }
+
+  &.EXPIRED .item-selected,
+  .EXPIRED.sub-item {
+    border-color: status-expired-color;
+  }
+  .EXPIRED.sub-item:hover,
+  .EXPIRED.sub-item.selected {
+    background: status-expired-color;
+  }
+
+  &.ARCHIVE .item-selected,
+  .ARCHIVE.sub-item {
+    border-color: status-archived-color;
+  }
+  .ARCHIVE.sub-item:hover,
+  .ARCHIVE.sub-item.selected {
+    background: status-archived-color;
+  }
+
+  .pp-selectbox__list {
+    max-height: none;
+  }
+
+  .sub-item {
+    padding: 7px 10px;
+    color: #000;
+    font: 300 18px / 1.2 $fontLato;
+    border-left: transparent solid 5px;
+    border-top-color: #646464 !important;
+    &:hover,
+    &.selected {
+      color: #fff;
+    }
+  }
+}

@@ -1,0 +1,262 @@
+.popup-offer.statistic {
+  .ngdialog-col-date {
+    padding: 1em;
+  }
+
+  .content {
+    clearfix();
+    margin-top: 20px;
+
+    .form-horisontal {
+
+      df-field {
+        display: inline-block;
+        margin-bottom: 0;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  /* column left */
+  .controls {
+    padding-right: 30px;
+    overflow: hidden;
+  }
+  /* column right */
+  .graph {
+    float: right;
+    width: 80%;
+    height: 500px;
+  }
+}
+
+.popup-offer-statistic,
+.popup-channel-statistic {
+  .chart-line svg {
+    margin-left: 20px;
+  }
+  .content {
+    background: #fff;
+    width: 880px;
+    margin: 0 auto;
+  }
+  .modal_header {
+    background: #6F7686;
+    border-radius: 3px 3px 0 0;
+    padding: 10px;
+
+    .name, .current, .metric {
+      font-family: Lato;
+      font-size: 25px;
+      color: #fff;
+    }
+    .name {
+      font-weight: 100;
+    }
+    .current {
+      font-weight: normal;
+    }
+    .metric {
+      font-weight: bold;
+    }
+  }
+
+  .modal-content { padding: 0 60px; }
+
+  .ngdialog-content {
+    //todo uncomment for 'round-chart'
+    /*min-width: 750px !important;*/
+    /*max-width: 95% !important;*/
+    /*height: 724px !important;*/
+    /*background: #fff !important;*/
+    /*padding: 0 !important;*/
+    /*width: auto !important;*/
+    //todo uncomment for 'round-chart'
+    min-width: 750px !important;
+    max-width: 1000px !important;
+    height: 560px !important;
+    background: #fff !important;
+    padding: 0 !important;
+    width: auto !important;
+
+    .ngdialog-close, .ngdialog-manual-close {
+      cursor: pointer;
+
+      &:before,
+      &:hover:before {
+        content: 'X';
+        top: 13px;
+        right: 13px;
+        width: auto;
+        height: auto;
+        color: #fff;
+      }
+    }
+
+    .form-horisontal .row-date {
+      clearfix();
+      margin-top: 20px;
+      max-width: 865px;
+
+      .row-datepicker {
+        float: left;
+        width: 50%;
+      }
+
+      .label {
+        float: left;
+        width: 50px;
+        line-height: 31px;
+        color: #757b81;
+        text-align: center;
+      }
+
+      .pp-datepicker {
+        display: block;
+        margin-left: 50px;
+        width: auto;
+      }
+
+      .pp-selectbox {
+        max-width: 90%;
+      }
+
+      df-button {
+        width: 100%;
+      }
+
+      .pp-btn {
+        height: 32px;
+        width: 100%;
+      }
+
+      datepicker {
+        &:disabled {
+          opacity: 0.5 !important;
+          pointer-events: none;
+          background-color: #efefef;
+
+        }
+      }
+  }
+
+  .metrics-text {
+    font-size: 22px;
+    text-align: center;
+    padding-top: 15px;
+  }
+}
+
+.controls-x, .controls-y {
+
+  ul {
+    resetMP();
+  }
+
+  li {
+    position: relative;
+    list-style: none;
+  }
+
+  .btn {
+    width: 112px;
+    min-height: 34px;
+    border: solid #008bc1 2px;
+    border-radius: 2px;
+    background: #fff;
+    color: #008bc1;
+    font: bold 14px/1 $fontLato;
+    box-shadow: none;
+
+    &:hover { box-shadow: none; }
+    &:focus { outline: none; }
+
+    &:disabled {
+      border-color: #dbdbdb;
+      background: #fff;
+      color: #dbdbdb;
+    }
+
+    &.active {
+      background: #298FCA;
+      color: #fff;
+    }
+  }
+}
+
+.controls-x {
+  float: left;
+  margin-top: 0;
+  position: relative;
+  width: 100%;
+  text-align: center;
+
+  .decorations {
+    width: 695px;
+    height: 14px;
+    position: absolute;
+    left: 140px;
+    top: -6px;
+    z-index: 1;
+    border: 1px solid #737373;
+    border-radius: 0 0 3px 3px;
+    /* border-right-width: 0; */
+    border-bottom-width: 1px;
+    border-top-width: 0px;
+  }
+
+  ul {
+    margin-top: 20px;
+    padding-right: 40px;
+    text-align: right;
+  }
+
+  li {
+    display inline-block;
+    vertical-align: top;
+    font-size: 0;
+    margin-right: 5px;
+  }
+}
+
+.controls-y {
+  float: left;
+  margin-top: 25px;
+  position: relative;
+
+  .decorations {
+    position: absolute;
+    top: 4px;
+    left: 100%;
+    z-index: 1;
+    width: 14px;
+    height: 222px;
+    margin-left: 15px;
+    border: 1px solid #737373;
+    border-right: none;
+    border-radius: 3px 0 0 3px;
+  }
+
+  li { margin-bottom: 5px }
+}
+
+.graph {
+  overflow: hidden;
+  text-align: center;
+  font-size: 0;
+
+  > div { display: inline-block; }
+}
+
+/*.chart-line .graph {*/
+  /*overflow: hidden;*/
+/*}*/
+
+.chart-round {
+  float: left;
+  &:first-child {
+    margin-left: 150px;
+  }
+}
+
+}

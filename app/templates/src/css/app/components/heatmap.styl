@@ -1,0 +1,254 @@
+.pp-heatmap {
+
+  .angular-leaflet-map {
+    .leaflet-control-layers {
+      visibility: hidden !important;
+    }
+    .leaflet-control-zoom {
+      position: absolute;
+      top: 250px;
+      right: 0px;
+      background: rgba(0, 0, 0, 0.8);
+      margin-top: 0 !important;
+      margin-right: 0 !important;
+      padding: 10px 0 10px 30px;
+      border-radius: 0px;
+      &:before {
+        content: 'Map Zoom';
+        position: absolute;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        top: 77px;
+        left: 6px;
+        transform: rotate(-90deg);
+        width: 75px;
+        display: block;
+        transform-origin: 0% 0%;
+        letter-spacing: -0.2px;
+        word-spacing: -2px;
+      }
+      a {
+        background: #636363;
+        color: #fff;
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        font-weight: 400;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+
+      a.leaflet-control-zoom-in {
+        border-bottom: none;
+        margin-bottom: 1px;
+      }
+
+      a.leaflet-control-zoom-out {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .range {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 28px 25px;
+
+    .range-container {
+      margin: 0 auto;
+    }
+  }
+
+  /* controls */
+  &__controls {
+    clearfix();
+
+    .slider-container:focus {
+      outline: none
+    }
+
+  }
+
+  /* filters */
+  &__filters {
+    clearfix();
+    position: relative;
+    z-index: 1;
+    margin-bottom: 15px;
+
+    .loading {
+      padding-top: 26px;
+      white-space: nowrap;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .pp-btn {
+      float: right;
+      margin-top: 21px;
+      height: 31px;
+      line-height: 31px;
+      min-width: 160px;
+    }
+  }
+
+  /* maps */
+  &__map {
+    position: relative;
+    z-index: 0;
+    height: 100%;
+
+    > label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      background: #fff;
+      padding: 1px 9px;
+    }
+  }
+
+  .pp-heatmap__controls {
+    display: none;
+  }
+  .pp-heatmap__filters {
+    display: none;
+  }
+}
+
+.range-container {
+  position: relative;
+  height: 32px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  cursor : pointer;
+
+  .control {
+    position: absolute;
+    top: 0;
+    width: 36px;
+    height: 32px;
+    display: block;
+    background: #737373;
+    color: #fff;
+    text-align: center;
+    line-height: 32px;
+    text-decoration : none;
+
+    &:hover {
+      opacity : 0.8;
+    }
+    &.minus {
+      left: 0;
+      border-radius: 45% 0 0 45%;
+    }
+    &.plus {
+      right: 0;
+      border-radius: 0 45% 45% 0;
+    }
+  }
+  .slider-wrap {
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 36px;*/
+    background: #DBDBDB;
+    height: 32px;
+    border-radius: 20px;
+    /*width: 327px;*/
+
+    .ruler {
+      position: absolute;
+      width: calc(100% - 20px);
+      left: 10px;
+      top: 13px;
+      background: #727F87;
+      height: 6px;
+      z-index: 0;
+
+      .inner {
+        position absolute;
+        top: 0;
+        height: 6px;
+        background: #148CC1;
+
+        &.automove {
+          transition: all 0.2s ease-in 0s;
+        }
+      }
+    }
+    .points {
+      width: calc(100% - 20px);
+      left: 10px;
+      top: 8px;
+      height: 16px;
+      position: absolute;
+      z-index: 1;
+
+      .point {
+        position absolute;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background: #717675;
+
+        span {
+          position absolute;
+          bottom: -27px;
+          left: 50%;
+          margin-left : -30px;
+          width: 60px;
+          text-align : center;
+          font-size : 14px;
+          font-weight : 700;
+          color: #fff;
+        }
+      }
+    }
+    .slider-point-wrap {
+      position: absolute;
+      width: calc(100% - 34px);
+      height: 32px;
+      left: 6px;
+      top: 0;
+      z-index: 2;
+
+      .slider-point {
+        position: absolute;
+        color: #fff;
+        top: 4px;
+        display: block;
+        width: 24px;
+        height: 24px;
+        padding-left: 1px;
+        background: #727f85;
+        border: 2px solid #dbdbdb;
+        border-radius: 100%;
+        cursor: move;
+        text-align: center;
+        line-height: 22px;
+        font-weight: 700;
+        font-size: 10px;
+        z-index: 1;
+
+
+        &:hover {
+          box-shadow: 0 0 10px -3px #00283A;
+        }
+
+        &.automove {
+          transition: all 0.2s ease-in 0s;
+        }
+      }
+    }
+  }
+}

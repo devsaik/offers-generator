@@ -1,0 +1,108 @@
+/* setups for popup */
+.ngdialog {
+  &.pp-popup {
+    padding: 5% 0;
+
+    /* close button */
+    .ngdialog-close, .ngdialog-manual-close {
+      cursor: pointer;
+
+      &:before,
+      &:hover:before {
+        content: 'X';
+        position: absolute;
+        top: 13px;
+        right: 20px;
+        color: #fff;
+        font: 300 25px / 1 $fontLato;
+      }
+    }
+
+    /* content */
+    .ngdialog-content {
+      width: 90%;
+      padding: 0;
+      height: 100%;
+      box-shadow: 0 0 62px 7px rgba(0,0,0,.27);
+      background: #fff;
+      font: 300 14px / 1.2 $fontLato;
+    }
+
+    .ngdialog-overlay { background: transparent; }
+  }
+}
+
+/* custom styles */
+.pp-popup {
+
+  /* middle size of popup */
+  &.middle {
+    padding: 10% 0;
+
+    .ngdialog-content {
+      max-width: 935px;
+      height: auto;
+    }
+
+    .pp-popup__inner {
+      padding: 90px 40px 40px;
+    }
+  }
+
+  /* small size of popup */
+  &.small {
+    padding: 15% 0 0;
+
+    .ngdialog-content {
+      max-width: 500px;
+      height: auto;
+    }
+
+    .pp-popup__inner {
+      padding: 90px 40px 40px;
+    }
+
+    .img-box {
+      resetMP();
+      img-box();
+      text-align: center;
+    }
+
+    .row-buttons {
+      clearfix();
+      margin-top: 35px;
+    }
+  }
+
+  /* header */
+  &__header {
+    resetMP();
+    position: relative;
+    height: 50px;
+    margin-bottom: -50px;
+    padding: 0 20px 0 15px;
+    border-radius: 3px 3px 0 0;
+    background: #344654;
+    color: #fff;
+    font: 300 25px / 50px $fontLato;
+
+    /* shadow */
+    &:after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(to bottom,  rgba(0,0,0,.5) 0%, transparent 100%);
+      z-index: 5;
+    }
+  }
+
+  /* inner */
+  &__inner {
+    height: 100%;
+    padding-top: 50px;
+    /*overflow: auto;*/
+  }
+}

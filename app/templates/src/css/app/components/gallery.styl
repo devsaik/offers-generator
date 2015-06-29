@@ -1,0 +1,103 @@
+.gallery-header
+  label
+    display inline !important;
+
+  .file-upload
+    a
+      width 400px
+
+    input[type="file"]
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      opacity: 0;
+
+
+  .url-generator
+    input
+      display: inline-block;
+      width: 250px;
+      height: 36px;
+
+.gallery-container
+
+
+.gallery-grid
+
+  /*position: relative*/
+  text-align: center
+  /*margin-top: 160px*/
+  img
+    max-height: 172px
+
+  span
+    /*position relative*/
+    background #fff
+    padding 10px
+    /*width: 172px;*/
+    /*height: 172px;*/
+    -webkit-box-shadow 0 0 5px rgba(0, 0, 0, 0.25)
+    -moz-box-shadow 0 0 5px black
+    -o-box-shadow 0 0 5px black
+    box-shadow 0 0 5px black
+    -webkit-transition all 0.4s ease-in
+    -moz-transition all 0.4s ease-in
+    -o-transition all 0.4s ease-in
+    transition all 0.4s ease-in
+    z-index 2
+    float left
+    height 220px
+    /*margin-top -100px*/
+  span:hover
+    -webkit-transform scale(1.1)
+    -moz-transform scale(1.1)
+    transform scale(1.1)
+    -webkit-box-shadow 15px 15px 20px rgba(0, 0, 0, 0.6)
+    -moz-box-shadow 15px 15px 20px rgba(0, 0, 0, 0.6)
+    box-shadow 15px 15px 20px rgba(0, 0, 0, 0.6)
+
+.gallery-editor
+  position:fixed;
+  width:100%;
+  height:35%;
+  border-top solid 5px #112233
+  padding:5px;
+  bottom:0px;
+  background-color #000011
+
+  .control-panel
+    border-bottom solid 5px #112233
+  .img-editor
+    text-align center
+
+    img
+      max-height: 200px;
+
+.gallery-preview
+  padding-bottom 40px;
+  display: table;
+  font-size: 0;
+
+.gallery-grid-preview
+  span
+    display: inline-block
+    vertical-align: top
+    padding 13px
+    background #fff
+    text-align center
+    box-shadow 0 0 5px rgba(0, 0, 0, 0.25)
+    -webkit-transition all 0.4s ease-in
+    -moz-transition all 0.4s ease-in
+    -o-transition all 0.4s ease-in
+    transition all 0.4s ease-in
+
+  img
+    max-width 64px
+    height 64px
+    display inline
+
+  .pp-btn
+    min-width initial !important
+    font-size: 14px

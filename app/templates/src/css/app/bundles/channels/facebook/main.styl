@@ -1,0 +1,67 @@
+.facebook-form {
+  .radio-group {
+    .option {
+      display: inline-block;
+      margin-right: 14px;
+    }
+    label {
+      position: relative;
+      overflow: hidden;
+      > * {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+
+    input {
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      &:checked + .fake-radio {
+        border-color: #168BC1;
+
+        &:before {
+          background: #148CC1;
+        }
+      }
+    }
+  }
+
+  option-item {
+    .fake-radio {
+
+    }
+
+    &.selected, &:hover {
+      background: #727F88 !important;
+      .fake-radio {
+        border-color: #168BC1;
+
+        &:before {
+          background: #148CC1;
+        }
+      }
+    }
+  }
+
+  .fake-radio {
+    display: inline-block;
+    vertical-align: middle;
+    background: #fff;
+    border-radius: 100%;
+    border: #737172 1px solid;
+    padding: 4px;
+    margin-right: 4px;
+
+    &:before {
+      content: '';
+      display: block;
+      border-radius: 100%;
+      background: #DCDCDC;
+      width: 8px;
+      height: 9px;
+    }
+  }
+}

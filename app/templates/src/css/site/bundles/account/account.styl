@@ -1,0 +1,77 @@
+.info-screen {
+  display: block;
+}
+
+.edit-screen {
+  display: none;
+}
+
+.on-edit {
+  .info-screen {
+    display: none;
+  }
+  .edit-screen {
+    display: block;
+  }
+}
+
+account-info-update {
+  position: relative;
+  display: block;
+}
+
+#pass-request {
+
+  .bg {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.4);
+  }
+
+  .form {
+    position: fixed;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    /*margin-top: -70px;*/
+    margin-top: -275px;
+    margin-left: -300px;
+    padding: 15px 65px 15px 25px;
+    border: 1px solid rgba(100,100,100,0.19);
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    background: #fff;
+    color: #616161;
+    font-size: 12px;
+  }
+
+  .title {
+    resetMP();
+    color: #3b3b3b;
+    font-size: 17px;
+    font-weight: normal;
+  }
+
+  .description {
+    resetMP();
+    margin: 10px 0 15px;
+  }
+
+  .pp-form__row {
+    width: 60%;
+    float: left;
+  }
+
+  .btn {
+    float: right;
+    min-width: 80px;
+    height: 34px;
+    line-height: 34px;
+    font-size: 12px;
+  }
+}

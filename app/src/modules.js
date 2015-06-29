@@ -8,9 +8,11 @@ module.exports = function(GulpAngularGenerator) {
    * Compute Angular's module to load and format the dependency list to insert
    */
   GulpAngularGenerator.prototype.computeModules = function computeModules() {
-    var ngModules = this.props.angularModules.map(function (module) {
+   /* var ngModules = this.props.angularModules.map(function (module) {
       return module.module;
-    });
+    });*/
+
+    var ngModules = ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize'];
 
     ngModules = ngModules.concat([
       this.props.resource.module,

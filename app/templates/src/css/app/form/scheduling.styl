@@ -1,0 +1,69 @@
+.pp-scheduling {
+
+  .pp-selectbox__list { max-height: none }
+
+  &__dropdown {
+    resetMP();
+    clearfix();
+    list-style-type: none;
+    font-size: 0;
+    margin: 10px 0 0 -5px;
+
+    .item {
+      display: inline-block;
+      vertical-align: top;
+      width: 14.2857142857%;
+      min-width: 60px;
+      margin: 10px 0 0 5px;
+      font-size: 14px;
+    }
+
+    .invalid { border: #a81910 solid 1px; }
+
+    .error {
+      resetMP();
+      margin-top: 10px;
+      color: #a81910;
+    }
+
+    .day {
+      display: inline-block;
+      padding: 0 3px 3px;
+      border-bottom: 1px solid #c6c6c6;
+
+      &.weekend { border-color: #fc4c04; }
+    }
+
+    .item__times {
+      text-align: center;
+
+      &__row {
+        position: relative;
+        margin-top: 10px;
+        &.active { z-index: 2 }
+
+        span {
+          position: relative;
+          z-index: 1;
+          display: block;
+          height: 16px;
+        }
+
+        select {
+          opacity: 0;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 0;
+          padding: 3px;
+          margin-top: -4px;
+
+          &:focus {
+            opacity: 1;
+            z-index: 1;
+          }
+        }
+      }
+    }
+  }
+}

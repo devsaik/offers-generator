@@ -1,0 +1,49 @@
+.pp-popup {
+  &.popup-tutorial-offer {
+
+    .ngdialog-content {height: auto;}
+
+    .pp-popup__inner {
+      clearfix();
+      padding: 90px 40px 40px;
+      font: 300 25px/1.2 $fontLato;
+    }
+
+    panel {
+      display: none;
+      &[is-open="true"] { display: block; }
+    }
+
+    .row {
+      clearfix();
+    }
+
+    .img-box {
+      margin: -20px 0 0 0;
+      img-box();
+      text-align: center;
+    }
+
+    .description { text-align: justify; }
+
+    p {
+      resetMP();
+      margin-bottom: 35px;
+
+      strong {
+        display: block;
+        color: #00a618;
+      }
+    }
+
+    .row-buttons {
+      margin-top: 100px;
+      clearfix();
+    }
+
+    .pp-btn {
+      min-width: 165px;
+      font-weight: 300;
+    }
+  }
+}

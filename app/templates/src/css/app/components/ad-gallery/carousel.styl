@@ -1,0 +1,108 @@
+.ad-carousel {
+  position: relative;
+  box-sizing: border-box;
+  padding: 10px;
+  background: #efefef;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+
+  &__list {
+    overflow: hidden;
+    font-size: 0;
+
+    .inner {
+      position: relative;
+      transition: left 0.3s ease;
+    }
+
+    .inner-row {
+      resetMP();
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 82px;
+    height: 82px;
+    margin-right: 10px;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+
+    &.select:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border: $color-turquoise solid 3px;
+    }
+
+    img {
+      max-width: 125%;
+      height: auto;
+    }
+  }
+
+  .add {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 63px;
+    height: 63px;
+    border-radius: 4px;
+    background: #738089;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 63px;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    margin-top: -22px;
+    width: 38px;
+    height: 44px;
+    color: #fff;
+    background: rgba(155,155,155,0.9);
+    font: 300 39px/1.1 'Lato', Helvetica, sans-serif;
+    text-align: center;
+    text-decoration: none;
+    &:hover { background: rgba(155, 155, 155, 1); }
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -8.5px 0 0 -4px;
+    }
+
+    &.arrow-left {
+      right: 100%;
+      margin-right: -38px;
+      border-radius: 0 2px 2px 0;
+      &:after {
+        sprite($ad-carousel__white-arrow-left);
+      }
+    }
+
+    &.arrow-right {
+      left: 100%;
+      margin-left: -38px;
+      border-radius: 2px 0 0 2px;
+      &:after {
+        sprite($ad-carousel__white-arrow-right);
+      }
+    }
+  }
+}

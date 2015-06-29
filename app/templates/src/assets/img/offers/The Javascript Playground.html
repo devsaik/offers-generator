@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://learn.javascript.ru/play -->
+<html style="height: 100%; overflow: hidden;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>The Javascript Playground</title>
+<script>
+
+var path = '/modules/play/'
+var editorPath = '/modules/play/codemirror/'
+
+var play = {"content":{"tabs":[{"name":"index.html","content":"<!DOCTYPE HTML>\r\n<html>\r\n  <head> <\/head>\r\n  <body>\r\n\r\n    <script>\r\n\r\n\r\n\r\n\r\n    <\/script>\r\n\r\n  <\/body>\r\n<\/html>\r\n"}],"files":[]}};
+
+</script>
+<link rel="stylesheet" type="text/css" href="./The Javascript Playground_files/index_compressed.css">
+<script src="./The Javascript Playground_files/index_compressed.js"></script><style></style></head>
+<body class="ui-layout-container" data-feedly-mini="yes" cz-shortcut-listen="true" style="position: relative; height: 100%; overflow: hidden; margin: 0px; padding: 0px; border: none;">
+<div class="ui-layout-center ui-layout-pane ui-layout-pane-center" style="position: absolute; margin: 0px; left: 963px; right: 0px; top: 96px; bottom: 0px; height: 898px; width: 955px; z-index: 0; display: block; visibility: visible;">
+<iframe class="result_output" frameborder="0" name="view" style="height: 898px;"></iframe></div>
+<div class="ui-layout-north ui-layout-pane ui-layout-pane-north" style="position: absolute; margin: 0px; top: 0px; bottom: auto; left: 0px; right: 0px; width: auto; z-index: 0; height: 89px; display: block; visibility: visible;">
+<div id="play-name"></div>
+<div id="code-actions">
+<div class="code-control-button" id="view-button" data-action="view" data-accesskey="V">Просмотр<sup>Alt+V</sup></div>
+<div class="code-control-button" id="save-button" data-action="save" data-accesskey="S">Сохранить<sup>Alt+S</sup></div>
+<div class="code-control-button" id="demo-button" style="float:right" data-action="rus"><span>Инфо</span></div>
+<div class="code-control-button" id="import-button" style="float:right" data-action="import" data-accesskey="I"><span>Импорт</span></div>
+<div class="code-control-button" id="export-button" style="float:right" data-action="export" data-accesskey="E"><span>Экспорт</span></div>
+<div class="code-control-button" id="clear-button" style="float:right" data-action="clear">Очистить</div>
+<div class="code-control-button" id="format-button" style="float:right" data-action="format">Формат</div>
+<select id="template-select">
+<option value="" selected="">Фрагменты</option>
+<option value="html">&nbsp;&nbsp;HTML</option>
+<option value="jquery">&nbsp;&nbsp;jQuery</option>
+<option value="jquery-ui">&nbsp;&nbsp;jQuery UI</option>
+</select>
+ 
+<div class="welcome">Первый раз здесь? Посмотрите <a href="http://learn.javascript.ru/play/playdemo/howto/index.html">Демо</a> .. =&gt;</div>
+ 
+<div id="play-link" style="display: none;">
+<input type="text" onclick="var self = this;setTimeout(function() { self.select() }, 0)">
+<div class="prev" style="display: none;">Пред</div>
+<div class="next" style="display: none;">След</div>
+</div>
+</div>
+<div id="code-tabs-nav" class="code-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-top">
+<ul class="code-tabs-list ui-sortable">
+<li data-action="select" class="ui-state-default ui-corner-top ui-tabs-selected ui-state-active" data-tabid="1"><div class="code-tabs-num" id="code-tabs-num-1">1</div><a href="http://learn.javascript.ru/play#tabs-1">index.html</a><div class="code-tabs-menu"><div class="code-tabs-close">&nbsp;</div></div></li></ul>
+<ul class="code-tabs-actions">
+<li id="tabs-add-action" data-action="add" class="ui-state-default ui-corner-top"><a href="http://learn.javascript.ru/play#tabs-add">+</a></li>
+<li data-action="files" style="margin-left:20px" id="tab-files-action" data-tabid="files" class="ui-state-default ui-corner-top"><a href="http://learn.javascript.ru/play#tabs-files">Файлы</a></li>
+</ul>
+</div>
+</div>
+ 
+<div class="ui-layout-west ui-layout-pane ui-layout-pane-west ui-layout-pane-hover ui-layout-pane-west-hover ui-layout-pane-open-hover ui-layout-pane-west-open-hover" style="position: absolute; margin: 0px; left: 0px; right: auto; top: 96px; bottom: 0px; height: 898px; z-index: 0; width: 955px; display: block; visibility: visible;">
+<div id="tabs">
+	<div id="tabs-files" class="code-tabs-hide code-upload" style="position:relative">
+	    <label class="flash-toggle">Мультизагрузчик на Flash: <input type="checkbox"></label>
+		<div class="files">
+			<ol class="files-list"></ol>
+		</div>
+
+		<p class="upload-howto">Нажмите <b>Загрузить</b> и выберите несколько фавлов размером до 1М.<br>HTML/JS/CSS станут табами, остальные файлы появятся по вкладке Файлы.</p>
+
+		<div class="file-control-holder">
+
+		<div class="swfupload-control">
+	<object id="SWFUpload_0" type="application/x-shockwave-flash" data="http://learn.javascript.ru/modules/play/swfupload-jquery-plugin/vendor/swfupload/swfupload.swf?preventswfcaching=1423835590204" width="61" height="22" class="swfupload"><param name="wmode" value="window"><param name="movie" value="/modules/play/swfupload-jquery-plugin/vendor/swfupload/swfupload.swf?preventswfcaching=1423835590204"><param name="quality" value="high"><param name="menu" value="false"><param name="allowScriptAccess" value="always"><param name="flashvars" value="movieName=SWFUpload_0&amp;uploadURL=%2Fplay%2Fupload&amp;useQueryString=false&amp;requeueOnError=false&amp;httpSuccess=&amp;assumeSuccessTimeout=0&amp;params=&amp;filePostName=uploadfile&amp;fileTypes=*.*&amp;fileTypesDescription=All%20Files&amp;fileSizeLimit=1%20MB&amp;fileUploadLimit=0&amp;fileQueueLimit=50&amp;debugEnabled=false&amp;buttonImageURL=%2Fmodules%2Fplay%2Fswfupload-jquery-plugin%2Fvendor%2Fswfupload%2FXPButtonUploadText_61x22.png&amp;buttonWidth=61&amp;buttonHeight=22&amp;buttonText=&amp;buttonTextTopPadding=0&amp;buttonTextLeftPadding=0&amp;buttonTextStyle=color%3A%20%23000000%3B%20font-size%3A%2016pt%3B&amp;buttonAction=-110&amp;buttonDisabled=false&amp;buttonCursor=-1"></object>
+
+	<ol class="log"></ol>
+</div></div>
+
+
+	</div>
+<div id="tabs-1"><textarea class="code_input" name="code-1" id="code-1" style="display: none;"></textarea><div class="CodeMirror CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 103.1875px; left: 280.1875px;"><textarea wrap="off" autocorrect="off" autocapitalize="off" style="position: absolute; padding: 0px; width: 1px; height: 1em;"></textarea></div><div class="CodeMirror-scrollbar" style="display: none;"><div class="CodeMirror-scrollbar-inner"></div></div><div class="CodeMirror-scroll cm-s-default CodeMirror-focused" tabindex="-1" style="height: 898px;"><div style="position: relative;"><div style="position: relative; top: 0px;"><div class="CodeMirror-gutter" style="height: 898px;"><div class="CodeMirror-gutter-text"><pre>1</pre><pre>2</pre><pre>3</pre><pre>4</pre><pre>5</pre><pre>6</pre><pre>7</pre><pre>8</pre><pre>9</pre><pre>10</pre><pre>11</pre><pre>12</pre><pre>13</pre><pre>14</pre><pre>15</pre><pre>16</pre></div></div><div class="CodeMirror-lines"><div style="position: relative; z-index: 0; outline: none; margin-left: 27px;"><div style="position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden;"><pre>      <span class="cm-keyword">function</span> <span class="cm-variable">checkSpam</span>(<span class="cm-def">text</span>){<span>} </span></pre></div><pre class="CodeMirror-cursor" style="top: 98px; left: 248px;">&nbsp;</pre><pre class="CodeMirror-cursor" style="visibility: hidden;">&nbsp;</pre><div style="position: relative; z-index: -1; display: none;"></div><div><pre><span class="cm-meta">&lt;!DOCTYPE HTML&gt;</span></pre><pre><span class="cm-tag">&lt;html&gt;</span></pre><pre>  <span class="cm-tag">&lt;head&gt;</span> <span class="cm-tag">&lt;/head&gt;</span></pre><pre>  <span class="cm-tag">&lt;body&gt;</span></pre><pre> </pre><pre>    <span class="cm-tag">&lt;script&gt;</span></pre><pre><span class="cm-tab">    </span></pre><pre>      <span class="cm-keyword">function</span> <span class="cm-variable">checkSpam</span>(<span class="cm-def">text</span>){} </pre><pre> </pre><pre> </pre><pre> </pre><pre>    <span class="cm-tag">&lt;/script&gt;</span></pre><pre> </pre><pre>  <span class="cm-tag">&lt;/body&gt;</span></pre><pre><span class="cm-tag">&lt;/html&gt;</span></pre><pre> </pre></div></div></div></div></div></div></div></div></div>
+</div>
+<script type="text/html" id="fragment-template">
+<div id="fragment">
+	<p>
+    Код для вставки:
+    <div><textarea style="width:100%;height:200px"/></div>
+	</p>
+</div>
+</script>
+<script type="text/html" id="tabs-template">
+	<div id="tabs-files" class="code-tabs-hide code-upload" style="position:relative">
+	    <label class="flash-toggle">Мультизагрузчик на Flash: <input type="checkbox"></label>
+		<div class="files">
+			<ol class="files-list"></ol>
+		</div>
+
+		<p class="upload-howto">Нажмите <b>Загрузить</b> и выберите несколько фавлов размером до 1М.<br>HTML/JS/CSS станут табами, остальные файлы появятся по вкладке Файлы.</p>
+
+		<div class="file-control-holder">
+
+		</div>
+
+
+	</div>
+</script>
+<div id="tab-add-dialog" style="display:none" title="Имя">
+<p>Введите имя для новой вкладки</p>
+<form>
+<input type="text" name="name" value="Untitled.js"><input type="submit" value="ok">
+</form>
+</div>
+<script type="text/html" id="file-actions-menu-template">
+		<div class="file-actions-menu">
+		<div class="file-action-delete">&nbsp;</div>
+		<div class="file-action-rename">&nbsp;</div>
+		</div>
+</script>
+<script type="text/html" id="tab-rename-dialog-template">
+
+<div id="tab-rename-dialog" style="display:none" title="Переименовать">
+<p>Введите новое имя</p>
+<form>
+<input type="text" name="name" value=""><input type="submit" value="ok">
+</form>
+</script>
+<script type="text/html" id="file-rename-dialog-template">
+
+<div id="file-rename-dialog" style="display:none" title="Переименовать">
+<p>Введите новое имя</p>
+<form>
+<input type="text" name="name" value=""><input type="submit" value="ok">
+</form>
+</div>
+</script>
+<script type="text/html" id="file-delete-dialog-template">
+
+<div id="file-delete-dialog" style="display:none" title="Удалить">
+<p>Удалить?</p>
+<form>
+<input type="submit" name="yes" value="Да, удалить" onclick="this.form.ok = true">
+<input type="submit" name="no" value="Отмена">
+</form>
+</div>
+</script>
+<div id="tab-close-dialog" style="display:none" title="Закрыть?">
+<p><span class="tab-close-name"></span> содержимое будет потеряно</p>
+<form>
+<input type="submit" name="yes" class="tab-close-yes" value="Да, закрыть" onclick="this.form.ok = true">
+<input type="submit" name="no" class="tab-close-no" value="Отмена">
+</form>
+</div>
+<script type="text/html" class="swfupload-control-template">
+	<input type="button" class="button" />
+
+	<ol class="log"></ol>
+</script>
+<script type="text/html" class="fileupload-control-template">
+
+	<form target="fileupload-frame" method="POST" enctype="multipart/form-data" action="/play/upload">
+	<input type="file" class="fileupload-file" name="uploadfile">
+	<br/><input type="submit" value="Отправить" onclick="return !!this.form['uploadfile'].value">
+	</form>
+
+    <iframe name="fileupload-frame" class="fileupload-frame"></iframe>
+
+	<div class="status"></div>
+
+</script>
+
+
+<div id="" class="ui-layout-resizer ui-layout-resizer-north ui-layout-resizer-open ui-layout-resizer-north-open" style="position: absolute; padding: 0px; margin: 0px; font-size: 1px; text-align: left; overflow: hidden; z-index: 2; top: 96px; cursor: default; display: none; visibility: visible;"><div id="" class="ui-layout-toggler ui-layout-toggler-north ui-layout-toggler-open ui-layout-toggler-north-open" title="Close" style="position: absolute; display: block; padding: 0px; margin: 0px; overflow: hidden; text-align: center; font-size: 1px; cursor: pointer; z-index: 1; visibility: visible;"></div></div><div id="" class="ui-layout-resizer ui-layout-resizer-west ui-layout-resizer-open ui-layout-resizer-west-open" title="Resize" aria-disabled="false" style="position: absolute; padding: 0px; margin: 0px; font-size: 1px; text-align: left; overflow: hidden; z-index: 2; cursor: w-resize; left: 957px; height: 899px; width: 6px; top: 96px;"><div id="" class="ui-layout-toggler ui-layout-toggler-west ui-layout-toggler-open ui-layout-toggler-west-open" title="Close" style="position: absolute; display: block; padding: 0px; margin: 0px; overflow: hidden; text-align: center; font-size: 1px; cursor: pointer; z-index: 1; visibility: visible; height: 50px; width: 6px; top: 424px; left: 0px;"></div></div><input type="button" accesskey="v" value="accesskey" class="hide"><input type="button" accesskey="s" value="accesskey" class="hide"><input type="button" accesskey="i" value="accesskey" class="hide"><input type="button" accesskey="e" value="accesskey" class="hide"><input type="button" accesskey="1" value="accesskey" class="hide"><input type="button" accesskey="2" value="accesskey" class="hide"><input type="button" accesskey="3" value="accesskey" class="hide"><input type="button" accesskey="4" value="accesskey" class="hide"><input type="button" accesskey="5" value="accesskey" class="hide"><input type="button" accesskey="6" value="accesskey" class="hide"><input type="button" accesskey="7" value="accesskey" class="hide"><input type="button" accesskey="8" value="accesskey" class="hide"><input type="button" accesskey="9" value="accesskey" class="hide"><div id="feedly-mini" title="feedly Mini tookit"></div></body></html>

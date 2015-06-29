@@ -1,127 +1,92 @@
 'use strict';
 
-var path = require('path');
 var gulp = require('gulp');
-var conf = require('./conf');
 
 var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
 });
 
-<% if (props.htmlPreprocessor.key === 'none') { -%>
-gulp.task('partials', function () {
-<% } else { -%>
-gulp.task('partials', ['markups'], function () {
-<% } -%>
-  return gulp.src([
-    path.join(conf.paths.src, '/app/**/*.html'),
-    path.join(conf.paths.tmp, '/serve/app/**/*.html')
-  ])
-    .pipe($.minifyHtml({
-      empty: true,
-      spare: true,
-      quotes: true
-    }))
-    .pipe($.angularTemplatecache('templateCacheHtml.js', {
-      module: '<%- appName %>',
-      root: 'app'
-    }))
-    .pipe(gulp.dest(conf.paths.tmp + '/partials/'));
-});
-
-gulp.task('html', ['inject', 'partials'], function () {
-  var partialsInjectFile = gulp.src(path.join(conf.paths.tmp, '/partials/templateCacheHtml.js'), { read: false });
-  var partialsInjectOptions = {
-    starttag: '<!-- inject:partials -->',
-    ignorePath: path.join(conf.paths.tmp, '/partials'),
-    addRootSlash: false
-  };
-
-  var htmlFilter = $.filter('*.html');
-  var jsFilter = $.filter('**/*.js');
-  var cssFilter = $.filter('**/*.css');
-  var assets;
-
-  return gulp.src(path.join(conf.paths.tmp, '/serve/*.html'))
-    .pipe($.inject(partialsInjectFile, partialsInjectOptions))
-    .pipe(assets = $.useref.assets())
-    .pipe($.rev())
-    .pipe(jsFilter)
-    .pipe($.ngAnnotate())
-    .pipe($.uglify({ preserveComments: $.uglifySaveLicense })).on('error', conf.errorHandler('Uglify'))
-    .pipe(jsFilter.restore())
-    .pipe(cssFilter)
-<% if (props.ui.key === 'bootstrap' && props.cssPreprocessor.extension === 'scss') { -%>
-    .pipe($.replace('../<%- computedPaths.appToBower %>/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/', '../fonts/'))
-<% } else if (props.ui.key === 'bootstrap' && props.cssPreprocessor.extension === 'less') { -%>
-    .pipe($.replace('../<%- computedPaths.appToBower %>/bower_components/bootstrap/fonts/', '../fonts/'))
-<% } else if (props.ui.key === 'bootstrap' && props.cssPreprocessor.extension === 'styl') { -%>
-    .pipe($.replace('../<%- computedPaths.appToBower %>/bower_components/bootstrap-stylus/fonts/', '../fonts/'))
-<% } -%>
-    .pipe($.csso())
-    .pipe(cssFilter.restore())
-    .pipe(assets.restore())
-    .pipe($.useref())
-    .pipe($.revReplace())
-    .pipe(htmlFilter)
-    .pipe($.minifyHtml({
-      empty: true,
-      spare: true,
-      quotes: true,
-      conditionals: true
-    }))
-    .pipe(htmlFilter.restore())
-    .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
-    .pipe($.size({ title: path.join(conf.paths.dist, '/'), showFiles: true }));
-});
-<% if (imageMin) { -%>
-gulp.task('images', function () {
-  return gulp.src(path.join(conf.paths.src, '/assets/images/**/*'))
-    .pipe($.imagemin({
-      optimizationLevel: 3,
-      progressive: true,
-      interlaced: true
-    }))
-    .pipe(gulp.dest(path.join(conf.paths.dist, '/assets/images/')));
-});
-<% } -%>
-
-// Only applies for fonts from bower dependencies
-// Custom fonts are handled by the "other" task
-gulp.task('fonts', function () {
-<% if (props.ui.key === 'bootstrap' && props.cssPreprocessor.extension === 'styl') { -%>
-  return gulp.src($.mainBowerFiles().concat('bower_components/bootstrap-stylus/fonts/*'))
-<% } else { -%>
-  return gulp.src($.mainBowerFiles())
-<% } -%>
-    .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
-    .pipe($.flatten())
-    .pipe(gulp.dest(path.join(conf.paths.dist, '/fonts/')));
-});
-
-gulp.task('other', function () {
-  var fileFilter = $.filter(function (file) {
-    return file.stat.isFile();
+module.exports = function(options) {
+  /* already templates are added as a dependent module so commented this extra build step */
+  /*gulp.task('partials', function () {
+    return gulp.src([
+      options.config.html,
+      options.config.tempServeHTML
+    ])
+      .pipe($.minifyHtml({
+        empty: true,
+        spare: true,
+        quotes: true
+      }))
+      .pipe($.angularTemplatecache('templateCacheHtml.js', {
+        module: 'offersUI',
+        root: 'app'
+      }))
+      .pipe(gulp.dest(options.config.partialsDestination));
   });
 
-  return gulp.src([
-    path.join(conf.paths.src, '/**/*'),
-    path.join('!' + conf.paths.src, '/**/*.{<%- processedFileExtension %>}')
-  ])
-    .pipe(fileFilter)
-    .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
-});
+  gulp.task('html', ['inject', 'partials'], function () {
+    var partialsInjectFile = gulp.src(options.config.templateCachePath, { read: false });
+    var partialsInjectOptions = {
+      starttag: '<!-- inject:partials -->',
+      ignorePath: options.config.partialsDestination,
+      addRootSlash: false
+    };
+    */
+  gulp.task('html', ['inject'], function () {
+    var htmlFilter = $.filter( options.config.filter.html);
+    var jsFilter = $.filter(options.config.filter.js);
+    var cssFilter = $.filter(options.config.filter.css);
+    var assets;
 
-<% if (props.jsPreprocessor.key === 'typescript') { -%>
-gulp.task('clean', ['tsd:purge'], function (done) {
-<% } else { -%>
-gulp.task('clean', function (done) {
-<% } -%>
-  $.del([path.join(conf.paths.dist, '/'), path.join(conf.paths.tmp, '/')], done);
-});
+    return gulp.src(options.config.tempServeHTML)
+      /* already templates are added as a dependent module so commented this extra build step */
+      //.pipe($.inject(partialsInjectFile, partialsInjectOptions))
+      .pipe(assets = $.useref.assets())
+      .pipe($.rev())
+      .pipe(jsFilter)
+      .pipe($.replace(/'use strict';/g, ''))
+      .pipe($.ngAnnotate())
+      .pipe($.uglify({ preserveComments: $.uglifySaveLicense })).on('error', options.errorHandler('Uglify'))
+      .pipe(jsFilter.restore())
+      .pipe(cssFilter)
+      .pipe($.csso())
+      .pipe(cssFilter.restore())
+      .pipe(assets.restore())
+      .pipe($.useref())
+      .pipe($.revReplace())
+      .pipe(htmlFilter)
+      .pipe($.minifyHtml({
+        empty: true,
+        spare: true,
+        quotes: true,
+        conditionals: true
+      }))
+      .pipe(htmlFilter.restore())
+      .pipe(gulp.dest(options.config.dist ))
+      .pipe($.size({ title: options.config.dist, showFiles: true }));
+  });
 
-<% if (imageMin) { -%>
-gulp.task('build', ['html', 'images', 'fonts', 'other']);
-<% } else { -%>
-gulp.task('build', ['html', 'fonts', 'other']);
-<% } -%>
+  // Only applies for fonts from bower dependencies
+  // Custom fonts are handled by the "other" task
+  gulp.task('fonts', function () {
+    return gulp.src($.mainBowerFiles())
+      .pipe($.filter(options.config.fontFilter))
+      .pipe($.flatten())
+      .pipe(gulp.dest(options.config.distFonts));
+  });
+
+  gulp.task('other', function () {
+    return gulp.src([
+     options.config.others.everything,
+      options.config.others.allNonTypes
+    ])
+      .pipe(gulp.dest(options.config.dist + '/'));
+  });
+
+  gulp.task('clean', function (done) {
+    $.del([options.config.dist + '/', options.config.temp + '/'], done);
+  });
+
+  gulp.task('build', ['html', 'fonts', 'other']);
+};

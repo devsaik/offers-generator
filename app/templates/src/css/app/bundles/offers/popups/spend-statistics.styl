@@ -1,0 +1,45 @@
+.popup-spend-statistics {
+  font-family: $fontLato;
+  font-weight: 300;
+  line-height: 1.2;
+
+  .box-images {
+    clearfix();
+
+    .item {
+      position: relative;
+
+      .inner {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+
+      }
+
+      .stat {
+        padding-top: 70px;
+        color: #008bc1;
+        font-size: 50px;
+      }
+
+      .label {
+        padding-top: 130px;
+        font-size: 18px;
+        color: #000;
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 205px;
+        height: 205px;
+        margin-left: -102.5px;
+        border-radius: 105px;
+        background: #f9f9f9;
+      }
+      & + .item { border-left: #dbdbdb solid 1px; }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@import "main.styl";
+@import "input.styl";
+@import "button.styl";
+@import "label.styl";
+@import "selectbox.styl"
+@import "select.styl"
+@import "datepicker.styl";
+@import "scheduling.styl";
+@import "error.styl";
+
+
+
+input, textarea, a, df-datepicker {
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    background-color: #efefef;
+  }
+}
+
+df-datepicker .disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

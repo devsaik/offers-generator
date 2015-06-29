@@ -1,0 +1,100 @@
+.header {
+  position: relative;
+  height: 108px;
+  padding-top: 15px;
+  border-bottom: #cacaca solid 1px;
+  box-sizing: border-box;
+  background: url(../assets/img/sparkpay/header_bg.jpg) repeat-x;
+
+  .logo {
+    img-box();
+    float: left;
+    width: 13.3%;
+    margin-top: 5px;
+  }
+
+  .col {
+    float: right;
+    width: 85%;
+  }
+
+  .top {
+    clearfix();
+    text-align: right;
+
+    .btn {
+      margin-left: 5px;
+      text-transform: uppercase;
+
+      .back {
+        vertical-align: -1px;
+        margin-right: 5px;
+      }
+
+      .target {
+        vertical-align: -5px;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .bottom {
+    clearfix();
+    margin-top: 20px;
+
+    .nav { float: left; }
+
+    .nav__item.account {
+      float: right;
+      border-radius: 8px 8px 0 0;
+      line-height: 45px;
+    }
+  }
+}
+
+.nav {
+
+  &__item {
+    float: left;
+    height: 46px;
+    padding: 0 18px;
+
+    border: 1px solid #cacaca;
+    border-right-color: #c0c0c0;
+    border-top-color: #b8b8b8;
+    border-left-color: #d8d8d8;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset;
+
+    color: #333;
+    background: #ddd url(../assets/img/sparkpay/gray-pattern.png) repeat;
+    font: bold 15px/44px $fontTGB;
+    vertical-align: middle;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    text-shadow: 0 0 0 transparent, 0 1px 1px rgba(255,255,255,0.9);
+
+    &.active {
+      height: 55px;
+      line-height: 55px;
+      margin-top: -9px;
+      border-radius: 7px 7px 0 0;
+      border-bottom-color: transparent;
+      background: #eee;
+      font-size: 18px;
+      cursor: default;
+      &:hover { box-shadow: none; }
+    }
+
+    &:first-child { border-top-left-radius: 8px; }
+    &:last-child { border-top-right-radius: 8px; }
+    &:active { box-shadow: inset 1px 1px 1px rgba(0,0,0,.5); }
+
+    .pp-icon {
+      display: inline-block;
+      margin-right: 3px;
+      vertical-align: -4px;
+    }
+  }
+}

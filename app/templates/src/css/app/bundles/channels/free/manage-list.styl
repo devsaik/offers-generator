@@ -1,0 +1,97 @@
+.manage-list {
+
+  /* list types */
+  .list-types {
+    margin-bottom: 15px;
+    &:last-child { margin-bottom: 0 }
+
+    &__block {
+      height: 300px !important;
+      padding-right: 20px;
+      overflow: auto;
+      margin-bottom: 15px;
+    }
+
+    &__title {
+      margin-top: 0;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    &__item {
+      resetMP();
+      padding: 10px;
+      border-top: #6f7686 solid 1px;
+      cursor: pointer;
+
+      &:hover { background: #f5f5f5 }
+
+      &.active {
+        background: #6f7686;
+        color: #fff;
+        cursor: default;
+      }
+    }
+
+    df-input { margin-top: 10px }
+
+    &__buttons {
+      margin-top: 10px;
+
+      .pp-btn {
+        min-width: initial;
+        height: 26px;
+        margin-right: 10px;
+        line-height: 24px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  /* table */
+  .table-list {
+    resetMP();
+    list-style-type: none;
+
+    /* wrapper */
+    &__wrap {
+      height: 300px !important;
+      margin-bottom: 25px;
+      padding: 0 3px;
+    }
+
+
+    /* item */
+    &__item {
+      margin-bottom: 10px;
+    }
+
+    /* row */
+    &__row {
+      clearfix();
+      display: table;
+      width: 100%;
+      margin-bottom: 5px;
+    }
+
+    /* col */
+    &__col {
+      display: table-cell;
+      width: 30%;
+
+      &.short { width: 10% }
+    }
+
+    /* buttons */
+    button {
+      padding: 0;
+      border: 0;
+      background: transparent;
+    }
+
+    .fa {
+      display: inline-block;
+      margin-right: 3px;
+    }
+  }
+}

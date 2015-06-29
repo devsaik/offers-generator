@@ -97,7 +97,7 @@ module.exports = {
     ui: model.ui.values.bootstrap,
     bootstrapComponents: model.bootstrapComponents.values['ui-bootstrap'],
     foundationComponents: model.foundationComponents.values.none,
-    cssPreprocessor: model.cssPreprocessor.values['node-sass'],
+    cssPreprocessor: model.cssPreprocessor.values['stylus'],
     jsPreprocessor: model.jsPreprocessor.values.none,
     htmlPreprocessor: model.htmlPreprocessor.values.none
   }

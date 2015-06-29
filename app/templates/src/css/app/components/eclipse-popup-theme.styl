@@ -1,0 +1,80 @@
+/* setups for popup */
+.ngdialog {
+  &.eclipse {
+    padding: 1% 0;
+
+    /* close button */
+    .ngdialog-close, .ngdialog-manual-close {
+
+      &:before,
+      &:hover:before {
+        content: 'X';
+        position: absolute;
+        top: 13px;
+        right: 20px;
+        color: #fff;
+        font: 300 25px/1 $fontLato;
+      }
+    }
+
+    /* content */
+    .ngdialog-content {
+      width: 100%;
+      padding-left: 3%;
+      padding-right 3%;
+      padding-top: 3%;
+      height: 100%;
+      background: #000;
+      font: 300 14px/1.2 $fontLato;
+    }
+
+    .ngdialog-overlay {
+      position: fixed;
+      background: rgba(0, 0, 0, 1);
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      -webkit-backface-visibility: hidden;
+      -webkit-animation: ngdialog-fadein 0.5s;
+      animation: ngdialog-fadein 0.5s;
+
+    }
+  }
+}
+
+/* custom styles */
+.eclipse {
+
+  /* header */
+  &__header {
+    resetMP();
+    position: relative;
+    height: 50px;
+    margin-bottom: -50px;
+    padding: 0 20px 0 15px;
+    border-radius: 3px 3px 0 0;
+    background: #000;
+    color: #ffffff;
+    font: 300 25px / 50px $fontLato;
+
+    /* shadow */
+    &:after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(to bottom,  rgba(0,0,0,.5) 0%, transparent 100%);
+      z-index: 5;
+    }
+  }
+
+  /* inner */
+  &__inner {
+    height: 100%;
+    margin-top: 50px;
+    /*overflow: auto;*/
+  }
+}

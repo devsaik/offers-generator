@@ -1,0 +1,205 @@
+.account-info {
+
+  .menu {
+    .color-blue {
+      font-size: 12px;
+      .back { margin-right: 5px; }
+    }
+  }
+
+  .info-blocks {
+    clearfix();
+    position: relative;
+    font-size: 0;
+
+    .info-block {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+      margin-top: 20px;
+      padding: 0 15px;
+      box-sizing: border-box;
+
+      .pre-title {
+        position: relative;
+        margin-bottom: 12px;
+      }
+
+      .edit-link {
+        position: absolute;
+        top: 2px;
+        right: 0;
+        font-size: 12px;
+      }
+
+      .list {
+        resetMP();
+        list-style-type: none;
+        padding: 18px 21px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07) inset, 0 1px 1px rgba(255, 255, 255, 0.7);
+        background: rgba(0, 0, 0, 0.03);
+        color: #7e7e7e;
+
+        li {
+          margin: 5px 0;
+          font-size: 12px;
+          line-height: 16px;
+
+          &.row {
+            .label {
+              display: inline-block;
+              vertical-align: top;
+              width: 70px;
+              margin-bottom: 10px;
+            }
+            .val {
+              display: inline-block;
+              vertical-align: top;
+              width: 200px;
+            }
+          }
+        }
+
+        .label {
+
+          label {
+            font-size: 12px;
+            color: #7e7e7e;
+          }
+
+          input[type="checkbox"] {
+            display: inline-block;
+            vertical-align: -2px;
+            margin-right: 5px;
+            &:checked + label { color: #3b3b3b; }
+          }
+        }
+      }
+    }
+  }
+
+  .edit-screen {
+    clearfix();
+    margin: -20px -12px;
+    padding-left: 210px;
+    background: url(../assets/img/sparkpay/settingsNavBg.jpg) repeat;
+
+    .tabs {
+      float: left;
+      width: 210px;
+      margin-left: -210px;
+      padding: 35px 2.5%;
+      box-sizing: border-box;
+      text-align: right;
+
+      &-title {
+        resetMP();
+        margin-bottom: 20px;
+        padding-right: 15px;
+        font-size: 16px;
+        color: #595959;
+      }
+
+      &-list {
+        resetMP();
+        list-style-type: none;
+
+        li { margin: 5px 0; }
+
+        a {
+          display: inline-block;
+          padding: 5px 14px;
+          text-decoration: none;
+          color: #0a71c5;
+          &.active {
+            margin: 5px 0;
+            border-radius: 20px;
+            box-shadow: -2px 2px 3px rgba(0,0,0,0.08);
+            background: #3b3b3b;
+            color: #ffffff;
+            text-shadow: none;
+          }
+        }
+      }
+    }
+
+    .tabs-content {
+      float: left;
+      width: 100%;
+      background: #fff;
+
+      .tab-content {
+        display: none;
+        padding: 35px 5% 35px 8%;
+
+        &-title {
+          resetMP();
+          margin-bottom: 25px;
+          color: #3b3b3b;
+          font-size: 18px;
+        }
+
+        &.active { display: block; }
+      }
+
+      df-field,
+      .df-field { padding-left: 160px; }
+
+      df-label {
+        width: 140px;
+        margin-left: -160px;
+        padding-top: 9px;
+      }
+
+      .form-descr { padding-top: 9px; }
+      .row-buttons { margin-top: 30px; }
+    }
+  }
+}
+
+.users-block {
+
+  .menu {
+
+    .plus {
+      margin-right: 7px;
+      vertical-align: -1px;
+    }
+
+    .btn {
+      color: #7e7e7e;
+      font-size: 10px;
+      text-shadow: white 0px 1px 1px;
+
+      i { font-size: 8px; }
+    }
+  }
+
+  .table-row {
+
+    .mail { vertical-align: -1px; }
+  }
+
+  .addForm {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    margin-left : -200px;
+    width: 398px;
+    border: 1px solid #bebebe;
+    background: #fff;
+    padding : 20px;
+  }
+}
+.account-devices {
+
+  .message {
+    resetMP();
+    padding-left: 10px;
+    font-size: 11px;
+    font-style: italic;
+    color: #616161;
+  }
+}
+
+

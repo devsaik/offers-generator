@@ -1,0 +1,122 @@
+.pp-popup.popup-channel {
+
+  /* share popup */
+  &.share {
+
+    .pp-popup__inner { padding: 90px 0 40px; }
+
+    .ngdialog-content { height: auto; }
+
+    .box-messages {
+      margin-top: 40px;
+      padding: 0 15px;
+      font: 300 25px/1.2 $fontLato;
+
+      p {
+        resetMP();
+        text-align: center;
+      }
+
+      /* colors */
+      .color-lgreen { color: #00a618; }
+      .color-red { color: #a81910; }
+
+      .row-share {
+        position: relative;
+        display: inline-block;
+        width: 250px;
+        margin-left: 10px;
+      }
+
+      input {
+        height: 36px;
+        text-align: center;
+        width: 170px;
+        margin-right: 80px;
+        background-color: #efefef;
+        text-decoration: underline;
+        font-weight: bold;
+        color: #767474;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        &:disabled { opacity: 1; }
+      }
+
+      .pp-btn {
+        position: absolute;
+        z-index: 1;
+        top: 2px;
+        right: 0;
+        min-width: inherit;
+        height: 36px;
+      }
+    }
+  }
+
+  /* small-middle size of popup - extend 'small' Class */
+  &.ad-preview-popup {
+
+    .ngdialog-content {
+      max-width: 600px;
+    }
+
+    .pp-popup__inner {
+      padding: 90px 0 40px;
+      width: 415px;
+      margin: 0 auto;
+    }
+
+    .phone {
+      position: relative;
+      width: 233px;
+      height: 474px;
+      margin: 0 auto;
+      background: url(../assets/img/channels/ad-preview-popup/phone.png) no-repeat;
+    }
+
+    .title {
+      display: table-cell;
+      vertical-align: middle;
+      width: 233px;
+      height: 57px;
+      text-align: center;
+
+      p {
+        resetMP();
+        color: #fff;
+        font: 300 20px/1.4 $fontLato;
+
+        & + p {
+          font-size: 12.5px;
+          font-weight: normal;
+        }
+      }
+    }
+
+    .content {
+      position: relative;
+      width: 203px;
+      height: 359px;
+      margin: 0 auto;
+      overflow: hidden;
+
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 20px;
+        background: url(../assets/img/channels/ad-preview-popup/line.png) 50% 50% no-repeat;
+      }
+    }
+
+    .img-box {
+      img-box();
+      font-size: 0;
+    }
+  }
+}

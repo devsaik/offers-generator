@@ -1,0 +1,452 @@
+.geo-form {
+  height: 100%;
+  margin: 0 -40px;
+
+  form {
+    height: 100%;
+
+    > .row {
+      height: 100%;
+    }
+  }
+  .row-buttons {
+    clearfix();
+
+    .about {
+      resetMP();
+      font-size: 25px;
+      font-weight: 300;
+      text-align: center;
+      line-height: 36px;
+    }
+
+    .pp-btn {
+      min-width: 0;
+    }
+  }
+}
+
+.display-campaign-form {
+
+  .left-column {
+    resetMP();
+    height: 100%;
+    position: relative;
+
+    div[ui-scroll] { padding: 40px 30px 50px 45px; }
+
+    .row-buttons {
+      margin-top: 100px;
+
+      a { width: 165px; }
+
+      df-button {
+        width: 165px;
+        float: right;
+
+        button { width: 100%; }
+      }
+    }
+
+    .symbol-text {
+      position: absolute;
+      z-index: 1;
+      top: 7px;
+      right: 0px;
+      background-color: #727f88;
+      font-size: 27px;
+      color: #fff;
+      width: 37px;
+      border-radius: 6px;
+      text-align: center;
+      margin-top: -8px;
+      left: auto;
+    }
+    input {
+      padding-left: 10px;
+      padding-right: 34px;
+    }
+    .row-metric {
+    }
+  }
+  .right-column {
+    overflow: hidden;
+    margin-right: 15px;
+    height: 100%;
+
+    .heatmap-container {
+      height: 100%;
+    }
+
+    figure.img-box {
+      text-align: center;
+    }
+      heatmap {
+        display: block;
+        min-height: 642px;
+        height: 100%;
+      }
+    .pp-heatmap {
+      position: relative;
+      min-height: 658px;
+      height: 100%;
+    }
+  }
+}
+
+.capital-one {
+  img {
+    margin-top: 20px;
+  }
+  p {
+    font-size: 21px;
+    line-height: 28px;
+    margin-top: 0;
+  }
+}
+
+.estimated {
+  background: #148CC1;
+  padding: 20px 20px;
+  border-radius: 4px;
+
+  df-label {
+    margin-bottom: 0px;
+
+    label {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 200;
+      display: block;
+
+      .tooltip-icon {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        line-height: 15px;
+        background: #94CBE3;
+        color: #fff;
+        text-align: center;
+        font-weight: 600;
+        font-size: 12px;
+        cursor: default;
+
+        &:hover {
+          background: #4EADD7;
+          z-index: 1000;
+        }
+        .fa-info {
+          color: #fff;
+        }
+      }
+
+      .tooltip-popover {
+        top: 50%;
+        left: 100%;
+        width: 300px;
+        margin: -42px 0 0 10px;
+        font: 14px $fontLato;
+
+        &:before {
+          right: 100%;
+          left: auto;
+          top: 50%;
+          margin-top: -5px;
+          border-top: 5px solid transparent;
+          border-right: 10px solid #efefef;
+          border-bottom: 5px solid transparent !important;
+        }
+      }
+    }
+  }
+  .value {
+    display: block;
+    font-size: 25px;
+    color: #fff;
+  }
+}
+
+.leaflet-control-layers-toggle {
+  background-image: url(layers.png);
+  width: 36px;
+  height: 36px;
+}
+
+.display-geo-form {
+  df-label {
+    font-weight: 300;
+  }
+
+  .location-list {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #DBDBDD;
+    .geo-radio {
+      margin-bottom: 15px;
+
+      .label {
+        max-width: 358px;
+        display: inline-block;
+        font-size: 15px;
+      }
+    }
+  }
+  .geo-radio {
+    margin-top: 5px;
+    label {
+      position: relative;
+      display: block;
+      margin: 7px 0;
+      > * {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .value-in-radio {
+        width: 215px;
+      }
+    }
+
+    input[type=radio] {
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      &:checked + .fake-radio {
+        border-color: #168BC1;
+
+        &:before {
+          background: #148CC1;
+        }
+      }
+    }
+    .fake-radio {
+      display: inline-block;
+      vertical-align: middle;
+      background: #fff;
+      border-radius: 100%;
+      border: #737172 1px solid;
+      padding: 4px;
+      margin: 0 4px 0 0;
+
+      &:before {
+        content: '';
+        display: block;
+        border-radius: 100%;
+        background: #DCDCDC;
+        width: 9px;
+        height: 9px;
+      }
+    }
+  }
+
+  .geo-list {
+    position: relative;
+    border: 1px solid #727F88;
+    border-radius: 3px;
+    padding-bottom: 36px;
+    min-height: 95px;
+
+    .wrap {
+      padding: 10px 5px 0;
+      font-size: 0;
+
+      .tag {
+        display: inline-block;
+        vertical-align: top;
+        background: #727f88;
+        border-radius: 3px;
+        padding: 0 37px 0 10px !important;
+        color: #fff;
+        font-size: 13px;
+        text-shadow: 0 0 0 #fff;
+        cursor: pointer;
+        margin: 0 5px 10px;
+        height: 31px;
+        line-height: 30px !important;
+        position: relative;
+
+        &:hover {
+          box-shadow: 0 0 3px 1px #A9A8A8;
+        }
+
+        .tag-close {
+          height: 100%;
+          display: block;
+          width: 28px;
+          text-align: center;
+          line-height: 28px;
+          border-radius: 0 3px 3px 0;
+          color: #fff;
+          position: absolute;
+          top: 0;
+          right: 0;
+
+          &:hover {
+            background: #CA1117;
+            color: #fff;
+          }
+        }
+      }
+
+    }
+    .add-geo {
+      display block;
+      position absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 35px;
+      background: #313E4E;
+      border: 1px solid #313E4E;
+      color: #fff;
+      font-size: 15px;
+      line-height: 35px;
+      text-align: center;
+      z-index: 2;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.9;
+      }
+
+      &.active {
+        box-shadow: 0 5px 15px -3px #6B6A6A;
+      }
+    }
+
+    .add-form {
+      position: absolute;
+      width: 100%;
+      padding: 10px;
+      background: #F7F5F8;
+      box-shadow: 0 0 30px -2px #000;
+      top: 99%;
+      z-index: 1;
+
+      li.tag {
+        display: none;
+      }
+    }
+  }
+  .location-val {
+    border-bottom: 1px solid #727f88;
+    padding: 5px 70px 5px 0;
+    position: relative;
+    min-height: 44px;
+    color: #757b81;
+
+    > .pp-btn {
+      min-width: inherit;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      margin-top: -18px;
+      padding: 0 12px;
+    }
+
+    .location-edit-form {
+      position: absolute;
+      width: 100%;
+      padding: 20px;
+      background: #f7f5f8;
+      box-shadow: 0 9px 30px -2px #000;
+      top: 101%;
+      left: 0;
+      z-index: 15;
+    }
+  }
+
+  h2 {
+    font-size: 2em;
+    font-weight: 100;
+  }
+
+    .transaction-filter {
+      position relative;
+      border-bottom: 1px solid #DEDEDE;
+      margin-top: 23px;
+
+      &-title {
+        margin: 0 0 10px;
+        font-size: 28px;
+        font-weight: 100;
+        color: #444;
+
+        .tooltip {margin-left: 0;}
+        .tooltip-popover {display: none;}
+
+        .tooltip-icon {
+          vertical-align: 2px;
+          cursor: pointer;
+        }
+      }
+
+      .filter-wrap {
+        margin-top: 23px;
+      }
+      .show-filter {
+        display: block;
+        position: absolute;
+        height: 33px;
+        width: 33px;
+        text-align: center;
+        line-height: 33px;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+        font-size: 40px;
+        
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+
+
+
+  /*.geo-hyper-local {*/
+
+    /*.pp-selectbox {*/
+      /*background: none !important;*/
+
+      /*&__wrapper .tags-selected {*/
+        /*box-shadow: none;*/
+        /*min-height: 57px;*/
+
+        /*.tag {*/
+          /*height: 31px;*/
+          /*line-height: 30px !important;*/
+          /*padding: 0 37px 0 10px !important;*/
+
+          /*.tag-close {*/
+            /*height: 100%;*/
+            /*display: block;*/
+            /*width: 28px;*/
+            /*right: 0px !important;*/
+            /*text-align: center;*/
+            /*line-height: 28px;*/
+            /*border-radius: 0 3px 3px 0;*/
+            /*color: #fff;*/
+
+            /*&:hover {*/
+              /*background: #CA1117;*/
+              /*color: #fff;*/
+            /*}*/
+          /*}*/
+        /*}*/
+      /*}*/
+    /*}*/
+  /*}*/
+}
+
+panel.geo {
+  .panel-scroller {
+    > div {
+      height: 100%;
+
+    }
+  }
+}
