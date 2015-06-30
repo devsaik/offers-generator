@@ -1,0 +1,29 @@
+<div class="start-or-save">
+    <div class="box-images">
+        <div class="col-xs-6 item tac">
+            <figure class="img-box">
+                <img pp-src="/assets/img/channels/later.png"/>
+            </figure>
+            <a class="pp-btn gray" ng-click="finish()">
+                Save for Later
+            </a>
+        </div>
+
+        <div class="col-xs-6 item tac">
+            <figure class="img-box">
+                <img pp-src="/assets/img/channels/start.png"/>
+            </figure>
+            <a ng-if="!channel.status || channel.status === 'INCOMPLETE'  || channel.status === 'REJECTED'" class="pp-btn lgreen"
+               ng-click="next()">
+                Start Campaign
+            </a>
+            <p class="box-messages" ng-if="channel.status && !(channel.status === 'INCOMPLETE' || channel.status === 'REJECTED')">
+                <span class="success">This campaign is already <b class="color-lgreen">running</b>.</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="tac">
+        <button class="pp-btn gray" ng-click="prev()">Go Back</button>
+    </div>
+</div>

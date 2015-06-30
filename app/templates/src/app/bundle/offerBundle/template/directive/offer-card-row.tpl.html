@@ -1,0 +1,38 @@
+<a href="" class="icon" ng-if="controls.icons.spend" ng-click="vm.showSpendPopup()">
+    <img class="icon-svg spend" pp-src="/assets/img/icons/spend.svg" title="Campaign Spend" />
+</a>
+<a href="" class="icon" offer-preview-popup="::offer"
+   ng-if="!offer.isStatus('INCOMPLETE')">
+    <i class="fa fa-eye" title="View Offer"></i>
+</a>
+<a href="" class="icon" ui-sref="ppp.offer.list.item.statistic({id:offer.id})"
+   ng-if="!offer.isStatus('INCOMPLETE') && !offer.isStatus('PENDING')">
+    <i class="fa fa-bar-chart" title="Offer Chart"></i>
+</a>
+<a href="" class="icon" ui-sref="ppp.offer.list.item.edit({id:offer.id})"
+   ng-if="controls.icons.edit">
+    <span ng-show="!offer.isStatus('INCOMPLETE')">
+       <img class="icon-svg edit"  pp-src="/assets/img/icons/edit.svg" title="Edit Offer" />
+    </span>
+    <span ng-show="offer.isStatus('INCOMPLETE')">
+        <img class="icon-svg incomplete" pp-src="/assets/img/icons/incomplete.svg" title="Edit Offer" />
+    </span>
+</a>
+<a href="" class="icon attention" ng-show="controls.icons.attention">
+    <i class="fa fa-exclamation-triangle red" title="Attention Needed"></i>
+</a>
+<a href="" class="icon" ng-click="changeStatus('pause')"
+   ng-if="offer.isStatus('RUNNING')">
+    <i class="fa fa-check green" title="Offer Is Live"></i>
+</a>
+<a href="" class="icon" ng-click="changeStatus('running')"
+   ng-if="offer.isStatus('PAUSED')">
+    <img class="icon-svg paused" pp-src="/assets/img/icons/paused.svg" title="Offer Paused" />
+</a>
+<a href="" class="icon" ng-if="offer.status === 'PENDING'">
+    <i class="fa fa-clock-o green" title="Offer Approved"></i>
+</a>
+<a href="" class="icon" ng-if="offer.shortUrl && offer.isStatus('RUNNING')"
+   ng-click="vm.onCopyModalClicked(offer)">
+    <img class="icon-svg bitly" pp-src="/assets/img/icons/bitly.svg" title="Copy Link" />
+</a>

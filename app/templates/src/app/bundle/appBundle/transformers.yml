@@ -1,0 +1,38 @@
+appConfig:
+  TRANSFORMERS:
+    locations:
+      __prefix: "locations"
+      __copy: [id, address1, address2, city, corporateOnly, createdBy, merchantId, name, phone, primary, state, updatedBy, zip]
+      lat: "latitude"
+      lng: "longitude"
+
+    locationToMarker:
+      id: "id"
+      lat: "lat"
+      lng: "lng"
+
+
+    galleryItem:
+      response:
+        __prefix: "items"
+        __copy: [id, merchantId, tags, title]
+        url: "imageUrl"
+        createdAt: "createDate| amDateFormat: 'YYYY-MM-DD'"
+
+      request:
+        __copy: [id, title]
+        createdAt: "createDate| amDateFormat: 'YYYY-MM-DD'"
+        merchantId: "'userService'| get_service_var: 'user_id'"
+        imageUrl: "url"
+        tags: "tags || ['uploaded']"
+
+
+    distribitionRecepient:
+      response:
+        __prefix: "distributionRecipients"
+        __copy: [id, status, recipient, lastName, firstName, merchantId, distributionListId]
+
+      request:
+        __copy: [id, recipient, lastName, firstName, distributionListId, status]
+        merchantId: "'userService'| get_service_var: 'user_id'"
+        merchant_id: "'userService'| get_service_var: 'user_id'"

@@ -1,0 +1,136 @@
+<div loading-container="isLoading">
+    <div class="table-list__wrap scroll" ui-scroll>
+        <ul class="table-list">
+            <li class="table-list__item">
+                <div class="table-list__row">
+                    <div class="table-list__col fwb">First Name</div>
+                    <div class="table-list__col fwb">Last Name</div>
+                    <div class="table-list__col fwb">Recepient</div>
+                    <div class="table-list__col short fwb">Actions</div>
+                </div>
+            </li>
+            <li class="table-list__item {{item.status}}" ng-repeat="item in recepients | orderBy:firstName">
+                <form class="pp-form table-list__row"
+                      name="form_recepient"
+                      object="item">
+                    <div class="table-list__col">
+                        <df-field>
+                            <df-input
+                                    ng-model="item.firstName"
+                                    name="firstname"
+                                    df-validator
+                                    df-required="{message: 'Please Enter First Name'}"
+                                    placeholder="First Name">
+                            </df-input>
+                        </df-field>
+                    </div>
+                    <div class="table-list__col">
+                        <df-field>
+                            <df-input
+                                    ng-model="item.lastName"
+                                    name="lastname"
+                                    df-validator
+                                    df-required="{message: 'Please Enter Last Name'}"
+                                    placeholder="Last Name">
+                            </df-input>
+                        </df-field>
+                    </div>
+                    <div class="table-list__col">
+                        <df-field>
+                            <df-input
+                                    ng-if="type === 'EMAIL'"
+                                    ng-model="item.recipient"
+                                    name="recepient"
+                                    df-validator
+                                    df-required
+                                    df-type="{rule: 'email'}"
+                                    placeholder="Recepient">
+                            </df-input>
+                            <df-input
+                                    ng-if="type === 'SMS'"
+                                    ng-model="item.recipient"
+                                    name="recepient"
+                                    df-validator
+                                    df-required
+                                    df-type="{rule: 'phone'}"
+                                    placeholder="Recepient">
+                            </df-input>
+                        </df-field>
+                    </div>
+                    <div class="table-list__col short tac">
+                        <button class="fa fa-floppy-o"
+                                title="Save"
+                                ng-disabled="form_recepient.$invalid"
+                                ng-click="vm.saveRecepient(item)">
+                        </button>
+                        <button class="fa fa-times"
+                                title="Remove"
+                                ng-disabled="form_recepient.$invalid"
+                                ng-click="vm.removeRecepient(item)">
+                        </button>
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="table-list">
+        <li class="table-list__item">
+            <form class="pp-form table-list__row"
+                  name="form_new_recepient"
+                  object="newRecepient">
+                <div class="table-list__col">
+                    <df-field>
+                        <df-input
+                                ng-model="newRecepient.firstName"
+                                name="newFirstname"
+                                df-validator
+                                df-required="{message: 'Please Enter First Name'}"
+                                placeholder="First Name">
+                        </df-input>
+                    </df-field>
+                </div>
+                <div class="table-list__col">
+                    <df-field>
+                        <df-input
+                                ng-model="newRecepient.lastName"
+                                name="newLastname"
+                                df-validator
+                                df-required="{message: 'Please Enter Last Name'}"
+                                placeholder="Last Name">
+                        </df-input>
+                    </df-field>
+                </div>
+                <div class="table-list__col">
+                    <df-field>
+                        <df-input
+                                ng-if="type === 'EMAIL'"
+                                ng-model="newRecepient.recipient"
+                                name="newRecepient"
+                                df-validator
+                                df-required
+                                df-type="{rule: 'email'}"
+                                placeholder="Recepient">
+                        </df-input>
+                        <df-input
+                                ng-if="type === 'SMS'"
+                                ng-model="item.recipient"
+                                name="recepient"
+                                df-validator
+                                df-required
+                                df-type="{rule: 'phone'}"
+                                placeholder="Recepient">
+                        </df-input>
+                    </df-field>
+                </div>
+                <div class="table-list__col short tac">
+                    <button class="fa fa-floppy-o"
+                       title="Add"
+                       ng-disabled="form_new_recepient.$invalid"
+                       ng-click="vm.saveRecepient(newRecepient)">
+                    </button>
+                </div>
+            </form>
+        </li>
+    </ul>
+</div>

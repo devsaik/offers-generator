@@ -1,0 +1,15 @@
+appConfig:
+  offerBundle:
+    form:
+      name:
+        tooltip: "Offer Nickname is a short phrase to help you find an offer in our system that you have already built. Nickname is for your eyes only and will never be seen by your intended audience."
+        placeholder: "Example: \"Valentine's 10%\""
+      title:
+        tooltip: "Offer Title should be simple, eye-grabbing, with a strong call to action. Offer Title will show up everywhere associated with your Offer - from Offer Webpage, to Offer Ads. So make it count!"
+        placeholder: "Example: \"10% Off Roses for Valentine's Day\""
+      description:
+        tooltip: "Offer Description is where you can expand on Offer Title and reinforce the opportunity. Make it personal. Tell a story. But keep it brief, so your audience stays engaged."
+        placeholder: "Example: \"Our annual Valentine's Day deal is here! Shop today and get 10% off a dozen or more roses.\""
+      restrictions:
+        tooltip: "Any rules and restrictions for offer redemption, such as where it can be redeemed (in-store only, online only), whether it can be combined with other promotions, or maximum redemptions per household."
+        placeholder: "Example: \"Offer valid for in-store purchases only. Offer is valid between 12pm and 7pm on Valetine's Day only. Can not be combined with other offers. While supplies last.\""

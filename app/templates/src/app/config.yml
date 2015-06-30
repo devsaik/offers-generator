@@ -1,0 +1,109 @@
+appConfig:
+  SOCIAL:
+    DEV:
+      fb: { appID: 1409783492615024, status: true, cookie: true, version: "v2.0" }
+      tw: { apiKey: "54OZC4KsiDrS0xUxCo1w" }
+    INT:
+      fb: { appID: 1409783492615024, status: true, cookie: true, version: "v2.0" }
+      tw: { apiKey: "54OZC4KsiDrS0xUxCo1w" }
+    DEMO:
+      fb: { appID: 1409783492615024, status: true, cookie: true, version: "v2.0" }
+      tw: { apiKey: "54OZC4KsiDrS0xUxCo1w" }
+    STAG:
+      fb: { appID: 261078650716244, status: true, cookie: true, version: "v2.0" }
+      tw: { apiKey: "54OZC4KsiDrS0xUxCo1w" }
+    STAGE:
+      fb: { appID: 261078650716244, status: true, cookie: true, version: "v2.0" }
+      tw: { apiKey: "54OZC4KsiDrS0xUxCo1w" }
+    PROD:
+      fb: { appID: 567406433277274, status: true, cookie: true, version: "v2.0" }
+      tw: { apiKey: "BDKEJuffs6ABdmpmKl2wg" }
+    QA:
+      fb: { appID: 839012416145389, status: true, cookie: true, version: "v2.0" }
+      tw: { apiKey: "54OZC4KsiDrS0xUxCo1w" }
+
+  API:
+    PATTERN:
+      PP:
+        endpointURL: "https://{{env}}.pushpointmobile.com/admin/api"
+        httpOptions:
+          headers:
+            "Content-Type": "application/json; charset=UTF-8"
+            Version: 2
+#            X-pp-api-key: '520189d014398b7d906f73fe2978604c'
+#            X-pp-api-token: 'e3d7bb2349dba7f4130b5ec275d3be25'
+
+    DEV:
+      PP:
+        endpointURL: "https://int.pushpointmobile.com/admin/api"
+        httpOptions:
+          headers:
+            "Content-Type": "application/json; charset=UTF-8"
+            Version: 2
+    STAGE:
+      PP:
+        endpointURL: "https://stage.pushpointmobile.com/admin/api"
+        httpOptions:
+          headers:
+            "Content-Type": "application/json; charset=UTF-8"
+            Version: 2
+    PROD:
+      PP:
+        endpointURL: "https://pushpointmobile.com/admin/api"
+        httpOptions:
+          headers:
+            "Content-Type": "application/json; charset=UTF-8"
+            Version: 2
+    QA:
+      PP:
+        endpointURL: "https://qa.pushpointmobile.com/admin/api"
+        httpOptions:
+          headers:
+            "Content-Type": "application/json; charset=UTF-8"
+            Version: 2
+    DEMO:
+      PP:
+        endpointURL: "https://qa.pushpointmobile.com/admin/api"
+        httpOptions:
+          headers:
+            "Content-Type": "application/json; charset=UTF-8"
+            Version: 2
+
+    INT:
+      PP:
+        endpointURL: "https://int.pushpointmobile.com/admin/api"
+        httpOptions:
+          headers:
+            "Content-Type": "application/json; charset=UTF-8"
+            Version: 2
+#            X-pp-api-key: '520189d014398b7d906f73fe2978604c'
+#            X-pp-api-token: 'e3d7bb2349dba7f4130b5ec275d3be25'
+
+  PROXYAPI:
+    endpointURL: "//faker.com/api"
+    httpOptions:
+      headers:
+        "Content-Type": "application/json; charset=UTF-8"
+
+  CONSTANTS:
+    timezones:
+      - {value: "US/Pacific", label: "Pacific"}
+      - {value: "US/Central", label: "Central"}
+      - {value: "US/Eastern", label: "Eastern"}
+      - {value: "US/Mountain", label: "Mountain"}
+
+  DATATRANSFORMERS:
+    schemaTransformer:
+      - "ENTITY.offer.transformers"
+      - "TRANSFORMERS"
+      - "channelBundle.channels.display.transformers"
+      - "channelBundle.channels.facebook.transformers"
+      - "channelBundle.channels.free.transformers"
+      - "channelBundle.ads.display.transformers"
+
+  CONSTANTS:
+    MAP:
+      tiles:
+        url: "//{s}.tiles.mapbox.com/v3/phenchanter.i80efl74/{z}/{x}/{y}.png"
+        options:
+          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

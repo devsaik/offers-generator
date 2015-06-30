@@ -1,0 +1,38 @@
+<div class="manage-list">
+      <!--<form class="pp-form"-->
+            <!--name="free_campaign_form_manage"-->
+            <!--object="channel"-->
+            <!--validation-rules="controls.validationRules">-->
+
+            <!-- body form -->
+            <div class="pp-form__row row">
+                  <!--column-->
+                  <div class="col-xs-5">
+                    <distribution-list-manage
+                            channels="controls.channels"
+                            type="channel.distributionChannel"
+                            list-id="controls.channelId">
+                    </distribution-list-manage>
+                  </div>
+                  <!--end column-->
+
+                  <!--column-->
+                  <div class="col-xs-7">
+                      <p class="m0" ng-if="!controls.channelId">Choice in list item</p>
+                      <distribution-list-editor
+                              ng-if="controls.channelId"
+                              list-id="controls.channelId"
+                              type="channel.distributionChannel">
+                      </distribution-list-editor>
+                  </div>
+                  <!--end column-->
+            </div>
+            <!--end body form-->
+
+            <!--buttons row-->
+            <div class="pp-form__row mt10">
+                  <a href="" class="pp-btn dgray" ng-click="prev()">Go Back</a>
+            </div>
+            <!--end buttons row-->
+      <!--</form>-->
+</div>

@@ -1,0 +1,18 @@
+<div class="popup-send-data">
+    <form class="form">
+        <div class="control-group">
+            <label class="control-label" for="inputPhoneNumber">
+                <strong>Phone Number</strong>
+            </label>
+            <div class="input-group">
+                <input class="form-control" id="inputPhoneNumber" type="tel"
+                       placeholder="ex. (555)555-5555" ng-model="phone">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" id="btnText" type="button"
+                            ng-click="closeThisDialog(phone)">Send</button>
+                </span>
+            </div>
+        </div>
+    </form>
+</div>
+

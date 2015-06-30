@@ -1,0 +1,29 @@
+<div class="pp-popup__header ttc">Spend on Mobile Banners</div>
+<div class="pp-popup__inner">
+    <div class="box-images">
+        <div class="col-xs-4 item">
+            <div class="inner">
+                <div class="stat">
+                    $ <b>{{ngDialogData.budget | number:2}}</b>
+                </div>
+                <div class="label">Budget</div>
+            </div>
+        </div>
+        <div class="col-xs-4 item">
+            <div class="inner">
+                <div class="stat">
+                    $ <b>{{ngDialogData.spend | number:2}}</b>
+                </div>
+                <div class="label">Spent</div>
+            </div>
+        </div>
+        <div class="col-xs-4 item">
+            <div class="inner">
+                <div class="stat">
+                    <b>{{(ngDialogData.spend === 0) ? 0 : ngDialogData.spend/ngDialogData.budget*100 | number:2}}</b> %
+                </div>
+                <div class="label">% Complete</div>
+            </div>
+        </div>
+    </div>
+</div>

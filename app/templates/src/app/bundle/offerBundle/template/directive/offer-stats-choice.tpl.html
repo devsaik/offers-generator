@@ -1,0 +1,12 @@
+<div class="item__title">
+    <df-selectbox class="h-none" ng-model="controls.defaultMetric" allow-empty="false">
+        <option-item class="sub-item" ng-repeat="(key, value) in maps" value="key" label="value">
+            <span>{{value}}</span>
+        </option-item>
+    </df-selectbox>
+</div>
+<div class="item__content" ng-switch="controls.defaultMetric">
+    <span ng-switch-when="views">{{offer.displays || 0}}</span>
+    <span ng-switch-when="spend">{{spend}}</span>
+    <span ng-switch-default> {{offer[controls.defaultMetric] || 0}} </span>
+</div>

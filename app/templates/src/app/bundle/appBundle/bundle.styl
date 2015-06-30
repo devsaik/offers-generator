@@ -1,0 +1,50 @@
+@import "./directive/directives.pack.styl";
+
+.sorter {
+  display: block;
+  padding: 3px 15px;
+  clear: both;
+  font-weight: normal;
+  line-height: 18px;
+  color: #555555;
+  white-space: nowrap;
+  cursor: pointer;
+  &:hover {
+    color: #005580;
+  }
+}
+
+.st-sort-ascent:before {
+  content: '\25B2';
+}
+
+.st-sort-descent:before {
+  content: '\25BC';
+}
+
+.popup-send-data {
+
+}
+
+.monthBlock {
+  cursor: default !important;
+  text-align: center;
+}
+
+.monthBlock:focus,
+.monthBlock:active,
+.monthBlock:hover {
+  background: #fff !important;
+  cursor: default !important;
+  border-color: #adadad !important;
+  box-shadow: none !important;
+}
+
+.popup-offer__inner {
+  .text-danger {
+    color: #FF7777 !important;
+    font-weight: bold;
+  }
+}
+
+body {background: #F8F5F8;}

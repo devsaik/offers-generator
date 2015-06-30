@@ -1,0 +1,107 @@
+<div st-table="displayedEntities" st-safe-src="entities" st-pagination-scroll st-pipe="loadMoreListItems">
+    <!--default filter and sorters dirty hack but fast-->
+    <span st-filter="statusFilter" predicate="'status'"></span>
+    <span st-group-by="'status'" on-grouping-done="offerlistController.onGroupingDone()"
+          group-order="[ 'RUNNING', 'REJECTED', 'PAUSED', 'PENDING', 'INCOMPLETE', 'EXPIRED', 'ARCHIVED']"
+          sort="startTime"
+            ></span>
+
+    <!--menu-->
+    <div class="menu">
+        <div class="menu__inner">
+            <df-selectbox class="colored"
+                          ng-class="statusFilter"
+                          ng-model="statusFilter"
+                          allow-empty="false">
+                <option-item class="ALL sub-item" value="" label="'All Offers'">
+                    <span>All Offers</span>
+                </option-item>
+                <option-item class="INCOMPLETE sub-item" value="'INCOMPLETE'" label="'Incomplete'">
+                    <span>Incomplete</span>
+                </option-item>
+                <option-item class="PENDING sub-item" value="'PENDING'" label="'Pending'">
+                    <span>Pending</span>
+                </option-item>
+                <option-item class="REJECTED sub-item" value="'REJECTED'" label="'Rejected'">
+                    <span>Rejected</span>
+                </option-item>
+                <option-item class="RUNNING sub-item" value="'RUNNING'" label="'Live'">
+                    <span>Live</span>
+                </option-item>
+                <option-item class="PAUSED sub-item" value="'PAUSED'" label="'Paused'">
+                    <span>Paused</span>
+                </option-item>
+                <option-item class="EXPIRED sub-item" value="'EXPIRED'" label="'Expired'">
+                    <span>Expired</span>
+                </option-item>
+                <option-item class="ARCHIVE sub-item" value="'ARCHIVE'" label="'Archived'">
+                    <span>Archived</span>
+                </option-item>
+            </df-selectbox>
+
+            <div class="input-group dn">
+                <input st-search placeholder="global search" type="text"
+                       class="form-control"/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li class="sorter" st-sort="acceptsCount">Accepts</li>
+                        <li class="sorter" st-sort="redeemsCount">Redeems</li>
+                        <li class="sorter" st-sort="sharesCount">Shares</li>
+                        <li class="sorter" st-sort="viewsCount">Views</li>
+                        <li class="sorter" st-sort="createdTime">Created Date</li>
+                        <li class="sorter" st-sort-default="reverse" st-sort="startTime" skip>Start Time</li>
+                        <li class="sorter" st-sort="endTime">End Time</li>
+                    </ul>
+                </span>
+            </div>
+
+            <a ui-sref="ppp.offer.list.item.edit({id: 'new'})"
+               class="pp-btn lgreen flr">
+                Create New Offer
+            </a>
+        </div>
+    </div>
+    <!--end menu-->
+
+    <!--list items-->
+    <ul class="list-offers">
+        <offer-card-announcements controller="offerlistController" ready="!isLoading && controls.onGroupingDone">
+            <li class="col-xs-12 col-sm-6 col-md-4 list-offers__item">
+                <a ui-sref="ppp.offer.list.item.edit({id: 'new'})" class="offer-card-create">
+                    <span class="plus">+</span>
+                    <p class="text">Create new offer</p>
+                </a>
+            </li>
+            <li class="col-xs-12 col-sm-6 col-md-4 list-offers__item"
+                ng-repeat="offer in displayedEntities | limitTo: controls.displayedItems"
+                ng-style="{'z-index': displayedEntities.length - $index}">
+                <div class="offer-card"
+                     id="{{offer.id}}"
+                     offer-card="offer"
+                     message="msg"
+                     on-shared="offerlistController.onSomeEvent(offer)"
+                     on-changed="offerlistController.onSomeEvent()"
+                     on-status-changed="offerlistController.onStatusChanged(offer)"
+                     on-cloned="offerlistController.onOfferCloned(offer)">
+                </div>
+            </li>
+        </offer-card-announcements>
+    </ul>
+    <!--end list items-->
+
+    <div class="centerMessage" ng-if="!(displayedEntities.length)">
+        <span>
+            You have no {{ statusFilter | titleCase}} offers
+        </span>
+    </div>
+
+    <div ng-show="isLoading">Please wait...</div>
+    <!--<div class="row pager-row">-->
+    <!--<div class="col-md-12">-->
+    <!--<div st-pagination="" st-items-by-page="12" st-displayed-pages="7"></div>-->
+    <!--</div>-->
+    <!--</div>-->
+</div>

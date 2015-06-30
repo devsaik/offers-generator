@@ -1,0 +1,228 @@
+<div ng-if="controls.step === 1" class="geo-form">
+    <form class="pp-form display-campaign-form display-geo-form"
+          name="display_campaign_form_map"
+          object="channel"
+          df-form-disabled="{{channel.status && !(channel.status === 'INCOMPLETE'  || channel.status === 'REJECTED')}}">
+        <div class="pp-form__row row">
+
+            <div class="left-column col-sm-12 col-md-5">
+                <div ui-scroll>
+                    <div class="mb15">
+                        <df-label label="Business Location"
+                                  tooltip="The address at which customers will be able to redeem your offer. We default this to the business address on your Spark Pay account. If your business is mobile or has multiple locations, you can add them here by clicking on the Edit button. ">
+
+                        </df-label>
+                        <div class="location-val">
+                            {{channel.location.address1}}, {{channel.location.city}}, {{channel.location.state}}
+                            {{channel.location.zip}}
+                            <a href="" class="pp-btn gray" ng-click="controls.showEditForm = !controls.showEditForm">Edit</a>
+                            <div class="location-edit-form" ng-show="controls.showEditForm">
+                                <div class="location-list">
+                                    <df-label label="Saved Locations" tooltip="Saved Locations"></df-label>
+                                    <div ng-repeat="loc in locations" class="geo-radio">
+                                        <label ng-click="controls.showEditForm=false;"
+                                               for="{{loc.id}}">
+                                            <input type="radio" ng-model="channel.location" ng-value="loc"
+                                                   id="{{loc.id}}" ng-change="location_add_form.$setPristine();">
+                                            <span class="fake-radio"></span>
+                                            <span class="label">{{loc.address1}}, {{loc.city}}, {{loc.state}} {{loc.zip}}</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <ng-form name="location_add_form">
+                                    <df-label label="Add New Location" class="mb10"></df-label>
+                                    <df-field class="mb10"
+                                              label="Location Name">
+                                        <df-input name="newLocationName"
+                                                  ng-model="channel.location.name"
+                                                ></df-input>
+                                    </df-field>
+                                    <df-field class="mb10"
+                                              label="Address">
+                                        <df-input name="newLocationAddress"
+                                                  ng-model="channel.location.address1"
+                                                ></df-input>
+                                    </df-field>
+                                    <df-field class="mb10"
+                                              label="Suite No./Apartment No.">
+                                        <df-input name="newLocationSuite"
+                                                  ng-model="channel.location.suite"
+                                                ></df-input>
+                                    </df-field>
+                                    <df-field class="mb10"
+                                              label="City">
+                                        <df-input name="newLocationSuite"
+                                                  ng-model="channel.location.city"
+                                                ></df-input>
+                                    </df-field>
+                                    <div class="row">
+                                        <df-field class="mb10 col-md-6"
+                                                  label="State">
+                                            <df-input name="newLocationSuite"
+                                                      ng-model="channel.location.state"
+                                                    ></df-input>
+                                        </df-field>
+                                        <df-field class="mb10 col-md-6"
+                                                  label="Zipcode">
+                                            <df-input name="newLocationZipcode"
+                                                      ng-model="channel.location.zip"
+                                                    ></df-input>
+                                        </df-field>
+                                    </div>
+                                    <df-button classes="pp-btn lgreen pull-right"
+                                               label="Add Location"
+                                               ng-click="addLocation(); controls.showEditForm=false;"
+                                               ng-disabled="!location_add_form.$dirty"
+                                            >
+                                    </df-button>
+                                </ng-form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb15">
+                        <df-label tooltip="{{geo.tooltip}}" label="{{geo.label}}"></df-label>
+                        <div class="pp-form__row row geo-radio">
+                            <label
+                                    class="col-xs-12 col-md-6"
+                                    ng-repeat="opt in geo.options"
+                                    for="geo-{{opt.value}}">
+                                <input type="radio" ng-model="channel.geoActive" ng-value="opt.value"
+                                       id="geo-{{opt.value}}"
+                                       ng-change="geo.canGoNext = true">
+                                <span class="fake-radio"></span>
+                                <span ng-bind="opt.label"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mb10" ng-show="channel.geoActive === 'GEO'">
+                        <df-label tooltip="Distance to My Location" label="Distance to My Location"></df-label>
+                        <range-slider min="0.5"
+                                      max="6"
+                                      points="[0.5, 2, 4, 6]"
+                                      always-round="true"
+                                      max-value="channel.reachRadius" class="mb10"></range-slider>
+                        <div class="pp-form__row row">
+                            <div class="col-xs-4 col-xs-offset-8 row-metric">
+                                <df-input name="radius"
+                                          ng-model="channel.reachRadius"
+                                          ng-disabled="true"
+                                          symbol="M"
+                                        ></df-input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="transaction-filter" ng-show="channel.geoActive == 'GEO'">
+                        <h2 class="transaction-filter-title">
+                            Spending-Based Targeting
+                            <df-label
+                                    show-popup="app/bundle/channelBundle/template/dialogs/spending-data.tpl.html"
+                                    popup-class="popup-channel-spending-data middle"
+                                    tooltip="Spending-Based Targeting"
+                                    >
+                            </df-label>
+                        </h2>
+                        <a class="show-filter" ng-click="controls.showFilter = !controls.showFilter">
+                            {{controls.showFilter ? '–' : '+'}}
+                        </a>
+
+                        <div class="filter-wrap" ng-show="controls.showFilter">
+                            <div class="pp-form__row row mb10">
+                                <df-field class="col-sm-6" label="{{::heatmapConfig.filters.storeCategory.label}}"
+                                          tooltip="{{::heatmapConfig.filters.storeCategory.tooltip}}">
+                                    <df-selectbox ng-model="heatmapFilter.categories"
+                                                  allow-empty="false"
+                                                  allow-filter="true"
+                                                  filter="storeFilter"
+                                                  type="multi"
+                                                  placeholder="All Categories">
+                                            <option-item class="sub-item"
+                                                         ng-repeat="opt in heatmapConfig.filters.storeCategory.options | filter: storeFilter"
+                                                         label="opt.label"
+                                                         value="opt.value">
+                                                <span>{{opt.label}}</span>
+                                            </option-item>
+                                    </df-selectbox>
+                                </df-field>
+                                <!--<df-field class="col-sm-6"-->
+                                          <!--label="{{::heatmapConfig.filters.datePurchase.label}}"-->
+                                          <!--tooltip="{{::heatmapConfig.filters.datePurchase.tooltip}}"-->
+                                          <!--tooltip-position="right">-->
+                                    <!--<df-selectbox ng-model="heatmapFilter.date" allow-empty="false" ng-disabled="true">-->
+                                        <!--<option-item class="sub-item"-->
+                                                     <!--ng-repeat="opt in heatmapConfig.filters.datePurchase.options"-->
+                                                     <!--label="opt.label"-->
+                                                     <!--value="opt"-->
+                                                     <!--default="opt.default">-->
+                                            <!--<span>{{opt.label}}</span>-->
+                                        <!--</option-item>-->
+                                    <!--</df-selectbox>-->
+                                <!--</df-field>-->
+                            </div>
+                            <div class="mb10">
+                                <df-label tooltip="{{::heatmapConfig.filters.ranges.tooltip}}"
+                                          label="{{::heatmapConfig.filters.ranges.label}}"></df-label>
+                                <range-slider min="0" max="9" min-value="heatmapFilter.transactionMinIdx"
+                                              max-value="heatmapFilter.transactionMaxIdx" class="mb10"
+                                              always-round="true"
+                                              points="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"
+                                        ></range-slider>
+                                <div class="pp-form__row row">
+                                    <div class="col-xs-4">
+                                        <df-input name="transactionMin"
+                                                  ng-model="heatmapFilter.transactionMin"
+                                                  ng-disabled="true"
+                                                  symbol="$"></df-input>
+                                    </div>
+                                    <div class="col-xs-4 col-xs-offset-4">
+                                        <df-input name="transactionMax"
+                                                  ng-model="heatmapFilter.transactionMax"
+                                                  ng-disabled="true"
+                                                  symbol="$"
+                                                ></df-input>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="pp-form__row row-buttons">
+                        <a class="pp-btn gray" ng-click="prev()">Go Back</a>
+                        <!--<df-button classes="pp-btn lgreen" label="Next"-->
+                        <!--primary="true" ng-click="prepareGeoData(channel)"></df-button>-->
+
+                        <df-button classes="pp-btn lgreen" label="Next"
+                                   primary="true" ng-click="prepareGeoData(channel)"
+                                ></df-button>
+
+                        <!--<df-button ng-if="channel.geoActive == 'City'"-->
+                        <!--classes="pp-btn lgreen" label="Next"-->
+                        <!--primary="true" ng-click="prepareGeoData(channel)"-->
+                        <!--ng-disabled="!channel.cities.length"></df-button>-->
+
+                        <!--<df-button ng-if="channel.geoActive == 'State'"-->
+                        <!--classes="pp-btn lgreen" label="Next"-->
+                        <!--primary="true" ng-click="prepareGeoData(channel)"-->
+                        <!--ng-disabled="!channel.states.length"></df-button>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column hidden-xs hidden-sm">
+                <!--<figure ng-if="channel.geoActive != 'GEO'" class="img-box">-->
+                <!--<img pp-src="/assets/img/channels/advertising-mobile.png"/>-->
+                <!--</figure>-->
+                <div ui-scroll>
+
+                    <div class="heatmap-container" ng-if="channel.location">
+                        <heatmap
+                                channel="channel"
+                                estimated-customers="controls.estimatedCustomers"
+                                show-customers-popup="showCustomersInfo()"
+                                filter="heatmapFilter"></heatmap>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

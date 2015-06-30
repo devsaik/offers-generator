@@ -1,0 +1,23 @@
+appConfig:
+  DATATRANSFORMERS:
+    channelStatistic: "channelStatisticTransformer"
+    adStatistic: "adStatisticTransformer"
+  channelBundle:
+    channels:
+      facebook:
+        transformers:
+          facebookChannel:
+            response:
+              __copy: [id, name, timeZone, merchantId, distributionChannel, status, totalBudget, maxBid, interests, behaviors, deviceCategory, devices, type]
+              startDate: "startDate | amDateFormat: 'YYYY/MM/DD'"
+              endDate: "endDate | amDateFormat: 'YYYY/MM/DD'"
+              linkedAds: "linkedAds[0]"
+              linkedOffer: "linkedOffers[0]"
+
+            request:
+              __copy: [id, name, geoActive, timeZone, merchantId, linkedOffers, budgetType, totalBudget, ageGroup, gender, interests, behaviors, deviceCategories, devices, type]
+              startDate: "startDate | amDateFormat: 'YYYY-MM-DD'"
+              endDate: "endDate | amDateFormat: 'YYYY-MM-DD'"
+              geo: "undefined"
+              linkedAds: "linkedAds ? [linkedAds] : undefined"
+              status: "undefined"

@@ -1,0 +1,7 @@
+<div>
+    <df-selectbox ng-model="values" type="multi" allow-empty="false" allow-filter="true" filter="iabFilter">
+        <option-item class="sub-item" ng-repeat="opt in options | filter: iabFilter" label="opt.label" value="opt.id">
+            <span>{{opt.description}}</span>
+        </option-item>
+    </df-selectbox>
+</div>

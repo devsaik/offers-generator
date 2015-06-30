@@ -1,0 +1,87 @@
+<div class="pp-popup__header">Select Image</div>
+<div class="pp-popup__inner display-channel-container" loading-container="isLoading">
+    <div class="ad-gallery-upload">
+        <div class="row">
+            <!--row-->
+            <div class="col-xs-6 col-upload">
+                <div class="gallery-row">
+                    <p class="title">
+                        Upload New Image
+                        <df-label tooltip="Upload New Image"></df-label>
+                    </p>
+
+                    <div class="row-image">
+                        <div class="wrap" ng-class="{'selected': fileImageSelect}">
+                            <div class="img-box" ng-hide="fileImage">
+                                <img pp-src="{{'assets/img/channels/third-step/upload.png'}}" alt=""/>
+                            </div>
+                            <div class="img-box crs-point" ng-click="vm.selectFileImage()" ng-show="fileImage">
+                                <img ng-src="{{fileImage.url || fileImage.base64}}" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <label class="row-upload">
+                        <input type="file" nv-file-select uploader="uploader" id="adFileUploadInput"/>
+                        <a href="" class="pp-btn dgray">
+                            <img class="icon" pp-src="{{'assets/img/channels/third-step/upload.png'}}" alt=""/>
+                            Upload From Files
+                        </a>
+                    </label>
+                </div>
+            </div>
+            <!--end row-->
+
+            <!--row-->
+            <div class="col-xs-6 col-import">
+                <div class="gallery-row">
+                    <p class="title">
+                        Import from Website
+                        <df-label tooltip="Import from Website"></df-label>
+                    </p>
+
+                    <div class="row-image">
+                        <div class="wrap" ng-hide="controls.importedImages.length">
+                            <div class="img-box">
+                                <img pp-src="{{'assets/img/channels/third-step/import.png'}}" alt=""/>
+                            </div>
+                        </div>
+
+                        <ad-carousel ng-show="controls.importedImages.length"
+                                     images="controls.importedImages"
+                                     options="{carousel: {left: 0}, item: { width: 92 }}"
+                                     selected-image="controls.imageSelected">
+                        </ad-carousel>
+
+                        <!--<div class="form-group" ng-show="controls.importedImages.length">-->
+                            <!--<div class="img-col" ng-repeat="image in controls.importedImages"-->
+                                 <!--ng-click="closeThisDialog(image)">-->
+                                <!--<img ng-src="{{image.url}}" alt="{{image.title}}" class="img-rounded"/>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    </div>
+
+                    <div class="row-import">
+                        <div class="pp-form__input">
+                            <input ng-model="controls.remoteUrl" type="url" http-prefix placeholder="Paste URL Here" />
+                            <a href class="pp-btn dgray" ng-click="vm.getImagesFromUrl(controls.remoteUrl)">
+                                <img class="icon" pp-src="{{'assets/img/channels/third-step/import.png'}}" alt=""/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end row-->
+        </div>
+        <p class="import-copyright">* In order to ensure compliance with trademark and copyright laws, only use images that you own or have rights to use in advertising.</p>
+
+        <div class="row-buttons">
+            <button class="pp-btn gray" ng-click="closeThisDialog()">Cancel</button>
+            <button class="pp-btn turquoise"
+               ng-disabled="!controls.imageSelected"
+               ng-click="vm.useThisImage(controls.imageSelected)">
+                Use This Image
+            </button>
+        </div>
+    </div>
+</div>

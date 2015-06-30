@@ -1,0 +1,211 @@
+<div class="main-settings">
+    <form class="pp-form"
+          name="display_campaign_form"
+          object="channel"
+          validation-rules="controls.validationRules"
+          df-form-disabled="{{channel.status && !(channel.status === 'INCOMPLETE'  || channel.status === 'REJECTED')}}">
+
+        <p class="title">{{offer.name}}</p>
+
+        <div class="items-row row">
+            <div class="col-xs-6">
+                <df-label required="{{true}}"
+                          label="{{controls.fields.schedule.label}}"
+                          tooltip="{{controls.fields.schedule.tooltip}}">
+                </df-label>
+                <!--row-->
+                <div class="pp-form__row mb10 row-datepicker">
+                    <span class="label">Start:</span>
+                    <df-datepicker class="gray-icon"
+                                   name="startDate"
+                                   min-date="channel.initStartDate"
+                                   format="yyyy/MM/dd"
+                                   help="When offer will avaliable"
+                                   df-validation-group="datepickers"
+                                   ng-model="channel.startDate">
+                    </df-datepicker>
+                    <df-error class="clear" for-name="startDate"></df-error>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <div class="pp-form__row row-datepicker">
+                    <span class="label tar">End:</span>
+                    <df-datepicker class="gray-icon"
+                                   name="endDate"
+                                   min-date="channel.startDate"
+                                   format="yyyy/MM/dd"
+                                   help="When offer will expired"
+                                   df-validation-group="datepickers"
+                                   ng-model="channel.endDate">
+                    </df-datepicker>
+                    <df-error class="clear" for-name="endDate"></df-error>
+                    <div class="date-range" ng-if="display_campaign_form.endDate.$valid && dateNotify">
+                        <i class="fa fa-exclamation-triangle"></i>
+
+                        <div class="inner">{{dateNotify}}</div>
+                    </div>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <df-field class="mt15 mb10"
+                          required="{{true}}"
+                          label="{{controls.fields.schedulings.label}}"
+                          tooltip="{{controls.fields.schedulings.tooltip}}">
+                    <scheduling ng-model="channel.schedulings"
+                                name="schedulings"></scheduling>
+                </df-field>
+                <!--end row-->
+
+                <!--row-->
+                <df-field class="mb10"
+                          required="{{true}}"
+                          label="{{::controls.fields.budget.label}}"
+                          tooltip="{{::controls.fields.budget.tooltip}}">
+                    <df-input name="totalBudget"
+                              ng-model="channel.totalBudget"
+                              df-validator
+                              df-less="{{100-totalSpend | number:2}}"
+                              on-blur="vm.onBudgetInputFocusOut($event)"
+                              symbol="$"></df-input>
+                </df-field>
+                <!--end row-->
+
+
+                <!--row-->
+                <div class="pp-form__row row-budget-type mb10" ng-class="{'extend': channel.budgetType === 'PERDAY'}">
+                    <df-selectbox
+                            ng-model="channel.budgetType"
+                            >
+                        <option-item class="sub-item" ng-repeat="opt in controls.fields.budgetType.options"
+                                     label="opt.label" value="opt.value" default="opt.default">
+                            {{opt.label}}
+                        </option-item>
+                    </df-selectbox>
+                    <span ng-if="channel.budgetType === 'PERDAY'">
+                        <df-input name="dailyBudget"
+                                  ng-model="channel.dailyBudget"
+                                  symbol="$"></df-input>
+                        <df-error for-name="dailyBudget"></df-error>
+                    </span>
+                </div>
+                <!--end row-->
+
+                <!--row-->
+                <df-field class="mb10"
+                          label="Average Sale"
+                          required="{{true}}"
+                          tooltip="We use your average transaction amount (e.g. $15) to determine the optimal spend on advertising to a potential customer by applying industry-standard conversion metrics.">
+                    <df-input name="averageSale"
+                              ng-model="channel.averageSale"
+                              symbol="$"></df-input>
+                </df-field>
+                <!--end row-->
+
+            </div>
+
+
+            <div class="col-xs-6">
+                <!--row-->
+                <df-field class="mb10"
+                          required="{{true}}"
+                          tooltip="{{controls.fields.campaingnClassification.tooltip}}"
+                          label="{{controls.fields.campaingnClassification.label}}">
+                    <iab-categories ng-model="channel.iabCategoryCodes"></iab-categories>
+                </df-field>
+                <!--end row-->
+                <!--row-->
+                <df-field class="mb10">
+                    <target-categories ng-model="channel.targetedCategoryIds"></target-categories>
+                </df-field>
+                <!--end row-->
+
+                <df-label label="{{controls.fields.advancedTargeting.label}}"
+                          tooltip="{{controls.fields.advancedTargeting.tooltip}}">
+                </df-label>
+                <!--row-->
+                <div class="pp-form__row mb10">
+                    <df-selectbox ng-model="channel.deviceCategory" name="devicesTargeting" allow-empty="false">
+                        <option-item class="sub-item" ng-repeat="opt in controls.fields.deviceCategory.options"
+                                     label="opt.label" value="opt.value" default="opt.default">
+                            <span>{{opt.label}}</span>
+                        </option-item>
+                    </df-selectbox>
+                </div>
+                <!--row-->
+                <!--end row-->
+                <div class="pp-form__row mb10">
+                    <advanced-targeting ng-model="channel.devices"
+                                        options="::controls.fields.devices.options"></advanced-targeting>
+                </div>
+                <!--end row-->
+                <!--row-->
+                <div class="pp-form__row mb10">
+                    <df-selectbox ng-model="channel.appTargeting" name="appTargeting" allow-empty="false">
+                        <option-item class="sub-item" ng-repeat="opt in controls.fields.application.options"
+                                     label="opt.label" value="opt.value" default="opt.default">
+                            <span>{{opt.label}}</span>
+                        </option-item>
+                    </df-selectbox>
+                </div>
+                <!--end row-->
+
+
+                <!--row-->
+                <!--<df-field class="mb10"-->
+                <!--required="{{true}}"-->
+                <!--label="{{::controls.fields.maxBid.label}}"-->
+                <!--tooltip="{{::controls.fields.maxBid.tooltip}}">-->
+                <!--<df-input name="maxBid"-->
+                <!--ng-model="channel.maxBid"-->
+                <!--symbol="$"></df-input>-->
+                <!--</df-field>-->
+                <!--&lt;!&ndash;end row&ndash;&gt;-->
+                <!--&lt;!&ndash;row&ndash;&gt;-->
+                <!--<df-field class="mb10"-->
+                <!--label="{{::controls.fields.hourlyBudget.label}}"-->
+                <!--tooltip="{{::controls.fields.hourlyBudget.tooltip}}">-->
+                <!--<df-input name="hourlyBudget"-->
+                <!--ng-model="channel.hourlyBudget"-->
+                <!--symbol="$"></df-input>-->
+                <!--</df-field>-->
+                <!--end row-->
+                <!--&lt;!&ndash;row&ndash;&gt;-->
+                <!--<df-field class="mb10">-->
+                <!--<df-selectbox ng-model="channel.bidStrategy" allow-empty="false" name="bidStrategy">-->
+                <!--<option-item class="sub-item" ng-repeat="opt in controls.fields.bidStrategy.options" label="opt.label" value="opt.value" default="opt.default">-->
+                <!--{{opt.label}}-->
+                <!--</option-item>-->
+                <!--</df-selectbox>-->
+                <!--</df-field>-->
+                <!--&lt;!&ndash;end row&ndash;&gt;-->
+                <!--&lt;!&ndash;row&ndash;&gt;-->
+                <!--<df-field tooltip="{{controls.fields.pricingTargeting.tooltip}}"-->
+                <!--label="{{controls.fields.pricingTargeting.label}}">-->
+                <!--<df-selectbox ng-model="channel.pricingTargeting" allow-empty="false" name="pricingTargeting">-->
+                <!--<option-item class="sub-item" ng-repeat="opt in controls.fields.pricingTargeting.options" label="opt.label" value="opt.value" default="opt.default">-->
+                <!--{{opt.label}}-->
+                <!--</option-item>-->
+                <!--</df-selectbox>-->
+                <!--</df-field>-->
+                <!--&lt;!&ndash;end row&ndash;&gt;-->
+            </div>
+        </div>
+
+        <!--buttons-->
+        <div class="row-buttons row">
+            <div class="col-xs-6">
+                <a href="" ng-click="vm.closeDialog(['ppp.offer.list.item.channels'])" class="pp-btn gray">Go Back</a>
+            </div>
+            <div class="col-xs-6">
+                <df-button class="flr" label="Next" primary="true" ng-click="save(channel)"
+                           disable-on-invalid="true"></df-button>
+            </div>
+        </div>
+        <!--end buttons-->
+    </form>
+
+    <div class="hidden-xs hidden-sm ad-preview">
+        <i class="bg"></i>
+        <img pp-src="/assets/img/channels/second-step/phone.png"/>
+    </div>
+</div>

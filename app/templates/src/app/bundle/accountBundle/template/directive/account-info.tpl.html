@@ -1,0 +1,226 @@
+<div class="account-info">
+    <div class="menu" ng-class="{'edit': onEdit}">
+        <a href="" class="btn white flr" ng-click="onEdit = true">
+            <i class="pp-icon setup"></i>
+        </a>
+        <a href="" class="color-blue link-no-border fll" ng-show="onEdit" ng-click="onEdit = false">
+            <i class="pp-icon back"></i>
+            Back to account settings
+        </a>
+    </div>
+    <div class="account-block">
+        <div class="info-screen">
+            <p class="title">Account Information</p>
+
+            <div class="info-blocks">
+                <div class="info-block">
+                    <p class="pre-title">
+                        Personal Information
+                        <a href class="edit-link color-blue link-no-border" ng-click="onEdit = true; activeTab = 'personal'; withPass = false;">Edit</a>
+                    </p>
+
+                    <ul class="list">
+                        <li>{{account.personal.place}}</li>
+                        <li>{{account.personal.city}}, {{account.personal.stateCode}}</li>
+                        <li>{{account.personal.phone}}</li>
+                        <li>{{account.personal.email}}</li>
+                    </ul>
+                </div>
+                <div class="info-block">
+                    <p class="pre-title">
+                        Business Information
+                        <a href class="edit-link color-blue link-no-border" ng-click="onEdit = true; activeTab = 'business'; withPass = false;">Edit</a>
+                    </p>
+
+                    <ul class="list">
+                        <li>{{account.business.place}}</li>
+                        <li>{{account.business.city}}, {{account.business.stateCode}}</li>
+                        <li>{{account.business.phone}}</li>
+                        <li>{{account.business.website}}</li>
+                    </ul>
+                </div>
+
+                <div class="info-block">
+                    <p class="pre-title">
+                        Security Question & Password
+                        <a href class="edit-link color-blue link-no-border" ng-click="onEdit = true; activeTab = 'security'; withPass = true;">Edit</a>
+                    </p>
+
+                    <ul class="list">
+                        <li class="row">
+                            <span class="label">Question:</span>
+                            <span class="val">{{account.secretQues}}</span>
+                        </li>
+                        <li class="row">
+                            <span class="label">Answer:</span>
+                            <span class="val">{{account.secretAns}}</span>
+                        </li>
+                        <li class="row">
+                            <span class="label">Password:</span>
+                            <span class="val">{{account.pass}}</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="info-block">
+                    <p class="pre-title"> Email Preferences </p>
+
+                    <ul class="list">
+                        <li class="label">
+                            <input type="checkbox" ng-model="account.emailPrefs.trans" id="trans">
+                            <label for="trans">Send an email when I make transaction </label>
+                        </li>
+                        <li class="label">
+                            <input type="checkbox" ng-model="account.emailPrefs.deposit" id="deposit">
+                            <label for="deposit">Send an email when Spark Pay makes a deposit</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="edit-screen">
+            <div class="tabs">
+                <p class="tabs-title">Account Info</p>
+                <ul class="tabs-list">
+                    <li><a href="" ng-click="activeTab = 'personal'; withPass = false;" class="personal active">Personal Info</a></li>
+                    <li><a href="" ng-click="activeTab = 'business'; withPass = false;" class="business">Business Info</a></li>
+                    <li><a href="" ng-click="activeTab = 'security'; withPass = true;" class="security">Security Question & Password</a></li>
+                </ul>
+            </div>
+
+            <div class="tabs-content">
+                <div class="tab-content personal active">
+                    <p class="tab-content-title">Personal Information</p>
+                    <form class="form" ng-submit="saveAccount()">
+                        <div class="pp-form__row">
+                            <df-field label="Street Address">
+                                <df-input ng-model="account.personal.place"></df-input>
+                            </df-field>
+                        </div>
+                        <div class="pp-form__row">
+                            <df-field label="Suit of Floor">
+                                <df-input ng-model="account.personal.city"></df-input>
+                            </df-field>
+                        </div>
+                        <div class="pp-form__row">
+                            <df-field label="ZIP">
+                                <df-input ng-model="account.personal.stateCode"></df-input>
+                            </df-field>
+                        </div>
+                        <div class="pp-form__row">
+                            <df-field label="City, State">
+                                <df-input ng-model="account.personal.phone"></df-input>
+                            </df-field>
+                        </div>
+                        <div class="pp-form__row">
+                            <df-field label="Phone">
+                                <df-input ng-model="account.personal.email"></df-input>
+                            </df-field>
+                        </div>
+                        <div class="row-buttons">
+                            <button class="btn green" type="submit">Save Settings</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-content business" id="">
+                    <p class="tab-content-title">Business Information</p>
+                    <form class="form" ng-submit="saveAccount()">
+                        <div class="pp-form__row">
+                            <df-field label="Legal Name">
+                                <div class="form-descr">Sallie Downs</div>
+                            </df-field>
+                        </div>
+                        <div class="pp-form__row">
+                            <df-field label="Federal EIN">
+                                <div class="form-descr">Federal EIN</div>
+                            </df-field>
+                        </div>
+                        <div class="pp-form__row">
+                            <df-field label="DBA">
+                                <df-input ng-model="account.business.place"></df-input>
+                            </df-field>
+                        </div>
+                        <div class="pp-form__row">
+                            <df-field label="Street Address">
+                                <df-input ng-model="account.personal.place"></df-input>
+                            </df-field>
+                        </div>
+                        <div class="pp-form__row">
+                            <df-field label="Suit of Floor">
+                                <df-input ng-model="account.personal.city"></df-input>
+                            </df-field>
+                        </div>
+                        <div class="pp-form__row">
+                            <df-field label="ZIP">
+                                <df-input ng-model="account.personal.stateCode"></df-input>
+                            </df-field>
+                        </div>
+                        <div class="pp-form__row">
+                            <df-field label="City, State">
+                                <df-select ng-options=""></df-select>
+                            </df-field>
+                        </div>
+                        <div class="pp-form__row">
+                            <df-field label="Web site">
+                                <df-input ng-model="account.business.website"></df-input>
+                            </df-field>
+                        </div>
+                        <div class="row-buttons">
+                            <button class="btn green" type="submit">Save Settings</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-content security with-pass">
+                    <p class="tab-content-title">Security Question & Password</p>
+
+                    <div id="pass-request">
+                        <div class="bg" ng-click="activeTab = 'personal'; withPass = false;"></div>
+                        <form class="form" ng-submit="passRequest({pass: passReq, callback: closePassReq})" >
+                            <p class="title">Authorize Security Changes</p>
+                            <p class="description">Please enter your current password to allow changes to security settings</p>
+                            <div class="pp-form__row">
+                                <df-field label="Password">
+                                    <df-input ng-model="passReq"></df-input>
+                                </df-field>
+                            </div>
+                            <button type="submit" class="btn green">Submit</button>
+                            <div class="clear"></div>
+                        </form>
+                    </div>
+
+                    <form class="form" ng-submit="updateSecretQues({ques: account.secretQues, ans: secretAns})">
+                        <div class="pp-form__row">
+                            <df-field label="Security Question">
+                                <!--<df-select ng-options="" ng-disabled="!passReqSuccess"></df-select>-->
+                                <df-select ng-options=""></df-select>
+                            </df-field>
+                        </div>
+                        <div class="pp-form__row">
+                            <df-field label="Answer">
+                                <df-input ng-model="secretAns" placeholder="{{'*'.repeat(account.secretAnsLength)}}">></df-input>
+                            </df-field>
+                        </div>
+                        <div class="row-buttons">
+                            <button class="btn green" type="submit">Save Settings</button>
+                        </div>
+                    </form>
+                    <form class="form mt30" ng-submit="checkAndUpdatePassword()">
+                        <div class="pp-form__row">
+                            <df-field label="New Password">
+                                <df-input ng-model="newPassword" placeholder="{{'*'.repeat(account.secretAnsLength)}}">></df-input>
+                            </df-field>
+                        </div>
+                        <div class="pp-form__row">
+                            <df-field label="Re-enter New Password">
+                                <df-input ng-model="newPasswordVerify" placeholder="{{'*'.repeat(account.secretAnsLength)}}">></df-input>
+                            </df-field>
+                        </div>
+                        <div class="row-buttons">
+                            <button class="btn green" type="submit">Update Password</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

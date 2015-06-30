@@ -1,0 +1,46 @@
+<div class="mt10"
+     ng-if="discount.discountType === 'ABSOLUTE'">
+    It gets you
+    <b>{{discount.amount || 20 | currency}}</b>
+    off of minimum purchase of
+    <b>{{discount.minAmount || 30 | currency}}</b>.
+</div>
+
+<div class="mt10"
+     ng-if="discount.discountType === 'PERCENTAGE'">
+    It gets you
+    <b>{{discount.amount || 20}}%</b>
+    off of minimum purchase of
+    <b>{{discount.minAmount || 10 | currency}}</b>.
+    The maximum you can save is
+    <b>{{discount.maxAmount || 20| currency}}</b>.
+</div>
+
+<div class="mt10"
+     ng-if="discount.discountType === 'BUYGET'">
+    It gets you
+
+    <span ng-if="discount.get  == 1">
+       <b>{{discount.get || 1}} free item</b>
+    </span>
+    <span ng-if="discount.get != 1">
+       <b>{{discount.get || 2}} free items</b>
+    </span>
+
+    when you buy a minimum of
+
+    <span ng-if="discount.buy == 1">
+        <b>{{discount.buy || 2}} item</b>.
+    </span>
+    <span ng-if="discount.buy != 1">
+        <b>{{discount.buy || 2}} items</b>.
+    </span>
+</div>
+
+<div class="mt10"
+     ng-if="discount.discountType === 'FREE'">
+    It gets you
+    <b>1 free item</b>
+    with a minimum purchase of
+    <b>{{discount.minAmount || 10 | currency}}</b>.
+</div>

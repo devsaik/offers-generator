@@ -1,0 +1,61 @@
+<div class="pp-form-dropdown">
+    <div class="title" ng-if="isLocationSelected" ng-click="onSelectedLocationClick(location)">
+        <p>{{location.name}}</p>
+
+        <p>{{location.address1}}, {{location.zip}}</p>
+                    <span class="edit">
+                        <i class="fa fa-pencil-square-o"></i>
+                    </span>
+    </div>
+    <div class="title" ng-show="!isLocationSelected">
+        <input ng-model="query" ng-click="isDropdownActive=true">
+    </div>
+    <div class="dropdown" ng-if="isDropdownActive && locations.length > 0">
+        <div class="form-row" ng-repeat="item in ::locations | filter: query" ng-click="select(item)">
+            {{item.name}}
+        </div>
+    </div>
+
+    <div class="dropdown" on-done="done()" on-back="back()" ng-if="isDetailsActive" >
+        <div class="form-row row mb10">
+            <div class="col-xs-8">
+                <text-field attribute="title" label="Add Title"
+                            placeholder="Add Title"
+                            help="Dan's Donuts"></text-field>
+            </div>
+            <div class="col-xs-4">
+                <field-label label="Add Size"
+                             help="Add Size"></field-label>
+                <select name="" id="">
+                    <option value="1">320 x 100px</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <button class="pp-btn gray">
+                <i class="fa fa-camera"></i>
+                Upload New Image
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+<!--<span ng-if="isLocationSelected" ng-click="onSelectedLocationClick(location)" location="location"-->
+      <!--class="location-string form-control input-lg"></span>-->
+<!--<input ng-show="!isLocationSelected" fs-input=""-->
+       <!--class="form-control input-lg" fs-up="move(-1)"-->
+       <!--fs-down="move(1)" fs-enter="select()"-->
+       <!--placeholder="Адрес или название места"-->
+       <!--ng-model="query" ng-click="isDropdownActive=true"-->
+       <!--placeholder="Адрес или название места">-->
+
+<!--<div class="other-parametrs whence-auth">-->
+    <!--<div fs-list="" items="locations" ng-if="isDropdownActive && locations.length > 0">-->
+        <!--<span class="location-string" location="item"></span>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="location-details" on-done="done()" on-back="back()" ng-if="isDetailsActive" location="location"-->
+     <!--display-type="{[{displayType}]}"></div>-->

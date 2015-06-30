@@ -1,0 +1,46 @@
+<df-selectbox ng-model="type" allow-empty="false">
+    <option-item class="sub-item" ng-repeat="opt in types" label="opt.label" value="opt.value" default="opt.default">
+        <span>{{opt.label}}</span>
+    </option-item>
+</df-selectbox>
+
+<!--<ul class="pp-scheduling__dropdown" ng-show="type === 'Custom'">-->
+    <!--<li class="item"-->
+        <!--ng-repeat="day in week">-->
+        <!--<div ng-class="{'invalid': scheduling_tmp2[day].invalid}">-->
+            <!--<b class="day" ng-class="{'weekend': day === 'SAT' || day === 'SUN'}">{{day}}</b>-->
+            <!--<input type="checkbox"-->
+                   <!--ng-click="vm.toggleDay(day)"-->
+                   <!--ng-checked="scheduling_tmp2[day].startTime && scheduling_tmp2[day].endTime"/>-->
+
+            <!--<div class="item__times" ng-show="scheduling_tmp2[day]">-->
+                <!--<div class="item__times__row"-->
+                     <!--ng-class="{'active': controls.choice.index === day && controls.choice.interval === 'startTime'}">-->
+                <!--<span ng-click="onFocus(day, 'startTime')">-->
+                    <!--{{scheduling_tmp2[day].startTime | date: 'HH:mm'}}-->
+                <!--</span>-->
+                <!--<select ng-model="scheduling_tmp2[day].startTime" ng-options="o as o for o in controls.schemaTime"></select>-->
+                <!--&lt;!&ndash;<df-selectbox ng-model="scheduling_tmp2[day].startTime" allow-empty="false">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<option-item class="sub-item" ng-blur="onBlur(day, 'startTime')" ng-repeat="opt in controls.schemaTime">&ndash;&gt;-->
+                        <!--&lt;!&ndash;{{opt.label}}&ndash;&gt;-->
+                    <!--&lt;!&ndash;</option-item>&ndash;&gt;-->
+                <!--&lt;!&ndash;</df-selectbox>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input type="time"&ndash;&gt;-->
+                           <!--&lt;!&ndash;ng-blur="onBlur(day, 'startTime')"&ndash;&gt;-->
+                           <!--&lt;!&ndash;ng-model="scheduling_tmp2[day].startTime"/>&ndash;&gt;-->
+                <!--</div>-->
+
+                <!--<div class="item__times__row"-->
+                     <!--ng-class="{'active': controls.choice.index === day && controls.choice.interval === 'endTime'}">-->
+                <!--<span ng-click="onFocus(day, 'endTime')">-->
+                    <!--{{scheduling_tmp2[day].endTime | date: 'HH:mm'}}-->
+                <!--</span>-->
+                    <!--<input type="time"-->
+                           <!--ng-blur="onBlur(day, 'endTime')"-->
+                           <!--ng-model="scheduling_tmp2[day].endTime"/>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</li>-->
+<!--</ul>-->
+<p ng-if="error" class="error"> Start time should be less the end time </p>

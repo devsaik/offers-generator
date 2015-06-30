@@ -1,0 +1,18 @@
+<df-selectbox ng-model="values"
+              name="iabCategoryCodes"
+              type="multi"
+              allow-empty="false"
+              allow-filter="true"
+              filter="iabFilter"
+              placeholder="Top Level">
+    <div class="sub" ng-repeat="opt in iab_categories | filter: iabFilter">
+        <p class="sub-title">{{opt.name}}</p>
+        <option-item class="sub-item"
+                     ng-repeat="item in opt.list | filter: iabFilter"
+                     label="item.name"
+                     value="item.code"
+                     default="$first">
+            <span>{{item.name}}</span>
+        </option-item>
+    </div>
+</df-selectbox>

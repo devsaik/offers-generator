@@ -1,0 +1,6 @@
+<select ng-model="value"
+        id="{{::fid}}"
+        ng-disabled="isDisabled()"
+        ng-change="onValueChanged()"
+        ng-options="opt as opt.label for opt in options">
+</select>

@@ -42,7 +42,7 @@ require('./src/files')(GulpAngularGenerator);
 require('./src/modules')(GulpAngularGenerator);
 require('./src/techs')(GulpAngularGenerator);
 require('./src/ui')(GulpAngularGenerator);
-require('./src/router')(GulpAngularGenerator);
+//require('./src/router')(GulpAngularGenerator);
 require('./src/preprocessors')(GulpAngularGenerator);
 
 require('./src/write')(GulpAngularGenerator);

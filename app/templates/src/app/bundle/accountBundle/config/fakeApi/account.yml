@@ -1,0 +1,98 @@
+appConfig:
+  FAKEAPI:
+    account_users_invite:
+      url: '//faker.com/api/account/users/invite'
+      POST:
+        not_full_mirror:
+          state: '"Invite Sent"'
+
+    account_users:
+      url: '//faker.com/api/account/users'
+      GET:
+        count: 5
+        schema:
+          id:   'faker.random.number(200)'
+          firstName: 'faker.name.firstName()'
+          lastName: 'faker.name.lastName()'
+          email: 'faker.internet.email()'
+          type: 'faker.random.array_element(["Owner", "Mobile User"])'
+          createDate: 'faker.date.past(2)'
+          state: 'faker.random.array_element(["activated", "Invite Sent", "Invite Not Sent"])'
+          status: 'faker.random.array_element(["active", "on hold"])'
+      PUT:
+        not_full_mirror:
+          id: 'faker.random.number(200)'
+      POST:
+        full_mirror: true
+
+
+    account-plan:
+      url: '//faker.com/api/account/plan'
+      GET:
+        schema:
+          title:      'faker.random.array_element(["pro", "go"])'
+          startDate:  'faker.date.recent(10)'
+      POST:
+        not_full_mirror:
+          startDate: 'Date()'
+        schema:
+          title:      'faker.random.array_element(["pro", "go"])'
+          startDate:  'faker.date.recent(2)'
+
+    account-pass-verify:
+      url: '//faker.com/api/account/verifypass'
+      POST:
+        schema:
+          verify: 'faker.random.array_element([true, false])'
+
+    account-pass-update:
+      url: '//faker.com/api/account/updatepass'
+      POST:
+        schema:
+          passLength:           'faker.random.number(5) + 5'
+
+    account-ques:
+      url: '//faker.com/api/account/updateques'
+      POST:
+        schema:
+          secretQues:     "faker.lorem.sentence()"
+          secretAnsLength:      'faker.random.number(5) + 5'
+
+    account:
+        url: '//faker.com/api/account'
+        GET:
+          schema:
+            secretQues:       'faker.lorem.sentence()'
+            secretAns:        '"*".repeat(faker.random.number(5)+5)'
+            pass:             '"*".repeat(faker.random.number(5)+5)'
+            personal:
+              place:          'faker.address.streetAddress()'
+              city:           'faker.address.city()'
+              stateCode:      'faker.address.stateAbbr()'
+              phone:          'faker.phone.phoneNumber()'
+              email:          'faker.internet.email()'
+            business:
+              place:          'faker.address.streetAddress()'
+              city:           'faker.address.city()'
+              stateCode:      'faker.address.stateAbbr()'
+              zipCode:        'faker.address.zipCode()'
+              phone:          'faker.phone.phoneNumber()'
+              website:        'faker.internet.domainName()'
+              logo:           'faker.image.abstract(60,80)'
+            emailPrefs:
+              trans:          'faker.random.array_element([true, false])'
+              deposit:        'faker.random.array_element([true, false])'
+            receiptSettings:
+              showMap:        'faker.random.array_element([true, false])'
+              showInfo:
+                address:      'faker.random.array_element([true, false])'
+                phone:        'faker.random.array_element([true, false])'
+                website:      'faker.random.array_element([true, false])'
+              facebookLink:   'faker.internet.domainName()'
+              yelpLink:       'faker.internet.domainName()'
+              twitterLink:    'faker.internet.domainName()'
+              foursquareLink: 'faker.internet.domainName()'
+
+
+        POST:
+          full_mirror: true

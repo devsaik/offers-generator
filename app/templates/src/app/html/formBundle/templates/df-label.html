@@ -1,0 +1,11 @@
+<label ng-class="{required: required}"
+       for="{{forAttr}}">
+    <span ng-bind-html="label"></span>
+
+    <div class="tooltip" ng-if="tooltip">
+        <span class="tooltip-icon">
+            <i class="fa fa-info"></i>
+        </span>
+        <div class="tooltip-popover" ng-class="position(tooltipPosition)">{{tooltip}}</div>
+    </div>
+</label>

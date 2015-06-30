@@ -1,0 +1,40 @@
+appConfig:
+  ENTITY:
+    offer:
+      transformers:
+        offerList:
+          __copy: ["name", "title", "views", "viewDuration", "accepts", "shares", "redemptions", "revenue", "description", "uniquePageViews", "displays", "clicks", "impressions", "totalSales", "spend", "status", "shortUrl"]
+          id: "extId"
+          timeZone: "timeZone.timeZone || timeZone"
+          createdTime: "createdTime | amDateFormat: 'YYYY/MM/DD HH:mm:ssZ'"
+          startTime: "moment.tz(object.startTime, object.timeZone.timeZone || object.timeZone).format('YYYY/MM/DD')"
+          endTime: "moment.tz(object.endTime, object.timeZone.timeZone || object.timeZone).format('YYYY/MM/DD')"
+          channels: "campaigns || []"
+
+        offerDetails:
+          response:
+            __prefix: "offer"
+            __copy: ["id", "name", "title", "timeRestrictions","status", "timeRestrictions","template", "offerRadius", "restrictions","redemptionTarget", "promoType", "activeTimings", "companyName", "description", "extDiscountCode", "item", "line_items", "merchantId" ]
+            discount: "discounts[0]"
+            shortUrl: "shortUrl || shortURL || siteUrl"
+            location: "locationIds[0]"
+            timeZone: "timeZone.timeZone || timeZone"
+            startTime: "offerStartDate || startTime | amDateFormat: 'YYYY/MM/DD'"
+            endTime: "offerEndDate || endTime | amDateFormat: 'YYYY/MM/DD'"
+            channels: "campaigns || []"
+            linkedOffer: "linkedOffers[0]"
+
+          request:
+            __copy: ["id", "name", "title", "timeZone","timeRestrictions","status","timeRestrictions","template", "shortUrl", "offerRadius", "restrictions","redemptionTarget", "promoType", "activeTimings", "companyName", "description", "extDiscountCode", "item", "line_items", "merchantId" ]
+            discounts: "[discount]"
+            locationIds: "[location.id]"
+            offerStartDate: "startTime | amDateFormat: 'YYYY-MM-DD'"
+            offerEndDate: "endTime | amDateFormat: 'YYYY-MM-DD'"
+
+#        offerStatistic:
+#          accepts: "dailyAccepts"
+#          redemptions: "dailyRedemptions"
+#          revenue: "dailyRevenue"
+#          shares: "dailyShares"
+#          viewDuration: "dailyViewDuration"
+#          views: "dailyViews"

@@ -1,0 +1,152 @@
+<div class="receipt-preview">
+    <div class="menu" ng-class="{'edit': onEdit}">
+        <a href="" class="btn white flr" ng-click="onEdit = true">
+            <i class="pp-icon setup"></i>
+        </a>
+        <a href="" class="color-blue link-no-border fll" ng-show="onEdit" ng-click="onEdit = false">
+            <i class="pp-icon back"></i>
+            Back to account settings
+        </a>
+        <span ng-hide="onEdit">Receipt Preview</span>
+    </div>
+
+    <div class="account-block">
+        <div class="info-screen">
+            <img alt="Store Logo" ng-src="{{account.business.logo}}"
+                 class="storeLogo">
+
+            <h2>{{account.business.place}}</h2>
+
+            <div class="receiptAddress">
+                <div ng-show="account.receiptSettings.showInfo.address">
+                    <p>{{account.business.place}}<br>
+                        {{account.business.city}}, {{account.business.stateCode}} {{account.business.zipCode}}<br>
+                    </p>
+                </div>
+                <div ng-show="account.receiptSettings.showInfo.phone">
+                    <p>{{account.business.phone}}</p>
+                </div>
+                <div ng-show="account.receiptSettings.showInfo.website">
+                    <p>{{account.business.website}}</p>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <ul class="receiptItems">
+                <li ng-repeat="item in fakeReceipt.items">
+                    <h4>{{item.name}}</h4>
+                    <strong>${{item.price}}</strong>
+
+                    <div class="clear"></div>
+                </li>
+            </ul>
+            <div class="receiptTotal">
+            <span><img alt="Visa"
+                       ng-src="https://s3.amazonaws.com/verifone-sail-static/receipt/images/{{fakeReceipt.cartType}}Icon.gif">{{fakeReceipt.cartNumber}}</span>
+                <strong>{{fakeReceipt.totalPrice}}</strong>
+
+                <div class="clear"></div>
+            </div>
+            <div class="map" ng-if="account.receiptSettings.showMap">
+                <img ng-src="https://maps.google.com/maps/api/staticmap?size=280x207&maptype=roadmap&markers=|{{urlEscape(account.business.place + ', '+account.business.city+' '+account.business.stateCode+ ' ' +account.business.zipCode)}}&sensor=false" alt="Map">
+            </div>
+            <div class="receiptMarketing">
+                <p>
+                    Accept Payments with Spark Pay.
+                    <br>
+                    Learn more at
+                    <a href="https://sparkpay.com" class="link-no-border" target="_blank">sparkpay.com</a>
+                </p>
+                <img src="http://ec2-54-163-172-143.compute-1.amazonaws.com:3000/webapp/images/receipt/sparkpayLogo.jpg"
+                     alt="Spark Pay">
+
+                <div class="clear"></div>
+            </div>
+            <div class="receiptDate">
+                <span>{{fakeReceipt.date}}</span>
+                <span class="auth-code auth-code-sales">{{fakeReceipt.authCode}}</span>
+                <em>{{fakeReceipt.time}}</em>
+            </div>
+        </div>
+        <div class="edit-screen">
+            <form class="form" ng-submit="saveSettings()">
+                <div class="pp-form__row choice-image">
+                    <div class="df-field">
+                        <df-label label="Show Logo <i>500KB max optional</i>"></df-label>
+                        <div class="form-widget">
+                            <img class="img-box" ng-if="account.business.logo" ng-src="{{account.business.logo}}"/>
+                            <div>
+                                <p class="mt0 mb5" ng-if="account.business.logo">
+                                    <a href="" class="link-no-border color-blue">Remove Image</a>
+                                </p>
+                                <span class="btn white">
+                                    Browse
+                                    <input type="file" value=""/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pp-form__row">
+                    <div class="df-field">
+                        <df-label class="pt0" label="Show Map"></df-label>
+                        <div class="form-widget choice-buttons">
+                            <label class="mr10">
+                                <input type="radio" ng-model="account.receiptSettings.showMap" id="showMapTrue" ng-value="true">
+                                Yes
+                            </label>
+                            <label>
+                                <input type="radio" ng-model="account.receiptSettings.showMap" id="showMapFalse" ng-value="false">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                    </df-field>
+                </div>
+                <div class="pp-form__row">
+                    <div class="df-field">
+                        <df-label class="pt0" label="Business Info"></df-label>
+                        <div class="form-widget choice-buttons">
+                            <div class="row">
+                                <input type="checkbox" ng-model="account.receiptSettings.showInfo.address" id="showAddress">
+                                <label for="showAddress">Address</label>
+                            </div>
+                            <div class="row">
+                                <input type="checkbox" ng-model="account.receiptSettings.showInfo.phone" id="showPhone">
+                                <label for="showPhone">Phone</label>
+                            </div>
+                            <div class="row">
+                                <input type="checkbox" ng-model="account.receiptSettings.showInfo.website" id="showWebsite">
+                                <label for="showWebsite">Website</label>
+                            </div>
+                        </div>
+                    </div>
+                    </df-field>
+                </div>
+                <div class="pp-form__row">
+                    <df-field label="Facebook">
+                        <df-input ng-model="account.receiptSettings.facebookLink"></df-input>
+                    </df-field>
+                </div>
+                <div class="pp-form__row">
+                    <df-field label="Yelp">
+                        <df-input ng-model="account.receiptSettings.yelpLink"></df-input>
+                    </df-field>
+                </div>
+                <div class="pp-form__row">
+                    <df-field label="Twitter">
+                        <df-input ng-model="account.receiptSettings.twitterLink"></df-input>
+                    </df-field>
+                </div>
+                <div class="pp-form__row">
+                    <df-field label="Foursquare">
+                        <df-input ng-model="account.receiptSettings.foursquareLink"></df-input>
+                    </df-field>
+                </div>
+                <div class="row-buttons">
+                    <a href="" class="btn white" ng-click="onEdit = false">Cancel</a>
+                    <button class="btn green" type="submit">Save Settings</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

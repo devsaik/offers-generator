@@ -1,0 +1,45 @@
+<div class="account-bundle row">
+    <!-- content -->
+    <div class="col-xs-9">
+        <account-info
+                ng-model="account"
+                on-save="saveAccount()"
+                on-pass-request="verifyPassword(pass, callback)"
+                on-update-password="updatePassword(pass)"
+                on-update-secret-ques="setSecretQues(ques, ans)"
+                >
+        </account-info>
+        <account-users-list
+                ng-model="account.users"
+                user-statuses="userStatuses"
+                user-types="userTypes"
+                on-hold="holdUser(user)"
+                on-activate="activateUser(user)"
+                on-create="createUser(user, callback)"
+                on-invite="inviteUser(user)"
+                >
+        </account-users-list>
+        <div class="account-devices">
+            <div class="account-block">
+                <p class="title mb20">Devices</p>
+                <p class="message">No devices found</p>
+            </div>
+        </div>
+    </div>
+    <!-- content -->
+    <!-- sidebar -->
+    <div class="col-xs-3">
+        <aside class="sidebar">
+            <account-receipt
+                    ng-model="account"
+                    on-save="saveAccount()">
+            </account-receipt>
+            <account-plan
+                    ng-model="account.plan"
+                    plans-params="plansParams"
+                    on-switch="switchPlan()">
+            </account-plan>
+        </aside>
+    </div>
+    <!-- sidebar -->
+</div>

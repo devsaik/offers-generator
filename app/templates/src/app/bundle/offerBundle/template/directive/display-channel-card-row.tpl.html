@@ -1,0 +1,69 @@
+<span ng-bind="label"></span>
+
+<div class="flr">
+   <a href="" class="icon" ng-if="controls.icons.spend" ng-click="vm.showSpendPopup()">
+      <img class="icon-svg spend" pp-src="/assets/img/icons/spend.svg" title="Campaign Spend" />
+   </a>
+   <a href="" class="icon" ng-click="vm.showAdPreviewPopup()"
+      ng-if="channel.status !== 'INCOMPLETE' || channel.status === 'REJECTED'">
+      <i class="fa fa-eye" title="View Ad"></i>
+   </a>
+   <a href="" class="icon" ui-sref="ppp.offer.list.item.channelStatistic({id: offerId, channel_type: channel.type})"
+      ng-if="channel.status !== 'INCOMPLETE' && channel.status !== 'PENDING'">
+      <i class="fa fa-bar-chart" title="Campaign Chart"></i>
+   </a>
+   <a href="" class="icon" ui-sref="channel({id: offerId, channel_type: channel.type})"
+      ng-if="channel.status === 'INCOMPLETE' || channel.status === 'REJECTED'">
+        <img class="icon-svg incomplete" pp-src="/assets/img/icons/incomplete.svg" title="Edit Campaign" />
+   </a>
+   <a href="" class="icon" ng-click="changeStatus('pause')"
+      ng-if="channel.status === 'RUNNING'">
+      <i class="fa fa-check green" title="Campaign is Live"></i>
+   </a>
+   <a href="" class="icon" ng-click="vm.showRejectedPopup()"
+      ng-if="channel.status === 'REJECTED'">
+      <i class="fa fa-exclamation-triangle red" title="Campaign is Rejected"></i>
+   </a>
+   <a href="" class="icon" ng-click="changeStatus('play')"
+      ng-if="channel.status === 'PAUSED'">
+      <img class="icon-svg paused" pp-src="/assets/img/icons/paused.svg" title="Campaign Paused" />
+   </a>
+   <a href="" class="icon" ng-if="channel.status === 'PENDING'">
+      <i class="fa fa-clock-o green" title="Campaign Approved"></i>
+   </a>
+</div>
+
+<!--<a href="" class="fa fa-clock-o"></a>-->
+<!--<a href="" class="fa fa-bar-chart"-->
+   <!--ui-sref="ppp.offer.list.item.channelStatistic({id: offerId, channel_type: 'display'})"></a>-->
+<!--<a class="fa fa-eye"-->
+   <!--href=""-->
+   <!--ng-if="channel.ads"-->
+   <!--ng-click="vm.showAdPreviewPopup()"></a>-->
+<!--<a href="" class="fa fa-usd" ui-sref="channel({id: offerId, channel_type: 'display'})"></a>-->
+
+<!-- buttons with chance status-->
+<!--<div class="flr" ng-switch="channel.status">-->
+   <!--<span ng-switch-when="INCOMPLETE">-->
+      <!--<a href="" class="fa fa-play" ng-click="changeStatus('approve')"></a>-->
+   <!--</span>-->
+
+   <!--<span ng-switch-when="PENDING">-->
+      <!--<a href="" class="fa fa-trash" ng-click="changeStatus('expire')"></a>-->
+   <!--</span>-->
+
+   <!--<span ng-switch-when="RUNNING">-->
+      <!--<a href="" class="fa fa-pause" ng-click="changeStatus('pause')"></a>-->
+      <!--<a href="" class="fa fa-trash" ng-click="changeStatus('expire')"></a>-->
+   <!--</span>-->
+
+   <!--<span ng-switch-when="PAUSED">-->
+      <!--<a href="" class="fa fa-play" ng-click="changeStatus('play')"></a>-->
+      <!--<a href="" class="fa fa-trash" ng-click="changeStatus('expire')"></a>-->
+   <!--</span>-->
+
+   <!--<span ng-switch-when="EXPIRED">-->
+      <!--<a href="" class="fa fa-folder" ng-click="changeStatus('archive')"></a>-->
+   <!--</span>-->
+<!--</div>-->
+<!-- end buttons with chance status-->

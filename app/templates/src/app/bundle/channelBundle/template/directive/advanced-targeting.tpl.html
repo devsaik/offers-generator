@@ -1,0 +1,14 @@
+<df-selectbox class="h-none"
+              ng-model="values"
+              name="devices"
+              type="multi"
+              allow-empty="false"
+              placeholder="All Phones Types">
+    <option-item class="sub-item"
+                 ng-repeat="opt in maps"
+                 label="opt.label"
+                 value="opt.value">
+        <span>{{opt.label}}</span>
+    </option-item>
+</df-selectbox>
+<df-error for-name="devices"></df-error>

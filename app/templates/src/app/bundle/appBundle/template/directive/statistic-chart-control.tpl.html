@@ -1,0 +1,49 @@
+<form class="pp-form form-horisontal">
+    <div class="row row-date">
+        <div class="col-xs-3">
+            <df-field>
+                <df-selectbox ng-model="controls.filterType" name="filterType" class="pp-selectbox h-none">
+                    <option-item class="sub-item" value="promotion">All Duration</option-item>
+                    <option-item class="sub-item" value="week" default="true">Current Week</option-item>
+                    <option-item class="sub-item" value="month">Current Month</option-item>
+                    <option-item class="sub-item" value="weekend">Weekends Only</option-item>
+                    <option-item class="sub-item" value="custom">Specified Dates</option-item>
+                </df-selectbox>
+            </df-field>
+        </div>
+        <div class="col-xs-6">
+            <!--row-->
+            <div class="row-datepicker">
+                <span class="label">From:</span>
+                <df-datepicker class="gray-icon"
+                               name="fromDate"
+                               min-date="options.fromDate"
+                               max-date="options.toDate"
+                               format="yyyy/MM/dd"
+                               ng-disabled="controls.filterType !== 'custom'"
+                               ng-model="controls.filter.fromDate">
+                </df-datepicker>
+                <df-error class="clear" for-name="fromDate"></df-error>
+            </div>
+            <!--end row-->
+            <!--row-->
+            <div class="row-datepicker">
+                <span class="label">to:</span>
+                <df-datepicker class="gray-icon"
+                               name="toDate"
+                               min-date="options.fromDate"
+                               max-date="options.toDate"
+                               format="yyyy/MM/dd"
+                               ng-disabled="controls.filterType !== 'custom'"
+                               ng-model="controls.filter.toDate">
+                </df-datepicker>
+                <df-error class="clear" for-name="toDate"></df-error>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <df-button class="flr" label="Update" primary="true" ng-click="vm.apply(controls.filterType)"
+                       disable-on-invalid="true" ng-disabled="controls.filterType !== 'custom'"></df-button>
+        </div>
+    </div>
+</form>
+<ng-transclude></ng-transclude>

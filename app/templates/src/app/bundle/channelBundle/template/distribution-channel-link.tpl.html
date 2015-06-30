@@ -1,0 +1,56 @@
+<div class="channel-links">
+    <div class="pp-popup__header">What do you want to do with your offer?</div>
+    <div class="pp-popup__inner">
+
+        <div class="box-images">
+            <!--display channel-->
+            <div class="col-xs-6 item">
+                <div class="tac">
+                    <figure class="img-box">
+                        <img pp-src="{{'/assets/img/channels/first-step/phone.png'}}" />
+                    </figure>
+                    <a class="pp-btn lgreen mb10 ch-btn"
+                       ui-sref="channel({id:offer.id, channel_type: channels.display.getName()})">
+                        Buy Mobile Ads <span ng-show="isChannelAvailable(channels.display)">(Already added)</span>
+                    </a>
+                    <!--<a class="pp-btn lgreen mb10 ch-btn"-->
+                       <!--ui-sref="channel({id:offer.id, channel_type: channels.facebook.getName()})">-->
+                        <!--Buy Facebook Ads <span ng-show="isChannelAvailable(channels.facebook)">(Already added)</span>-->
+                    <!--</a>-->
+                </div>
+            </div>
+            <!--free: sms/email channels-->
+            <!--<div class="col-xs-4 item">-->
+                <!--<div class="tac">-->
+                    <!--<figure class="img-box">-->
+                        <!--<img pp-src="{{'/assets/img/channels/free.png'}}" />-->
+                    <!--</figure>-->
+                    <!--<a class="pp-btn lgreen mb10 ch-btn"-->
+                       <!--ui-sref="channel({id:offer.id, channel_type: channels.free.getName(), distributionChannel: 'SMS'})">-->
+                        <!--SMS Channel <span ng-show="isChannelAvailable(channels.free, 'SMS')">(Already added)</span>-->
+                    <!--</a>-->
+                    <!--<a class="pp-btn lgreen mb10 ch-btn"-->
+                       <!--ui-sref="channel({id:offer.id, channel_type: channels.free.getName(), distributionChannel: 'EMAIL'})">-->
+                        <!--Email Channel <span ng-show="isChannelAvailable(channels.free, 'EMAIL' )">(Already added)</span>-->
+                    <!--</a>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--I send it-->
+            <div class="col-xs-6 item">
+                <div class="tac">
+                    <figure class="img-box">
+                        <img pp-src="{{'/assets/img/channels/first-step/copy.png'}}" />
+                    </figure>
+                    <a class="pp-btn lgreen ch-btn"
+                       ui-sref="channel({id:offer.id, channel_type: channels.share.getName()})">
+                        I Send It
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="tac">
+            <button class="pp-btn gray" ng-click="closeThisDialog()">Go Back</button>
+        </div>
+    </div>
+</div>

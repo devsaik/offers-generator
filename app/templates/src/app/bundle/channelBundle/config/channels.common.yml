@@ -1,0 +1,19 @@
+appConfig:
+  DATATRANSFORMERS:
+    channelStatistic: "channelStatisticTransformer"
+    adStatistic: "adStatisticTransformer"
+  channelBundle:
+    channels:
+      common:
+        form:
+          schedule:
+            label: "Schedule"
+            tooltip: "Schedule is the dates in which your Mobile Banners campaign will be live. We've set it to match your Offer dates, but you can change it. However, your campaigns can only run within the dates of your Offer. You can run campaign for as short as one day and as long as 6 months."
+          schedulings:
+            label: "Day Targeting"
+            tooltip: "Day Targeting allows you to only run your campaign on certain days of the week, during the dates in which the campaign will be live."
+            options:
+              - {label: "Every day", value: "Everyday"}
+              - {label: "Weekdays Only", value: "Working Days"}
+              - {label: "Weekends Only", value: "Weekends"}
+#              - {label: "Custom", value: "Custom"}

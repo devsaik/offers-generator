@@ -1,0 +1,59 @@
+<div class="main-settings row">
+    <form class="pp-form col-xs-12 col-md-7"
+          name="free_campaign_form"
+          object="channel"
+          validation-rules="controls.validationRules">
+
+        <p class="title">{{offer.name}}</p>
+
+        <div class="pp-form__row row mb15">
+            <div class="col-xs-6">
+                <df-field label="Start Date"
+                          tooltip="{{::controls.fields.schedule.tooltip}}">
+                    <df-datepicker
+                            class="pp-datepicker blue-icon"
+                            min-date="channel.initStartDate"
+                            max-date="channel.initEndDate"
+                            format="yyyy/MM/dd"
+                            help="When offer will expired"
+                            ng-model="channel.startDate"
+                            style="width: 100%;">
+                    </df-datepicker>
+                </df-field>
+            </div>
+        </div>
+
+        <div class="pp-form__row row mb15">
+            <div class="col-xs-6">
+                <df-field label="Distribution Channels List">
+                    <df-selectbox ng-model="channel.distributionListId" name="distributionListId"
+                                  allow-empty="false" df-validator df-required>
+                        <option-item class="sub-item" ng-repeat="opt in controls.channels"
+                                     label="opt.name" value="opt.id" default="$first">
+                            <span>{{opt.name}}</span>
+                        </option-item>
+                    </df-selectbox>
+                </df-field>
+            </div>
+        </div>
+
+        <div class="pp-form__row mb15">
+            <a href="" class="pp-btn blue" ng-click="next()"> Distribution Channels List </a>
+        </div>
+
+        <!--buttons-->
+        <div class="row-buttons row">
+            <div class="col-xs-6">
+                <a href="" ui-sref="ppp.offer.list.item.channels" class="pp-btn dgray">Go Back</a>
+            </div>
+            <div class="col-xs-6">
+                <df-button label="Next" primary="true" ng-click="save(channel, true);" disable-on-invalid="true"></df-button>
+            </div>
+        </div>
+        <!--end buttons-->
+    </form>
+
+    <figure class="col-md-5 hidden-xs hidden-sm img-box">
+        <img pp-src="/assets/img/channels/free.png"/>
+    </figure>
+</div>

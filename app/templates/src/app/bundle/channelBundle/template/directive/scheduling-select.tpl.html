@@ -1,0 +1,36 @@
+<df-selectbox ng-model="type" allow-empty="false">
+    <option-item class="sub-item" ng-repeat="opt in types" label="opt.label" value="opt.value" default="opt.default">
+        <span>{{opt.label}}</span>
+    </option-item>
+</df-selectbox>
+
+<ul class="pp-scheduling__dropdown" ng-show="type === 'Custom'">
+    <li class="item"
+        ng-repeat="day in week">
+        <div ng-class="{'invalid': scheduling_tmp2[day].invalid}">
+            <b class="day" ng-class="{'weekend': day === 'SAT' || day === 'SUN'}">{{day}}</b>
+            <input type="checkbox"
+                   ng-click="vm.toggleDay(day)"
+                   ng-checked="scheduling_tmp2[day].startTime && scheduling_tmp2[day].endTime"/>
+
+            <div class="item__times" ng-show="scheduling_tmp2[day]">
+                <div class="item__times__row"
+                     ng-class="{'active': controls.choice.index === day && controls.choice.interval === 'startTime'}">
+                    <span ng-click="onFocus(day, 'startTime')">
+                        {{scheduling_tmp2[day].startTime}}
+                    </span>
+                    <select ng-change="onChange(day, 'startTime')" ng-model="scheduling_tmp2[day].startTime" ng-options="o as o for o in controls.schemaTime"></select>
+                </div>
+
+                <div class="item__times__row"
+                     ng-class="{'active': controls.choice.index === day && controls.choice.interval === 'endTime'}">
+                    <span ng-click="onFocus(day, 'endTime')">
+                        {{scheduling_tmp2[day].endTime}}
+                    </span>
+                    <select ng-change="onChange(day, 'endTime')" ng-model="scheduling_tmp2[day].endTime" ng-options="o as o for o in controls.schemaTime"></select>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+<p ng-if="error" class="error"> Start time should be less the end time </p>

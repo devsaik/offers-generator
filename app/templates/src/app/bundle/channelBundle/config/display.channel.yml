@@ -1,0 +1,470 @@
+appConfig:
+  channelBundle:
+    channels:
+      display:
+        controllerName: "DisplayChannelController as vm"
+        entityName: "DisplayEntity"
+        templateUrl: "app/bundle/channelBundle/template/display/index.tpl.html"
+
+        view:
+          image: "/assets/img/channels/mobile.png"
+          text: "Buy Mobile Ads"
+
+
+        dialog:
+          showClose: false
+          onClose:
+            confirm: "All unsaved data will be lost. Do you want to complete your campaign now?"
+
+        transformFields:
+          GEO:
+            arrayName: "locationIds"
+            fieldName: "location"
+            valueField: "id"
+          City:
+            arrayName: "cityIds"
+            fieldName: "cities"
+            valueField: "value"
+          State:
+            arrayName: "stateCodes"
+            fieldName: "states"
+            valueField: "value"
+
+        entity:
+          defaults:
+            type: "DISPLAY"
+            distributionChannel: "DISPLAY"
+            campaignType: "DISPLAY"
+            bidStrategy: "OPTIMIZED"
+            pricingTargeting: "CLICK"
+            iabCategoryCodes: []
+            devices: ""
+            geo:
+              label: "Geo-targeting location"
+              tooltip: "Geo-targeting allows you to define how large an area you want to reach consumers in. If you run a phone- or web-based business, National targeting may work best for you. If you run a coffee shop, maybe Local is the best way for you to target likely customers."
+              options:
+                - {label: "National", value: "National", default: true}
+                - {label: "My State", value: "State"}
+                - {label: "My City", value: "City"}
+                - {label: "Near Me", value: "GEO"}
+#                - {label: "My Metro Codes", value: "Metro"}
+            schedulings:
+                -
+                  day: "MON"
+                  startTime: "00:00"
+                  endTime: "23:59"
+                -
+                  day: "TUE"
+                  startTime: "00:00"
+                  endTime: "23:59"
+                -
+                  day: "WED"
+                  startTime: "00:00"
+                  endTime: "23:59"
+                -
+                  day: "THU"
+                  startTime: "00:00"
+                  endTime: "23:59"
+                -
+                  day: "FRI"
+                  startTime: "00:00"
+                  endTime: "23:59"
+                -
+                  day: "SAT"
+                  startTime: "00:00"
+                  endTime: "23:59"
+                -
+                  day: "SUN"
+                  startTime: "00:00"
+                  endTime: "23:59"
+
+
+
+        validators:
+          DisplayChannelEntity:
+            iabCategoryCodes:
+              -
+                name: required
+                rule: 1
+                message: "Please select a campaign classification subcategory"
+#            targetedCategoryIds:
+#              -
+#                name: required
+#                rule: 1
+#                message: "Please select a campaign classification category"
+            startDate:
+              -
+                name: required
+                rule: true
+                message: "Please select a start date for the campaign"
+              -
+                name: dateDiff
+                message: "Campaign start date must be before end date"
+                rule:
+                  field: "endDate"
+                  range: 0
+            endDate:
+              -
+                name: required
+                rule: true
+                message: "Please select an end date for the campaign"
+              -
+               name: dateDiff
+               rule:
+                 field: "startDate"
+                 range: 179
+               message: "Please enter campaign length that is less than or equal to 6 months"
+            devicesTargeting:
+              -
+                name: required
+                rule: true
+            appTargeting:
+              -
+                name: required
+                rule: true
+            totalBudget:
+              -
+                name: required
+                rule: true
+                message: "Please enter a budget amount"
+              -
+                name: type
+                rule: positive
+                message: "Please enter a numeric value"
+              -
+                name: more
+                rule: 0
+              -
+                name: lessThan
+                rule: 100
+                message: Over Budget
+            maxBid:
+              -
+                name: required
+                rule: true
+              -
+                name: type
+                rule: positive
+                message: "Please enter a numeric value"
+              -
+                name: more
+                rule: 0
+#              -
+#                name: lessThan
+#                rule: "totalBudget, hourlyBudget"
+            dailyBudget:
+              -
+                name: required
+                rule: true
+              -
+                name: type
+                rule: positive
+                message: "Please enter a numeric value"
+              -
+                name: more
+                rule: 0
+              -
+                name: lessThan
+                rule: "totalBudget"
+            hourlyBudget:
+              -
+                name: type
+                rule: positive
+                message: "Please enter a numeric value"
+            averageSale:
+              -
+                name: required
+                rule: true
+              -
+                name: type
+                rule: positive
+                message: "Please enter a numeric value"
+              -
+                name: more
+                rule: 0
+#            bidStrategy:
+#              -
+#                name: required
+#                rule: true
+#            pricingTargeting:
+#              -
+#                name: required
+#                rule: true
+
+
+
+
+
+
+
+        form:
+          campaingnClassification:
+            label: "Campaign Classification"
+            tooltip: "Campaign Classification helps our advertising partners match your type of ads to websites and content that is relevant. An example would be ads for landscaping services running on a website containing gardening information."
+          advancedTargeting:
+            label: "Advanced Targeting"
+            tooltip: "Advanced Targeting allows you to target your ads only to specific devices and browsing experiences. Caution: combining a narrow Advanced Target and narrow geo-target may result in too small an audience to make a real impact on your business."
+          budget:
+            label: "Budget"
+            tooltip: "Budget is where you specify how much you want to spend on this campaign. No budget is too big or small, but results will also vary. You can also specify how quickly you want to spend the amount you approve: per day, per week, or for the entire campaign."
+          deviceCategory:
+            label: "Devices targeting"
+            options:
+              - {label: "All Mobile Devices", value: "NO_PREFERENCE", default: true}
+              - {label: "Smartphones", value: "SMARTPHONE" }
+              - {label: "Tablet", value: "TABLET"}
+          devices:
+            label: "Device Category"
+            options:
+              - {label: "IOS", value: "IOS" }
+              - {label: "Blackberry", value: "BLACKBERRY" }
+              - {label: "Android", value: "ANDROID" }
+              - {label: "Windows", value: "WINDOWS"}
+          application:
+            label: "Application"
+            options:
+              - {label: "Mobile Apps & Web", value: "NO_PREFERENCE", default: true }
+              - {label: "Mobile Apps", value: "MOBILE" }
+              - {label: "Web", value: "WEB" }
+#          bidStrategy:
+#            label: "Bid strategy"
+#            options:
+#              - {label: "EAGER", value: "EAGER", default: true }
+#              - {label: "CONSISTENT", value: "CONSISTENT" }
+#              - {label: "OPTIMIZED", value: "OPTIMIZED" }
+#          pricingTargeting:
+#            label: "Pricing Optimization"
+#            options:
+#              - {label: "Off", value: "OFF", default: true }
+#              - {label: "Optimize For Click-Throughs", value: "CLICK" }
+#              - {label: "Optimize For Conversion", value: "CONVERSION" }
+          budgetType:
+            options:
+              - {label: "Per Day", value: "PERDAY" }
+              - {label: "Per Campaign", value: "PERCAMPAIGN", default: true }
+          maxBid:
+            label: "Max Bid"
+            tooltip: "Max Bid"
+          hourlyBudget:
+            label: "Hourly Budget"
+            tooltip: "Hourly Budget"
+
+
+          adTitle:
+            label: "Ad Title"
+            tooltip: "Ad Title"
+          adDesc:
+            label: "Ad Description"
+            tooltip: "Additional information about your offer. Get creative with your descriptions to see what your customers like best."
+          adType:
+            label: "Ad Size"
+            tooltip: "Ad Size will define how your ad looks on a phone or tablet. The bigger the ad, the more engaging, but it can also limit the number of places it can show up. We have selected the most commonly seen ad size for you, ensuring the largest audience possible."
+            options:
+              - {label: "320 x 50 px",  value: "320x50"}
+              - {label: "300 x 250 px", value: "300x250"}
+              - {label: "320 x 480 px", value: "320x480"}
+          preview:
+            options:
+              300x250:
+                bg: "/assets/img/channels/third-step/phone-300x250.png"
+                width: 300
+                height: 250
+                top: 100
+                left: 65
+                landscape: false
+                scale: 1
+              320x50:
+                bg: "/assets/img/channels/third-step/phone-320x50.png"
+                width: 320
+                height: 50
+                top: 100
+                left: 55
+                landscape: false
+                scale: 1
+              320x480:
+                bg: "/assets/img/channels/third-step/phone-320x480.png"
+                width: 320
+                height: 480
+                top: 100
+                left: 55
+                landscape: false
+                scale: 1
+        heatmap:
+          defaults:
+            zoom:
+              National: 3
+              City: 9
+              GEO: 12
+              State: 6
+            mapCenter:
+              National:
+                lat: 39.828175
+                lng: -98.5795
+          filters:
+            storeCategory:
+              label: 'Store Category'
+              tooltip: 'Store Category'
+              options:
+                - { label : 'Accounting', value : 'accounting'}
+                - { label : 'Airport', value : 'airport'}
+                - { label : 'Amusement park', value : 'amusement_park'}
+                - { label : 'Aquarium', value : 'aquarium'}
+                - { label : 'Art gallery', value : 'art_gallery'}
+                - { label : 'Atm', value : 'atm'}
+                - { label : 'Bakery', value : 'bakery'}
+                - { label : 'Bank', value : 'bank'}
+                - { label : 'Bar', value : 'bar'}
+                - { label : 'Beauty salon', value : 'beauty_salon'}
+                - { label : 'Bicycle store', value : 'bicycle_store'}
+                - { label : 'Book store', value : 'book_store'}
+                - { label : 'Bowling alley', value : 'bowling_alley'}
+                - { label : 'Bus station', value : 'bus_station'}
+                - { label : 'Cafe', value : 'cafe'}
+                - { label : 'Campground', value : 'campground'}
+                - { label : 'Car dealer', value : 'car_dealer'}
+                - { label : 'Car rental', value : 'car_rental'}
+                - { label : 'Car repair', value : 'car_repair'}
+                - { label : 'Car wash', value : 'car_wash'}
+                - { label : 'Casino', value : 'casino'}
+                - { label : 'Cemetery', value : 'cemetery'}
+                - { label : 'Church', value : 'church'}
+                - { label : 'City hall', value : 'city_hall'}
+                - { label : 'Clothing store', value : 'clothing_store'}
+                - { label : 'Convenience store', value : 'convenience_store'}
+                - { label : 'Courthouse', value : 'courthouse'}
+                - { label : 'Dentist', value : 'dentist'}
+                - { label : 'Department store', value : 'department_store'}
+                - { label : 'Doctor', value : 'doctor'}
+                - { label : 'Electrician', value : 'electrician'}
+                - { label : 'Electronics store', value : 'electronics_store'}
+                - { label : 'Embassy', value : 'embassy'}
+                - { label : 'Establishment', value : 'establishment'}
+                - { label : 'Finance', value : 'finance'}
+                - { label : 'Fire station', value : 'fire_station'}
+                - { label : 'Florist', value : 'florist'}
+                - { label : 'Food', value : 'food'}
+                - { label : 'Funeral home', value : 'funeral_home'}
+                - { label : 'Furniture store', value : 'furniture_store'}
+                - { label : 'Gas station', value : 'gas_station'}
+                - { label : 'General contractor', value : 'general_contractor'}
+                - { label : 'Grocery or supermarket', value : 'grocery_or_supermarket'}
+                - { label : 'Gym', value : 'gym'}
+                - { label : 'Hair care', value : 'hair_care'}
+                - { label : 'Hardware store', value : 'hardware_store'}
+                - { label : 'Health', value : 'health'}
+                - { label : 'Hindu temple', value : 'hindu_temple'}
+                - { label : 'Home goods store', value : 'home_goods_store'}
+                - { label : 'Hospital', value : 'hospital'}
+                - { label : 'Insurance agency', value : 'insurance_agency'}
+                - { label : 'Jewelry store', value : 'jewelry_store'}
+                - { label : 'Laundry', value : 'laundry'}
+                - { label : 'Lawyer', value : 'lawyer'}
+                - { label : 'Library', value : 'library'}
+                - { label : 'Liquor store', value : 'liquor_store'}
+                - { label : 'Local government office', value : 'local_government_office'}
+                - { label : 'Locksmith', value : 'locksmith'}
+                - { label : 'Lodging', value : 'lodging'}
+                - { label : 'Meal delivery', value : 'meal_delivery'}
+                - { label : 'Meal takeaway', value : 'meal_takeaway'}
+                - { label : 'Mosque', value : 'mosque'}
+                - { label : 'Movie rental', value : 'movie_rental'}
+                - { label : 'Movie theater', value : 'movie_theater'}
+                - { label : 'Moving company', value : 'moving_company'}
+                - { label : 'Museum', value : 'museum'}
+                - { label : 'Night club', value : 'night_club'}
+                - { label : 'Painter', value : 'painter'}
+                - { label : 'Park', value : 'park'}
+                - { label : 'Parking', value : 'parking'}
+                - { label : 'Pet store', value : 'pet_store'}
+                - { label : 'Pharmacy', value : 'pharmacy'}
+                - { label : 'Physiotherapist', value : 'physiotherapist'}
+                - { label : 'Place of worship', value : 'place_of_worship'}
+                - { label : 'Plumber', value : 'plumber'}
+                - { label : 'Police', value : 'police'}
+                - { label : 'Post office', value : 'post_office'}
+                - { label : 'Real estate agency', value : 'real_estate_agency'}
+                - { label : 'Restaurant', value : 'restaurant'}
+                - { label : 'Roofing contractor', value : 'roofing_contractor'}
+                - { label : 'Rv park', value : 'rv_park'}
+                - { label : 'School', value : 'school'}
+                - { label : 'Shoe store', value : 'shoe_store'}
+                - { label : 'Shopping mall', value : 'shopping_mall'}
+                - { label : 'Spa', value : 'spa'}
+                - { label : 'Stadium', value : 'stadium'}
+                - { label : 'Storage', value : 'storage'}
+                - { label : 'Store', value : 'store'}
+                - { label : 'Subway station', value : 'subway_station'}
+                - { label : 'Synagogue', value : 'synagogue'}
+                - { label : 'Taxi stand', value : 'taxi_stand'}
+                - { label : 'Train station', value : 'train_station'}
+                - { label : 'Travel agency', value : 'travel_agency'}
+                - { label : 'University', value : 'university'}
+                - { label : 'Veterinary care', value : 'veterinary_care'}
+                - { label : 'Zoo', value : 'zoo'}
+                - { label : 'Administrative area level 1', value : 'administrative_area_level_1'}
+                - { label : 'Administrative area level 2', value : 'administrative_area_level_2'}
+                - { label : 'Administrative area level 3', value : 'administrative_area_level_3'}
+                - { label : 'Administrative area level 4', value : 'administrative_area_level_4'}
+                - { label : 'Administrative area level 5', value : 'administrative_area_level_5'}
+                - { label : 'Colloquial area', value : 'colloquial_area'}
+                - { label : 'Country', value : 'country'}
+                - { label : 'Floor', value : 'floor'}
+                - { label : 'Geocode', value : 'geocode'}
+                - { label : 'Intersection', value : 'intersection'}
+                - { label : 'Locality', value : 'locality'}
+                - { label : 'Natural feature', value : 'natural_feature'}
+                - { label : 'Neighborhood', value : 'neighborhood'}
+                - { label : 'Political', value : 'political'}
+                - { label : 'Point of interest', value : 'point_of_interest'}
+                - { label : 'Post box', value : 'post_box'}
+                - { label : 'Postal code', value : 'postal_code'}
+                - { label : 'Postal code prefix', value : 'postal_code_prefix'}
+                - { label : 'Postal code suffix', value : 'postal_code_suffix'}
+                - { label : 'Postal town', value : 'postal_town'}
+                - { label : 'Premise', value : 'premise'}
+                - { label : 'Room', value : 'room'}
+                - { label : 'Route', value : 'route'}
+                - { label : 'Street address', value : 'street_address'}
+                - { label : 'Street number', value : 'street_number'}
+                - { label : 'Sublocality', value : 'sublocality'}
+                - { label : 'Sublocality level 4', value : 'sublocality_level_4'}
+                - { label : 'Sublocality level 5', value : 'sublocality_level_5'}
+                - { label : 'Sublocality level 3', value : 'sublocality_level_3'}
+                - { label : 'Sublocality level 2', value : 'sublocality_level_2'}
+                - { label : 'Sublocality level 1', value : 'sublocality_level_1'}
+                - { label : 'Subpremise', value : 'subpremise'}
+                - { label : 'Transit station', value : 'transit_station'}
+            datePurchase:
+              label: 'Date of Purchase'
+              tooltip: 'Date of Purchase'
+              options:
+                - {label: 'All Dates', value: [], default: true}
+                - {label: 'Week #1', value: ["20120601", "20120602", "20120603"]}
+                - {label: 'Week #2', value: ["20120604", "20120605", "20120606", "20120607", "20120608", "20120609", "20120610"]}
+                - {label: 'Week #3', value: ["20120611", "20120612", "20120613", "20120614", "20120615", "20120616", "20120617"]}
+                - {label: 'Week #4', value: ["20120618", "20120619", "20120620", "20120621", "20120622", "20120623", "20120624"]}
+                - {label: 'Week #5', value: ["20120625", "20120626", "20120627", "20120628", "20120629", "20120630"]}
+                - {label: 'Week #1 (Working day)', value: ["20120601"]}
+                - {label: 'Week #1 (Day Off)', value: ["20120602", "20120603", "20120604"]}
+                - {label: 'Week #2 (Working day)', value: ["20120605", "20120606", "20120607", "20120608"]}
+                - {label: 'Week #2 (Day Off)', value: ["20120609", "20120610"]}
+                - {label: 'Week #3 (Working day)', value: ["20120611", "20120612", "20120613", "20120614", "20120615"]}
+                - {label: 'Week #3 (Day Off)', value: ["20120616", "20120617"]}
+                - {label: 'Week #4 (Working day)', value: ["20120618", "20120619", "20120620", "20120621", "20120622"]}
+                - {label: 'Week #4 (Day Off)', value: ["20120623", "20120624"]}
+                - {label: 'Week #5 (Working day)', value: ["20120625", "20120626", "20120627", "20120628", "20120629"]}
+                - {label: 'Week #5 (Day Off)', value: ["20120630"]}
+                - {label: 'Independence day', value: ["20120604"]}
+            ranges:
+              label: 'How much are they spending?'
+              tooltip: 'How much are they spending?'
+              options:
+                - { label: '0-5', min: 0, max: 5 }
+                - { label: '5-10', min: 5, max: 10 }
+                - { label: '10-25', min: 10, max: 25 }
+                - { label: '25-50', min: 25, max: 50 }
+                - { label: '50-100', min: 50, max: 100 }
+                - { label: '100-250', min: 100, max: 250 }
+                - { label: '250-500', min: 250, max: 500 }
+                - { label: '500-1000', min: 500, max: 1000 }
+                - { label: '1000+', min: 1000, max: 1100 }

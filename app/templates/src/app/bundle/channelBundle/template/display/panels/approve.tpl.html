@@ -1,0 +1,27 @@
+<div class="accept-form">
+    <div class="row clearfix">
+        <div class="col-md-3 hidden-sm hidden-xs">
+            <img ng-click="finish()" pp-src="/assets/img/channels/finger.png">
+        </div>
+        <div class="col-xs-12 col-md-9 text">
+            Let's do this! You are about to create mobile banner ads.
+            The ads are purchased on ad exchanges where we and our partners will bid on ad space in an auction on your behalf.
+            Winning the auction is not guaranteed and neither is the performance of the ads and campaigns we are buying and managing for you.
+            <p class="mt10 mb0 tar">
+                <label class="usn crs-point">
+                    <input type="checkbox" ng-model="controls.is_approved" />
+                    <b></b>
+                    Accept
+                </label>
+            </p>
+        </div>
+    </div>
+    <div class="row-buttons">
+        <button class="pp-btn gray" ng-click="prev()">Go Back</button>
+        <button class="pp-btn lgreen flr"
+                ng-disabled="!controls.is_approved"
+                ng-click="approveCampaign()">
+            Start Campaign
+        </button>
+    </div>
+</div>

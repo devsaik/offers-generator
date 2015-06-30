@@ -1,0 +1,23 @@
+<form form-for="controls.lineItem">
+    <div class="form-row">
+        <text-field label="Name" attribute="name" placeholder="Item Name"></text-field>
+    </div>
+    <div class="form-row">
+        <text-field label="Description" attribute="description"
+                    placeholder="Item Description"></text-field>
+    </div>
+    <div class="form-row">
+        <text-field label="Price" attribute="price" placeholder="1"></text-field>
+    </div>
+    <div class="form-row">
+        <text-field label="External ID" attribute="externalId" placeholder="XXX-XXX-XXX"></text-field>
+    </div>
+    <div class="form-row">
+        <a ng-click="vm.onLineItemSaveClick(controls.lineItem)" class="btn btn-primary">Add
+            Item</a> |
+        <a ng-click="vm.onBackClick(controls.activePanel)"
+           class="btn btn-danger">Back</a>|
+        <a ng-click="vm.onLineItemRemoveClick()" class="btn btn-danger">Delete</a>
+
+    </div>
+</form>

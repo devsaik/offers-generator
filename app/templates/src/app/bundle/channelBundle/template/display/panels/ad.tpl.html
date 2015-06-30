@@ -1,0 +1,56 @@
+<form class="pp-form display-campaign-ad-form"
+      name="display_campaign_form_ad"
+      object="ad"
+      validation-rules="{}"
+      df-form-disabled="{{channel.status && !(channel.status === 'INCOMPLETE'  || channel.status === 'REJECTED')}}">
+
+    <!-- col -->
+    <div class="content">
+        <p class="title">Edit Ad Content</p>
+
+        <ad-settings
+                fields-params="controls.fields"
+                channel="channel"
+                ad-title="merchantName"
+                ad-description="offer.title"
+                ad-banner-image="controls.adPreviewImage"
+                ad-banner-type="controls.adBannerSize"
+                default-banner-type="320x50"
+                is-not-valid="isNotValid"
+                on-ad-change="enableEditor()">
+        </ad-settings>
+
+        <!--ng-disabled="!ad.base64 || !ad.url-->
+
+        <div class="row-buttons">
+            <a class="pp-btn gray fll" ng-click="prev()">Go Back</a>
+            <df-button
+                    class="flr"
+                    label="Use This Ad"
+                    primary="true"
+                    ng-click="useThisAd()"
+                    ng-disabled="isNotValid && (channel.status == 'INCOMPLETE' || channel.status == 'REJECTED')">
+            </df-button>
+        </div>
+    </div>
+    <!-- end col -->
+
+    <!-- col -->
+    <div class="ad-preview">
+        <i class="bg"></i>
+        <ad-preview
+                settings="previewEditorSettings"
+                ad-title="merchantName"
+                ad-desc="offer.title"
+                ad-banner-image="controls.adPreviewImage"
+                ad-banner-type="controls.adBannerSize"
+                is-not-valid="isNotValid"
+                on-save="afterCrop(image)"
+                on-cancel="cancelPreview()"
+                on-plus-clicked="vm.onPlusClicked()"
+                >
+        </ad-preview>
+        <i ng-class="{'shadow-bg': previewEditorSettings.enabled === true && controls.adPreviewImage}"></i>
+    </div>
+    <!-- end col -->
+</form>

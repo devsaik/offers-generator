@@ -1,0 +1,13 @@
+<p>
+    <strong>Change Offer Status</strong>
+</p>
+
+<p>
+    <span ng-repeat="status in status_list" ng-show="offer.canTransitToStatus(status)">
+        <button class="btn" ng-disabled="offer.status === status" ng-click="controls.status = status">
+            <span ng-show="controls.status === status">-></span> {{status}}
+        </button>
+    </span>
+</p>
+
+<button class="btn btn-primary" ng-click="offerStatusController.save(controls.status)">Change status</button>

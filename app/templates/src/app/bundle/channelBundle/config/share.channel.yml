@@ -1,0 +1,32 @@
+appConfig:
+  channelBundle:
+    channels:
+      share:
+        controllerName: "ShareChannelController as vm"
+        templateUrl: "app/bundle/channelBundle/template/share/index.tpl.html"
+
+        view:
+          image: "/assets/img/channels/copy.png"
+          text: "I Send It"
+
+        shareSchema:
+          offer:
+            facebook:
+              offerId: "id"
+              name: "title"
+              picture: "imageUrl"
+              link: "shortUrl"
+              caption: location.name
+              description: description
+              message: restrictions
+
+            twitter:
+              text: "title"
+              picture: "imageUrl"
+              link: "shortUrl"
+
+            sms:
+              offerId: "id"
+
+            email:
+              offerId: "id"

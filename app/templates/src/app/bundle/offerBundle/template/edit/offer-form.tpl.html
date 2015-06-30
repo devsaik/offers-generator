@@ -1,0 +1,126 @@
+<div class="col-xs-12 pt15">
+    <!--row-->
+    <df-field class="row-helps"
+              tooltip="{{controls.fields.name.tooltip}}"
+              label="Offer Nickname"
+              required="true">
+        <df-input ng-model="item.name"
+                  name="name"
+                  ng-disabled="item.isFieldReadonly('name')"
+                  placeholder="{{controls.fields.name.placeholder}}"></df-input>
+        <span class="label-help">*required field</span>
+    </df-field>
+    <!--end row-->
+
+    <!--row-->
+    <df-field tooltip="{{controls.fields.title.tooltip}}"
+              label="Offer Title"
+              required="true">
+        <df-input ng-model="item.title"
+                  name="title"
+                  ng-disabled="item.isFieldReadonly('title')"
+                  placeholder="{{controls.fields.title.placeholder}}"></df-input>
+    </df-field>
+    <!--end row-->
+
+    <!--row-->
+    <!--<div class="pp-form__row row-add-item" ng-class="{'added': item.item}">-->
+    <!--<df-label label='Associated Item <i class="fwn">optional</i>'-->
+    <!--tooltip="Associated Item">-->
+    <!--</df-label>-->
+
+    <!--<a class="pp-btn gray truncate"-->
+    <!--ng-class="{disabled: item.isFieldReadonly('addItem')}"-->
+    <!--ng-if="isLineItemsEnabled"-->
+    <!--ng-click="vm.onAddLineItemClick(item.isFieldReadonly('addItem'))">-->
+    <!--{{ item.item ? (item.item.name + '(' + (item.item.price | currency) + ')'): '+ Add Item'}}-->
+    <!--</a>-->
+    <!--<a class="pp-btn red"-->
+    <!--ng-class="{disabled: item.isFieldReadonly('addItem')}"-->
+    <!--ng-show="item.item"-->
+    <!--ng-click="vm.onLineItemRemoveClick(item.isFieldReadonly('addItem'))"-->
+    <!--ng-disabled="item.isFieldReadonly('removeItem')"-->
+    <!--title="Delete item"> X </a>-->
+    <!--</div>-->
+    <!--end row-->
+
+    <!--row-->
+    <df-field tooltip="{{controls.fields.description.tooltip}}"
+              label="Offer Description"
+              required="true">
+        <df-input ng-model="item.description"
+                  name="description"
+                  ng-disabled="item.isFieldReadonly('description')"
+                  textarea
+                  placeholder="{{controls.fields.description.placeholder}}"></df-input>
+    </df-field>
+    <!--end row-->
+
+    <!--row-->
+    <df-field tooltip="{{controls.fields.restrictions.tooltip}}"
+              label="Offer Restrictions">
+        <df-input ng-model="item.restrictions"
+                  name="restrictions"
+                  ng-disabled="item.isFieldReadonly('restrictions')"
+                  textarea
+                  placeholder="{{controls.fields.restrictions.placeholder}}"></df-input>
+    </df-field>
+    <!--end row-->
+
+    <!--row-->
+    <div class="pp-form__row">
+        <df-label tooltip="Dates range when the offer is valid and can be redeemed by a customer."
+                  label="Date Range for Offer Use"
+                  required="true">
+        </df-label>
+        <div ng-include="'app/bundle/offerBundle/template/edit/row-datepicker.tpl.html'"></div>
+    </div>
+    <!--end row-->
+
+    <!--row-->
+    <discount-field class="row-discount" ng-if="item.discount" disable="item.isFieldReadonly('discounts')"
+                    ng-model="item.discount" label="Discount Amount"></discount-field>
+    <!--end row-->
+
+    <!--row-->
+    <df-field tooltip="This determines how many people will be able to use this offer."
+              label="Max Number of Offer Redemptions"
+            tooltip-position="right">
+        <div class="row">
+            <div class="col-xs-6">
+                <df-input ng-model="item.redemptionTarget"
+                          name="redemptionTarget"
+                          ng-disabled="item.isFieldReadonly('redemptionTarget')"
+                          placeholder="50"></df-input>
+            </div>
+        </div>
+    </df-field>
+    <!--end row-->
+
+    <!--row-->
+    <div class="pp-form__row row-text">
+        After clicking the “Publish Offer Page” button you will be able to choose how to promote your offer.
+    </div>
+    <!--end row-->
+
+    <!--row-->
+    <div class="row-buttons">
+        <div class="pp-form__row tar">
+            *Offer web page is publicly
+            <br/>
+            available on Offer Start Date
+        </div>
+
+        <div class="pp-form__row" ng-if="is_new || item.status === 'INCOMPLETE'">
+            <df-button label="Publish Offer Page" primary="true" ng-click="vm.submit(item, true)"
+                       disable-on-invalid="true"></df-button>
+        </div>
+
+        <div class="pp-form__row row-link-button" ng-class="{'link': is_new || item.status === 'INCOMPLETE'}">
+            <df-button label="{{!(is_new || item.status === 'INCOMPLETE') ? 'Publish Offer Page' : 'Save For Later'}}"
+                       primary="true" ng-click="vm.submit(item)" disable-on-invalid="true"></df-button>
+            <df-label tooltip="Save For Later"></df-label>
+        </div>
+    </div>
+    <!--end row-->
+</div>

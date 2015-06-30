@@ -1,0 +1,48 @@
+appConfig:
+  DATATRANSFORMERS:
+    channelStatistic: "channelStatisticTransformer"
+    adStatistic: "adStatisticTransformer"
+  channelBundle:
+    channels:
+      display:
+        transformers:
+          displayChannel:
+            response:
+              __copy: [id, name, description, timeZone, merchantId, averageSale, dailyBudget, redemptions, distributionChannel, status, totalBudget, maxBid, schedulings, metroCodes, hourlyBudget, cities, states, iabCategoryCodes, devices, deviceIdentifiers, deviceCategory, appTargeting, pricingTargeting]
+              startDate: "startDate | amDateFormat: 'YYYY/MM/DD'"
+              endDate: "endDate | amDateFormat: 'YYYY/MM/DD'"
+              devices: "devices"
+              type: "type || distributionChannel"
+              targetedCategoryIds: "targetedCategoryIds"
+              iabCategoryCodes: "iabCategoryCodes"
+              linkedAds: "linkedAds[0]"
+              linkedOffer: "linkedOffers[0]"
+              budgetType: "dailyBudget && dailyBudget > 0 ? 'PERDAY' : 'PERCAMPAIGN'"
+              reachRadius: "{1: 0.5, 3:2, 6:4, 9:6}[reachRadius]"
+              geoActive: "locationIds.length > 0 ? 'GEO' : (cities.length > 0 ? 'City' : (states.length > 0 ? 'State' : 'National'))"
+#1 km - 0.5 miles
+#3 km - 2 miles
+#6 km - 4 miles
+#9 km - 6 miles
+            request:
+              __copy: [id, name, description, timeZone, merchantId, averageSale, dailyBudget, redemptions, status, linkedOffers, totalBudget, schedulings, metroCodes, hourlyBudget, cities, states, devices, deviceIdentifiers, deviceCategory, appTargeting, pricingTargeting]
+              startDate: "startDate | amDateFormat: 'YYYY-MM-DD'"
+              endDate: "endDate | amDateFormat: 'YYYY-MM-DD'"
+              distributionChannel: "type"
+              type: "type"
+              campaignType: "type"
+              iabCategoryCodes: "iabCategoryCodes"
+              targetedCategoryIds: "targetedCategoryIds"
+              devices: "devices | array_remove_empty"
+              reachRadius: "{'0.5': 1, 2:3, 4:6, 6:9}[reachRadius]"
+              linkedAds: "[linkedAds]"
+#              location: "undefined"
+#              cities: "undefined"
+#              states: "undefined"
+#              locationIds: "sendGeo && geoActive == 'GEO' ? locationIds : (sendGeo ? [] : undefined)"
+#              cityIds: "sendGeo && geoActive == 'City' ? cityIds : (sendGeo ? [] : undefined)"
+#              stateCodes: "sendGeo && geoActive == 'State' ? stateCodes : (sendGeo ? [] : undefined)"
+#              metroCodes: "sendGeo && geoActive == 'Metro' ? metroCodes : (sendGeo ? [] : undefined)"
+              bidStrategy: "'OPTIMIZED'"
+              dailyBudget: "budgetType === 'PERDAY' ? dailyBudget : null"
+

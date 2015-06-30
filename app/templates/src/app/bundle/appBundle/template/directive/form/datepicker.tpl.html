@@ -1,0 +1,33 @@
+<div ng-class="{disabled: disable || model.disabled, 'has-error': model.error}">
+
+    <field-label  ng-if="label"
+                  input-uid="{{model.uid}}"
+                  iud="{{model.uid}}-label"
+                  label="{{label}}"
+                  help="{{help}}"
+                  required="{{model.required}}">
+    </field-label>
+
+    <div class="wrap-input">
+        <datepicker date-min-limit="{{minDate}}" date-max-limit="{{maxDate}}" date-set="{{initDate}}" date-format="{{format}}">
+            <input aria-manager
+                   id="{{model.uid}}"
+                   type="{{type}}"
+                   tabindex="{{tabIndex}}"
+                   placeholder="{{placeholder}}"
+                   form-for-debounce="{{debounce}}"
+                   ng-click="onFocus()"
+                   ng-blur="onBlur()"
+                   ng-disabled="disable || model.disabled"
+                   datepicker-popup="shortDate"
+                   is-open="opened"
+                   ng-model="model.bindable">
+            <span class="wrap-icon " ng-click="open($event)">
+                <i class="fa fa-calendar"></i>
+            </span>
+        </datepicker>
+
+
+
+    </div>
+</div>

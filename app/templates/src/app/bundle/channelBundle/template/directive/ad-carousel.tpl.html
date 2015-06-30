@@ -1,0 +1,16 @@
+<div class="ad-carousel">
+    <div class="ad-carousel__list">
+        <div class="inner" ng-style="options.carousel">
+            <ul class="inner-row">
+                <li class="ad-carousel__item"
+                    ng-repeat="image in images"
+                    ng-click='setSelectedImage(image, $index, 0)'>
+                    <img ng-src="{{image.url || image.base64}}" alt="" />
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <a href class="arrow arrow-left" ng-click="move(options.item.width, {left: true})"></a>
+    <a href class="arrow arrow-right" ng-click="move(options.item.width, {right: true})"></a>
+</div>

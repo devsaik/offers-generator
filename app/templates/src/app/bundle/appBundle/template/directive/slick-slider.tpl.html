@@ -1,0 +1,21 @@
+<div class="range-container">
+    <!--<a href class="control minus" ng-click="moveSliderByOffset(-1)">-</a>-->
+    <!--<a href class="control plus" ng-click="moveSliderByOffset(1)">+</a>-->
+
+    <div class="slider-wrap"
+
+         >
+        <div class="ruler">
+            <div class="inner" ng-class="{automove: automove}" ng-style="rullerInnerStyle"></div>
+        </div>
+        <div class="points" ng-click="moveSliderByClick($event)">
+            <div class="point" ng-repeat="point in points" ng-style="{left: initPoint(point)}">
+                <!--<span>{{point}} {{measure}}</span>-->
+            </div>
+        </div>
+        <div class="slider-point-wrap">
+            <div ng-hide="minValue === undefined" class="slider-point min fa fa-bars fa-rotate-90" ng-class="{automove: automove}" ng-style="sliderPosition.min"></div>
+            <div class="slider-point max fa fa-bars fa-rotate-90" ng-class="{automove: automove}" ng-style="sliderPosition.max"></div>
+        </div>
+    </div>
+</div>

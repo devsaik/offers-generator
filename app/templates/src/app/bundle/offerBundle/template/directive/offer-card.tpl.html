@@ -1,0 +1,83 @@
+<span class="offer-status-label {{offer.status | lowercase}}" ng-show="showAnnouncement">
+    {{message}}
+</span>
+<div class="flippy" data-click-toggle="false" is-flipped="isFlipped">
+
+    <!--front-side-->
+    <div class="flippy-inner flippy-front {{offer.status | lowercase}}">
+        <div class="card-icons">
+            <offer-card-row offer="offer"></offer-card-row>
+        </div>
+
+        <p class="card-title truncate" title="{{offer.name}}">{{(offer.name || offer.title)}}</p>
+
+        <p class="card-descr truncate" title="{{offer.title}}">{{offer.title}}</p>
+
+        <div class="card-details">
+            <div class="card-dates">
+                <p class="from">{{offer.startTime | amDateFormat: 'MM/DD/YY'}}</p>
+
+                <p class="to">{{offer.endTime | amDateFormat: 'MM/DD/YY'}}</p>
+            </div>
+
+            <div class="card-stats">
+                <div class="item col-xs-6" offer-stats-choice="offer" default-metric="views"></div>
+                <div class="item col-xs-6" offer-stats-choice="offer" default-metric="redemptions"></div>
+            </div>
+        </div>
+
+        <div class="card-actions">
+            <a href=""
+               class="pp-btn gray db"
+               ng-click="isFlipped = !isFlipped">
+                Details
+            </a>
+        </div>
+    </div>
+    <!--end front-side-->
+
+    <!--back side-->
+    <div class="flippy-inner flippy-back back-side {{offer.status | lowercase}}">
+        <a href=""
+           class="pp-btn big dgray top"
+           ng-click="isFlipped = !isFlipped">
+            <i class="fa fa-undo"></i>
+            <span class="pl5">Go Back</span>
+        </a>
+        <ul class="card-list">
+            <li ng-repeat="channel in offer.channels"
+                ng-if="channel.type === 'DISPLAY' || channel.type === 'FACEBOOK'"
+                display-channel-card-row="channel" offer-id="{{::offer.id}}">
+            </li>
+            <li>
+                <span>Links</span>
+                <div class="flr">
+                    <offer-card-row offer="offer"></offer-card-row>
+                </div>
+            </li>
+            <li>
+                <a href="" class="add fwb link-no-border" ui-sref="ppp.offer.list.item.channels({id:offer.id})">
+                    + ADD
+                </a>
+                <span class="pl5">Channel</span>
+            </li>
+        </ul>
+
+        <p ng-if="offer.status === 'PENDING'" class="card-date">Schedule Start: {{::offer.startTime | amDateFormat:
+            'MM/DD/YY'}}</p>
+
+        <div class="card-actions" ng-if="offer.status !== 'ARCHIVED' && offer.status !== 'INCOMPLETE'">
+            <div class="inner">
+                <!--<a href=""  class="pp-btn gray" ng-click="vm.deleteOffer()">-->
+                    <!--<i class="fa fa-folder-open"></i>-->
+                <!--</a>-->
+                <a href=""
+                   class="pp-btn big gray"
+                   ng-click="vm.deleteOffer()">
+                    Archive Offer
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--end back side-->
+</div>

@@ -1,0 +1,27 @@
+<div class="controls-y">
+    <ul>
+        <li ng-repeat="(metricName, prop) in metrics">
+            <button class="btn" ng-click="vm.toggleMetricY(metricName)"
+                    ng-class="{'active': metricName === activeMetrics.y.name}"
+                    ng-disabled="!offer.channels.length && metricName !== 'redemptions' && metricName !== 'views' && metricName !== 'revenue'"
+                    >
+                {{ prop.label }}
+            </button>
+        </li>
+    </ul>
+    <div class="decorations"></div>
+</div>
+<div class="graph" google-chart chart="data"></div>
+<div class="controls-x">
+    <div class="decorations"></div>
+    <ul>
+        <li ng-repeat="(metricName, prop) in metrics">
+            <button class="btn" ng-click="vm.toggleMetricX(metricName)"
+                    ng-class="{'active': metricName === activeMetrics.x.name}"
+                    ng-disabled="!offer.channels.length && metricName !== 'redemptions' && metricName !== 'views' && metricName !== 'revenue'"
+                    >
+                {{ prop.label }}
+            </button>
+        </li>
+    </ul>
+</div>

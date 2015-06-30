@@ -1,0 +1,12 @@
+<div class="gallery-preview">
+    <div class="gallery-grid-preview">
+        <span ng-repeat="image in images track by $index">
+            <img ng-src="{{image.url || image.base64}}" />
+            <div class="mt5">
+                <a class="pp-btn small lgreen" ng-click="vm.onItemSelected(image)">Select</a>
+            </div>
+        </span>
+    </div>
+
+    <a class="pp-btn dgray" gallery-popup on-item-selected="onItemSelected({item: item})">Show More</a>
+</div>

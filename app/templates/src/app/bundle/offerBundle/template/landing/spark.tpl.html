@@ -1,0 +1,100 @@
+<section class="offer-preview">
+    <!--header-->
+    <header class="offer-preview__header">
+        <div class="img-box" ng-if="offer.companyLogoUrl || offer.imageUrl">
+            <img ng-src="{{offer.companyLogoUrl || offer.imageUrl}}">
+        </div>
+
+        <div class="info">
+            <h1 class="title">{{offer.companyName || offer.locations[0].name}}</h1>
+            <div class="address">
+                {{offer.location.address1 || offer.location[0].address1 || offer.locations[0].address1}}
+                <br/>
+                {{offer.location.address2 || offer.location[0].address2 || offer.locations[0].address2}}
+            </div>
+        </div>
+        <div class="qrcode">
+            <figure>
+                <img pp-src="assets/img/qr-example.jpg">
+            </figure>
+            <span>XXXXXXXXXX</span>
+        </div>
+    </header>
+    <!--end header-->
+
+    <!--section-->
+    <section class="offer-preview__stripe">
+        <figure class="img-box" ng-show="offer.item && offer.item.imageUrl">
+            <img ng-src="{{offer.item.imageUrl}}">
+        </figure>
+
+        <div class="qrcode" ng-show="!(offer.item && offer.item.imageUrl)">
+            <figure>
+                <img pp-src="assets/img/qr-example.jpg">
+            </figure>
+            <span>XXXXXXXXXX</span>
+        </div>
+
+        <div class="info">
+            <h2 class="title">{{offer.title || placeholders.title.placeholder}}</h2>
+            <h3 class="pretitle">{{offer.description || placeholders.description.placeholder}}</h3>
+            <p class="restrictions">
+                <span ng-show="offer.restrictions">*</span>
+                {{offer.restrictions}}
+            </p>
+        </div>
+    </section>
+    <!--section-->
+
+    <!--section-->
+    <section class="offer-preview__details">
+        <div class="qrcode" ng-if="offer.item && offer.item.imageUrl">
+            <figure>
+                <img pp-src="assets/img/qr-example.jpg">
+            </figure>
+            <span>XXXXXXXXXX</span>
+        </div>
+
+        <ul class="list">
+            <li>
+                This promotional offer is valid from
+                <b>{{offer.startTime || offer.offerStartDate | amDateFormat: 'MM/DD/YY'}}</b>
+                to
+                <b>{{offer.endTime || offer.offerEndDate | amDateFormat: 'MM/DD/YY'}}</b>.
+            </li>
+            <li discount-view discount="offer.discount"></li>
+        </ul>
+    </section>
+    <!--end section-->
+
+    <!--footer-->
+    <footer class="offer-preview__footer">
+        <div class="wrapper">
+            <div class="top">
+                <img pp-src="assets/img/social-example.png">
+
+                <!--
+                <a href="#" target="fb-out"><div class="fb"></div></a>
+                <a href="#" target="twitter-out"><div class="twitter"></div></a>
+                <a href="#" target="email-out"><div class="email"></div></a>
+                <a href="#" target="sms-out"><div class="sms"></div></a>
+                -->
+
+                <div class="sparkpay"><img pp-src="assets/img/sparkpay_logo.png"></div>
+            </div>
+
+            <div class="disclaimer">
+                Capital One does not provide, endorse, nor guarantee any third-party product, service, information or
+                recommendation listed above. The third parties listed are not affiliated with Capital One and are solely
+                responsible for their products and services. All trademarks are the property of their respective owners.
+            </div>
+        </div>
+    </footer>
+    <!--end footer-->
+
+    <!--devices preview-->
+    <div class="offer-preview__devices">
+        <img pp-src="/assets/img/offer-device.png" alt=""/>
+    </div>
+    <!--end devices preview-->
+</section>

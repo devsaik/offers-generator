@@ -1,0 +1,21 @@
+<div class="pp-popup__header">{{ title || 'Define Facebook Banner Campaign Details'}}</div>
+<div class="pp-popup__inner display-channel-container" loading-container="isLoading">
+    <pp-loading-bar resolve="!isLoading"></pp-loading-bar>
+    <slide-panels title="title">
+        <panel
+                title="Define Facebook Banner Campaign Details"
+                is-open="{{controls.step === 0}}">
+            <div class="panel-scroller" ui-scroll>
+                <div ng-include="'app/bundle/channelBundle/template/facebook/panels/main-settings.tpl.html'"></div>
+            </div>
+        </panel>
+        <panel
+                title="Define Facebook Banner Campaign Details"
+                is-open="{{controls.step === 1}}">
+            <div class="panel-scroller" ui-scroll>
+                <div ng-include="'app/bundle/channelBundle/template/facebook/panels/ad.tpl.html'"></div>
+            </div>
+        </panel>
+    </slide-panels>
+</div>
+<div class="ngdialog-manual-close" ng-click="vm.closeDialog()"></div>

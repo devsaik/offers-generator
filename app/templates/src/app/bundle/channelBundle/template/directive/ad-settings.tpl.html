@@ -1,0 +1,41 @@
+<div class="pp-form">
+    <div class="pp-form__row row mb15">
+        <div class="col-xs-8">
+            <df-field label="{{fieldsParams.adTitle.label}}"
+                      tooltip="{{fieldsParams.adTitle.tooltip}}">
+                <df-input name="test" ng-model="adTitle" ng-hide="false"></df-input>
+            </df-field>
+        </div>
+        <div class="col-xs-4">
+            <df-field label="{{fieldsParams.adType.label}}"
+                      tooltip="{{fieldsParams.adType.tooltip}}">
+                <df-selectbox ng-model="ad.bannerType" allow-empty="false" ng-disabled="!(channel.status === 'INCOMPLETE' || channel.status === 'REJECTED')">
+                    <option-item class="sub-item" ng-repeat="opt in fieldsParams.adType.options"
+                                 label="opt.label" value="opt.value">
+                        <span>{{opt.label}}</span>
+                    </option-item>
+                </df-selectbox>
+            </df-field>
+        </div>
+    </div>
+    <div class="pp-form__row row mb15">
+        <div class="col-xs-12">
+            <df-field label="{{fieldsParams.adDesc.label}}"
+                      tooltip="{{fieldsParams.adDesc.tooltip}}">
+                <df-input ng-hide="false" ng-model="adDescription" df-required></df-input>
+            </df-field>
+        </div>
+    </div>
+    <div class="pp-form__row">
+        <a href class="pp-btn dgray w100" ng-click="showGallery = true" ng-show="(channel.status == 'INCOMPLETE'  || channel.status == 'REJECTED')">
+            <i class="fa fa-camera"></i>
+            Select New Image
+        </a>
+    </div>
+    <ad-gallery
+            ng-show="(channel.status == 'INCOMPLETE' || channel.status == 'REJECTED') && showGallery"
+            selected-image="adBannerImage"
+            on-image-selected="vm.onImageSelected(image)"
+            >
+    </ad-gallery>
+</div>

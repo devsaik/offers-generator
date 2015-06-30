@@ -1,0 +1,57 @@
+<div class="list-types__block" ui-scroll>
+    <div class="list-types">
+        <p class="list-types__title">{{controls.channelType}}</p>
+        <p class="list-types__item"
+           ng-repeat="item in channels"
+           ng-click="cancelEdited(); controls.editedChannel = item"
+           ng-class="{'active': item.id === controls.editedChannel.id}">
+            {{item.name}}
+        </p>
+    </div>
+</div>
+
+<div class="pp-form__row row"
+     ng-if="!controls.editedChannel">
+    <div class="col-xs-12">
+        <df-input ng-model="controls.channelName"></df-input>
+    </div>
+</div>
+
+<div class="pp-form__row row"
+     ng-if="controls.editedEvent">
+    <div class="col-xs-12">
+        <df-input ng-model="controls.channelName_edit"></df-input>
+    </div>
+</div>
+
+<div class="list-types__buttons">
+    <!--add list-->
+    <div ng-if="!controls.editedChannel">
+        <a href="" class="pp-btn lgreen"
+           ng-click="vm.addNewDistributionChannelList(controls.channelName, controls.channelType)">Add</a>
+    </div>
+    <!--end add list-->
+
+    <!-- choice list-->
+    <div ng-if="controls.editedChannel && !controls.editedEvent">
+        <a href="" class="pp-btn lgreen"
+           ng-click="setEdited()">Edit</a>
+
+        <a href="" class="pp-btn blue"
+           ng-click="cancelEdited(controls.editedChannel)">Cancel</a>
+
+        <a href="" class="pp-btn red"
+           ng-click="vm.deleteDistributionChannelList(controls.editedChannel)">Delete</a>
+    </div>
+    <!--end choice list-->
+
+    <!--edit list-->
+    <div ng-if="controls.editedEvent">
+        <a href="" class="pp-btn lgreen"
+           ng-click="vm.editDistributionChannelList(controls.channelName_edit, controls.editedChannel)">Save</a>
+
+        <a href="" class="pp-btn red"
+           ng-click="cancelEdited(controls.editedChannel)">Cancel</a>
+    </div>
+    <!--end edit list-->
+</div>

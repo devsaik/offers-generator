@@ -1,0 +1,21 @@
+<div class="pp-popup__header">Rejected</div>
+<div class="pp-popup__inner">
+    <div class="row clearfix">
+        <div class="col-md-3">
+            <figure class="img-box">
+                <img pp-src="/assets/img/offers/warning.png"/>
+            </figure>
+        </div>
+
+        <div class="col-md-9 description">
+            <p>Oh Dear! You ad was declined by the publisher. If you still like to run this ad, please revise it and
+                resubmit.</p>
+
+            <p>Or, just create new ad campaign and run with it.</p>
+        </div>
+    </div>
+    <div class="row-buttons">
+        <button class="pp-btn gray fll" ng-click="closeThisDialog()">Cancel Campaign</button>
+        <a href="" class="pp-btn lgreen flr" ui-sref="channel({id: ngDialogData.linkedOffer.id, channel_type: ngDialogData.type})">Edit Ad</a>
+    </div>
+</div>

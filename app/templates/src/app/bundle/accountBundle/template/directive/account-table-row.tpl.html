@@ -1,0 +1,71 @@
+<tr class="row-first" ng-click="toogleDropdown()" ng-class="{'active': user.active}">
+    <td>{{user.firstName}} {{user.lastName}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.type}}</td>
+    <td>{{getFormatDate(user.createDate)}}</td>
+    <td>{{user.state}}</td>
+</tr>
+<tr class="row-second" ng-show="user.active">
+    <td colspan="5">
+        <a href class="btn white fll"
+           ns-popover
+           ns-popover-theme="ns-popover"
+           ns-popover-template="popover-account-hold-one"
+           ns-popover-trigger="click"
+           ns-popover-placement="bottom|left"
+           ng-if="user.status == 'on hold'"
+           ng-click="activateUser({user: user})">
+            <i class="pp-icon disable"></i>
+            Activate
+        </a>
+        <a href class="btn white fll"
+           ns-popover
+           ns-popover-theme="ns-popover"
+           ns-popover-template="popover-account-hold-one"
+           ns-popover-trigger="click"
+           ns-popover-placement="bottom|left"
+           ng-if="user.status == 'active'"
+           ng-click="holdUser({user: user})">
+            <i class="pp-icon disable"></i>
+            Put On Hold
+        </a>
+        <a href class="btn white flr"
+           ns-popover
+           ns-popover-timeout="1000"
+           ns-popover-theme="ns-popover"
+           ns-popover-template="popover-account-hold-two"
+           ns-popover-trigger="click"
+           ns-popover-placement="bottom|right"
+           ng-if="user.state != 'activated'"
+           ng-click="inviteUser({user: user})">
+            <i class="pp-icon mail"></i>
+            {{user.state == 'Invite Sent' ? 'Resend' : 'Send'}} Invite
+        </a>
+    </td>
+</tr>
+
+<script type="text/ng-template" id="popover-account-hold-one">
+    <form class="popover-account-hold form">
+        <div class="inner">
+            <i class="arrow top"></i>
+            <p class="title">Put this user on hold?</p>
+            <div class="row-buttons">
+                <a href="" class="btn white fll" ng-click="hidePopover()">No</a>
+                <a href="" class="btn green flr">Yes</a>
+            </div>
+        </div>
+    </form>
+</script>
+
+<script type="text/ng-template" id="popover-account-hold-two">
+    <form class="popover-account-hold second form">
+        <div class="inner">
+            <i class="arrow top"></i>
+            <p class="title">Resend email invitation?</p>
+            <div class="row-buttons">
+                <a href="" class="btn white fll" ng-click="hidePopover()">No</a>
+                <a href="" class="btn green flr">Yes</a>
+            </div>
+        </div>
+    </form>
+</script>

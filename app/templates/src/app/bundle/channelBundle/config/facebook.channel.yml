@@ -1,0 +1,105 @@
+appConfig:
+  channelBundle:
+    channels:
+      facebook:
+        controllerName: "FacebookChannelController as vm"
+        entityName: "FacebookEntity"
+        templateUrl: "app/bundle/channelBundle/template/facebook/index.tpl.html"
+
+        view:
+          image: "/assets/img/channels/mobile.png"
+          text: "Buy Facebook Ads"
+
+
+        dialog:
+          showClose: false
+          onClose:
+            confirm: "All unsaved data will be lost. Do you want to complete your campaign now?"
+
+        entity:
+          defaults:
+            type: "FACEBOOK"
+            devices: []
+            deviceCategories: []
+
+        form:
+          geo:
+            label: "Location"
+            tooltip: "Use Location to narrow your target area. If most of your customers are local, then City or State targeting could be right for you. If your customers are all over, then Country might make more sense."
+            options:
+              - {label: "My City", value: "City"}
+              - {label: "My State", value: "State" }
+              - {label: "My Country", value: "Country", default: true}
+          interests:
+            label: "Interests"
+            tooltip: "It's going to be Anat-(wait for it)-olii!"
+            placeholder: "Outdoors"
+          behaviors:
+            label: "Behaviors"
+            tooltip: "Lock, Stock and 2 smoking Anatolii's"
+            placeholder: "Real Estate"
+          ageGroup:
+            label: "Age Group"
+            tooltip: "Anatolii. Just Anatolii. Don't ask"
+            options:
+              - {label: "18 - 24", value: "18-24"}
+              - {label: "25 - 34", value: "25-34"}
+              - {label: "35 - 44", value: "35-44"}
+              - {label: "45 - 54", value: "45-54"}
+              - {label: "55 - 64", value: "55-64"}
+              - {label: "64 -", value: "64-"}
+              - {label: "All Ages", value: "ALL", default: true}
+          gender:
+            label: "Gender"
+            tooltip: "Anatolii again. Don't ask!"
+            options:
+              - {label: "Male", value: "Male"}
+              - {label: "Female", value: "Female"}
+              - {label: "Everyone", value: "Everyone", default: true}
+          budgetType:
+            label: "Budget Type"
+            tooltip: "Fast and Anatolious"
+            options:
+              - {label: "Daily", value: "Daily"}
+              - {label: "Weekly", value: "Weekly"}
+              - {label: "Campaign", value: "Campaign"}
+          totalBudget:
+            label: "Budget"
+            tooltip: "Budget is where you specify how much you want to spend on this campaign. No budget is too big or small, but results will also vary. You can also specify how quickly you want to spend the amount you approve: per day, per week, or for the entire campaign."
+
+          adTitle:
+            label: "Ad Title"
+            tooltip: "Ad Title"
+          adDesc:
+            label: "Ad Description"
+            tooltip: "Ad Description"
+          adType:
+            label: "Ad Type"
+            tooltip: "Anatolie's of the Caribbean"
+            options:
+              - {label: "News Feed", value: "feed" }
+              - {label: "Right Side Ad", value: "FACEBOOK", default: true}
+          preview:
+            options:
+              feed:
+                width: 560
+                height: 292
+                top: 192
+                left: 111
+                landscape: false
+                label: 'News Feed Ad'
+                scale: 0.325
+                infoTop: 107
+                infoLeft: 112
+                background: '/assets/img/channels/fb-ad-prev.jpg'
+              FACEBOOK:
+                width: 254
+                height: 133
+                top: 127
+                left: 92
+                landscape: false
+                label: 'Right Side Ad'
+                scale: 1
+                infoTop: 270
+                infoLeft: 92
+                background: '/assets/img/channels/fb-ad-right-prev.jpg'

@@ -1,0 +1,6 @@
+<div class="typing-message" ng-if="charLength > 0">{{ 'Please enter '+ charLength + ' or more characters' }}</div>
+<df-selectbox  ng-model="model" type="{{type}}" allow-empty="true" allow-filter="true" on-filter-changed="search(criteria)">
+    <option-item class="sub-item" ng-repeat="opt in items || []" label="opt.label" value="opt">
+        <span>{{opt.label}}</span>
+    </option-item>
+</df-selectbox>

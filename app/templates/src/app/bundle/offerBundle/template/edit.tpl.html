@@ -1,0 +1,42 @@
+<div class="pp-popup__header ttc">
+    <span ng-if="is_new">Create New Offer Details and Offer Web Page</span>
+    <span ng-if="!is_new">{{item.name}} - Edit</span>
+</div>
+
+<div class="pp-popup__inner" loading-container="isLoading">
+    <pp-loading-bar resolve="!isLoading"></pp-loading-bar>
+    <div class="col-md-4 col-l offer-edit-form-container">
+        <form class="pp-form"
+              ui-scroll
+              name="offer_form"
+              object="item"
+              validation-rules="validationRules">
+            <slide-panels>
+                <panel
+                        class="form-items"
+                        heading="Offer properties"
+                        is-open="{{controls.activePanel === 'offer'}}">
+                    <div class="h100" ng-include="'app/bundle/offerBundle/template/edit/offer-form.tpl.html'"></div>
+                </panel>
+
+                <panel
+                        class="col-xs-12 panel-items"
+                        ng-if="isLineItemsEnabled"
+                        heading="Associated items"
+                        is-open="{{controls.activePanel === 'choose_item'}}">
+                    <div class="h100"
+                         ng-include="'app/bundle/offerBundle/template/edit/line-items-list.tpl.html'"></div>
+                </panel>
+            </slide-panels>
+        </form>
+    </div>
+
+    <div class="col-md-8 col-r hidden-xs hidden-sm"
+         offer-landing-preview
+         offer="item"
+         placeholders="controls.fields"
+         type="spark">
+    </div>
+</div>
+
+<div class="ngdialog-manual-close" ng-click="vm.closeDialog()"></div>

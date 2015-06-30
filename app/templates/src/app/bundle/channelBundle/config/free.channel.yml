@@ -1,0 +1,52 @@
+appConfig:
+  channelBundle:
+    channels:
+      free:
+        controllerName: "FreeChannelController as vm"
+        entityName: "FreeEntity"
+        templateUrl: "app/bundle/channelBundle/template/free/index.tpl.html"
+
+        view:
+          image: "/assets/img/channels/free.png"
+          text: "Use Email Channel"
+
+          dialog:
+            showClose: false
+            onClose:
+              confirm: "All unsaved data will be lost. Do you want to complete your campaign now?"
+
+        entity:
+          defaults:
+            type: "FREE"
+            distributionChannel: "EMAIL"
+            campaignType: "FREE"
+            timeZone: "PST"
+            schedulings:
+                -
+                  day: "MON"
+                  startTime: "00:00"
+                  endTime: "23:59"
+                -
+                  day: "TUE"
+                  startTime: "00:00"
+                  endTime: "23:59"
+                -
+                  day: "WED"
+                  startTime: "00:00"
+                  endTime: "23:59"
+                -
+                  day: "THU"
+                  startTime: "00:00"
+                  endTime: "23:59"
+                -
+                  day: "FRI"
+                  startTime: "00:00"
+                  endTime: "23:59"
+                -
+                  day: "SAT"
+                  startTime: "00:00"
+                  endTime: "23:59"
+                -
+                  day: "SUN"
+                  startTime: "00:00"
+                  endTime: "23:59"

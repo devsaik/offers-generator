@@ -1,0 +1,28 @@
+<div class="phone" ng-if="!options.unsupported">
+    <div class="title">
+        <p>Preview</p>
+        <p>Ad size: {{options.width}} x {{options.height}} px</p>
+    </div>
+    <div class="content">
+        <div class="img-box">
+            <img ng-src="{{image}}" alt=""/>
+        </div>
+        <div class="img-box">
+            <img pp-src="{{'/assets/img/channels/ad-preview-popup/placeholder.png'}}" alt=""/>
+        </div>
+    </div>
+</div>
+<div class="phone" ng-if="options.unsupported">
+    <div class="title">
+        <p>Preview Unavaliable</p>
+    </div>
+    <div class="content">
+        <div class="img-box">
+            <p>Sorry, but preview for current ad is unavaliable.</p>
+        </div>
+        <div class="img-box">
+            <img pp-src="{{'/assets/img/channels/ad-preview-popup/placeholder.png'}}" alt=""/>
+        </div>
+    </div>
+</div>
+

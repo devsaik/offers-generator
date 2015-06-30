@@ -1,0 +1,68 @@
+<div ng-hide="options.unsupported"
+        class="img-box {{channelType}}"
+        ng-mousemove="mouseMove($event)"
+        ng-mouseup=" moveImage = false; moveSlider = false"
+        ng-class="{disable: !settings.enabled || !canEnabled}">
+
+    <div class="preview-box" ng-mousedown="mouseDown('image', $event)">
+        <div class="devicePreview" ng-class="{'landscape': options.landscape}">
+            <img pp-src dynamic-src="options.bg || '/assets/img/channels/third-step/phone-300x50.png'" alt=""/>
+        </div>
+
+        <div class="ad-title" >
+            <p class="big">Preview</p>
+            <p class="small">Ad size:  {{adBannerType}}  px</p>
+        </div>
+
+        <div class="ad-info"
+             ng-class="{'visible': adTitle || adDesc}"
+             ng-style="{'left': options.left, 'top': options.top, 'width': options.width}">
+            <div class="inner"
+                 ng-hide="!adBannerImage"
+                 ng-style="{'width': options.width, 'height': options.height}">
+                <p class="name" ng-show="adTitle">{{adTitle}}</p>
+                <p class="description" ng-show="adDesc">{{adDesc}}</p>
+            </div>
+            <div class="plus-container"
+                    ng-hide="adBannerImage"
+                    ng-click="onPlusClicked({options: options})"
+                 ng-style="{'width': options.width, 'height': options.height}">
+                <svg class="plus" width="100%" height="100%" viewBox="-1 0 10 16">
+                    <text x="0" y="13">+</text>
+                </svg>
+            </div>
+        </div>
+
+
+        <img
+                id="preview-img"
+                ng-hide="!adBannerImage"
+                ng-style="imagePosition"
+                ng-class="{automove: autoMove}"
+                alt="Banner Preview"/>
+
+        <canvas id="preview-mask"
+                ng-show="adBannerImage"
+                width="500px"
+                height="700px">
+        </canvas>
+    </div>
+    <div class="ui-elements" ng-show="adBannerImage">
+        <div class="range">
+            <span class="minus" ng-click="autoMove = true; scale = scale - 10;">–</span>
+            <span class="plus" ng-click="autoMove = true; scale = scale + 10;">+</span>
+            <div class="slider" ng-click="sliderClick($event)">
+                <div class="ruler"></div>
+                <div id="slider-wrap">
+                    <span id="slider-point" ng-class="{automove: autoMove}" ng-style="{left: scale + '%'}"
+                          ng-mousedown="mouseDown('slider', $event)">|||</span>
+                </div>
+            </div>
+        </div>
+        <a href ng-click="reset()" class="cancel">Cancel</a>
+        <a href ng-click="crop()" class="save">Preview</a>
+    </div>
+</div>
+<div ng-show="options.unsupported">
+    <p>Sorry, current ad type is deprecated. Please choose another one</p>
+</div>

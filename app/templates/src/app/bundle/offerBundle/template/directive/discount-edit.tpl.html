@@ -1,0 +1,133 @@
+<df-label tooltip="A percentage or dollar discount that will apply to the entire purchase when the offer is redeemed."
+          label="Discount Amount"
+          required="true">
+</df-label>
+
+<div class="pp-form__row row" ng-class="{disabled: disable || model.disabled, 'has-error': model.error}">
+        <div class="col-xs-6"  ng-if="(['FREE', 'BUYGET'].indexOf(value.discountType) === -1)">
+            <df-input ng-disabled="disable"
+                      ng-model="value.amount"
+                      ng-class="{'percent': value.discountType === 'PERCENTAGE'}"
+                      name="discount_amount"
+                      df-validator
+                      df-required="{message:'Please enter a Discount Amount'}"
+                      df-type="{rule:'positive', message:'Please enter a numeric value (ex. 45)'}"
+                      df-more="0"
+                      df-offer-discount-amount
+                      placeholder="20"
+                      symbol="$">
+            </df-input>
+            <df-error for-name="discount_amount"></df-error>
+        </div>
+
+        <df-selectbox ng-class="{'small': (['FREE', 'BUYGET'].indexOf(value.discountType) === -1), 'big': (['FREE', 'BUYGET'].indexOf(value.discountType) !== -1)}"
+                      ng-model="value.discountType"
+                      ng-disabled="disable"
+                      allow-empty="false">
+            <option-item class="sub-item" value="'ABSOLUTE'" label="'$'" default="true"> <span>$</span> </option-item>
+            <option-item class="sub-item" value="'PERCENTAGE'" label="'%'" > <span>%</span> </option-item>
+            <option-item class="sub-item" value="'BUYGET'" label="'Buy and Get'"> <span>Buy and Get</span> </option-item>
+            <option-item class="sub-item" value="'FREE'" label="'Free'"> <span>Free</span> </option-item>
+        </df-selectbox>
+</div>
+
+<df-field label="Min Purchase"
+          tooltip="The minimum a customer has to spend in order to be able to redeem this offer. This is typically used with dollar discounts."
+          required="true"
+          ng-if="value.discountType === 'ABSOLUTE'">
+    <div class="clear"></div>
+    <df-input class="col-xs-6 pl0"
+              ng-model="value.minAmount"
+              ng-disabled="disable"
+              name="discount_min_amount"
+              df-validator
+              df-offer-min-amount
+              df-required
+              placeholder="30"
+              symbol="$"></df-input>
+</df-field>
+
+<div class="pp-form__row row" ng-if="value.discountType === 'PERCENTAGE'">
+    <div class="col-xs-6">
+        <df-field class="mb0"
+                  label="Min Purchase"
+                  tooltip="The minimum a customer has to spend in order to be able to redeem this offer. This is typically used with dollar discounts."
+                  required="true">
+            <df-input ng-model="value.minAmount"
+                      name="discount_min_amount"
+                      df-validator
+                      df-type="{rule:'positive', message:'Please enter a numeric value (ex. 45)'}"
+                      df-more="0"
+                      df-offer-min-amount
+                      df-required="{message:'Please enter a min purchase amount'}"
+                      ng-disabled="disable"
+                      placeholder="10"
+                      symbol="$">
+            </df-input>
+        </df-field>
+    </div>
+    <div class="col-xs-6">
+        <df-field class="mb0"
+                  label="Max Discount"
+                  tooltip="The greatest discount the customer can earn by redeeming this offer. This is typically used with percentage discounts."
+                  tooltip-position="right"
+                  required="true">
+            <df-input ng-model="value.maxAmount"
+                      name="discount_max_amount"
+                      df-validator
+                      df-required="{message:'Please enter a max discount amount'}"
+                      df-type="{rule:'positive', message:'Please enter a numeric value (ex. 45)'}"
+                      df-more="0"
+                      df-offer-max-amount
+                      ng-disabled="disable"
+                      placeholder="20"
+                      symbol="$">
+            </df-input>
+        </df-field>
+    </div>
+</div>
+
+<div class="pp-form__row row" ng-if="value.discountType === 'BUYGET'">
+    <div class="col-xs-6">
+        <df-field class="mb0"
+                  label="Buy">
+            <df-input placeholder="2"
+                      ng-disabled="disable"
+                      name="discount_buy"
+                      df-validator
+                      df-required="{message:'Please enter Buy values'}"
+                      df-type="{rule:'integer', message:'Please enter a numeric value (ex. 45)'}"
+                      ng-model="value.buy">
+            </df-input>
+        </df-field>
+    </div>
+    <div class="col-xs-6">
+        <df-field class="mb0"
+                  label="Get">
+            <df-input placeholder="2"
+                      ng-disabled="disable"
+                      name="discount_get"
+                      df-validator
+                      df-required="{message:'Please enter Get values'}"
+                      df-type="{rule:'integer', message:'Please enter a numeric value (ex. 45)'}"
+                      ng-model="value.get">
+            </df-input>
+        </df-field>
+    </div>
+</div>
+
+<df-field label="Minimum Purchase"
+          required="true"
+          tooltip="The minimum a customer has to spend in order to be able to redeem this offer. This is typically used with dollar discounts."
+          ng-if="value.discountType === 'FREE'">
+    <df-input class="col-xs-6 pl0"
+              placeholder="10"
+              ng-disabled="disable"
+              name="discount_min_amount"
+              df-validator
+              df-offer-min-amount
+              df-required
+              ng-model="value.minAmount"
+              symbol="$"></df-input>
+    <div class="clear"></div>
+</df-field>

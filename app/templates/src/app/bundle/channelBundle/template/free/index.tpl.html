@@ -1,0 +1,40 @@
+<div class="pp-popup__header">{{ title || 'Define Free Campaign Details'}}</div>
+<div class="pp-popup__inner free-channel-container" loading-container="isLoading">
+    <pp-loading-bar resolve="!isLoading"></pp-loading-bar>
+    <slide-panels title="title">
+        <!--<panel-->
+                <!--title="Define Mobile Banner Campaign Details"-->
+                <!--is-open="{{controls.step === 0}}">-->
+            <!--<div ng-include="'app/bundle/channelBundle/template/free/panels/type-choose.tpl.html'"></div>-->
+        <!--</panel>-->
+        <panel
+                title="Define Free Campaign Details"
+                is-open="{{controls.step === 0}}">
+            <div class="panel-scroller" ui-scroll>
+                <div ng-include="'app/bundle/channelBundle/template/free/panels/main-settings.tpl.html'"></div>
+            </div>
+        </panel>
+        <panel
+                title="Manage Distribution Channels List"
+                is-open="{{controls.step === 1}}">
+            <div class="panel-scroller" ui-scroll>
+                <div ng-include="'app/bundle/channelBundle/template/free/panels/manage-list.tpl.html'"></div>
+            </div>
+        </panel>
+        <panel
+                title="Start Campaign or Save for Later?"
+                is-open="{{controls.step === 2}}">
+            <div class="panel-scroller" ui-scroll>
+                <div ng-include="'app/bundle/channelBundle/template/free/panels/start-or-save.tpl.html'"></div>
+            </div>
+        </panel>
+        <panel
+                title="User Agreement"
+                is-open="{{controls.step >= 3}}">
+            <div class="panel-scroller" ui-scroll>
+                <div ng-include="'app/bundle/channelBundle/template/free/panels/approve.tpl.html'"></div>
+            </div>
+        </panel>
+    </slide-panels>
+</div>
+<div class="ngdialog-manual-close" ng-click="vm.closeDialog()"></div>

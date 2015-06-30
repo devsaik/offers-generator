@@ -1,0 +1,81 @@
+<div class="users-block">
+    <div class="menu">
+        <div class="menu-filters fll">
+            <a href="" class="color-blue link-no-border" ng-repeat="status in userStatuses"
+                  ng-class="userFilter == status ? 'active' : ''"
+                  ng-click="setUserFilter(status)">
+                {{status}}
+            </a>
+        </div>
+        <a href="" class="btn white flr"
+           ns-popover
+           ns-popover-theme="ns-popover"
+           ns-popover-timeout="1000"
+           ns-popover-template="popover-addUser"
+           ns-popover-trigger="click"
+           ns-popover-placement="bottom|right">
+            <i class="pp-icon plus"></i>
+            Add user
+            <i>Beta</i>
+        </a>
+    </div>
+
+    <div class="account-block">
+        <p class="title mb20">User - {{userFilter}}</p>
+
+        <div class="user-list">
+            <table class="table">
+                <tbody ng-repeat="user in users | filter:userFilter as result" account-table-row user="user"></tbody>
+                <tbody ng-if="results.length == 0">
+                    <tr>
+                        <td>No users {{userFilter}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="popover-addUser">
+    <form class="account-bundle popover-addUser form" ng-submit="validateCreateForm() && createUser({user: newUser, callback: hideForm})">
+        <div class="inner">
+            <span class="close" ng-click="hidePopover()">x</span>
+            <i class="arrow top"></i>
+            <div class="col">
+                <div class="pp-form__row">
+                    <df-field label="First Name">
+                        <df-input ng-model="newUser.firstName"></df-input>
+                    </df-field>
+                </div>
+                <div class="pp-form__row">
+                    <df-field label="Email">
+                        <df-input ng-model="newUser.email"></df-input>
+                    </df-field>
+                </div>
+                <div class="pp-form__row">
+                    <df-field label="Role">
+                        <select ng-model="newUser.type" ng-options="o as o for o in roles"></select>
+                    </df-field>
+                </div>
+            </div>
+            <div class="col">
+                <div class="pp-form__row">
+                    <df-field label="Last Name">
+                        <df-input  ng-model="newUser.lastName"></df-input>
+                    </df-field>
+                </div>
+                <div class="pp-form__row">
+                    <df-field label="Confirm Email">
+                        <df-input  ng-model="verifyEmail"></df-input>
+                    </df-field>
+                </div>
+                <div class="text"> Assigned mobile users will only be able to accept, refund, and void payments on the Spark Pay mobile application, and cannot access any of your banking or personal account information.</div>
+            </div>
+            <div class="clear"></div>
+            <div class="row-buttons">
+                <a href="" class="btn white" ng-click="hidePopover()">Cancel</a>
+                <a href="" class="btn green">Send Invite</a>
+            </div>
+        </div>
+    </form>
+</script>

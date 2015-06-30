@@ -1,0 +1,20 @@
+appConfig:
+  channelBundle:
+    channels:
+      free:
+        transformers:
+          freeChannel:
+            response:
+              __copy: [id, name, description, timeZone, merchantId, redemptions, status, schedulings, distributionListId, distributionChannel]
+              startDate: "startDate | amDateFormat: 'YYYY/MM/DD'"
+              endDate: "endDate | amDateFormat: 'YYYY/MM/DD'"
+              devices: "devices[0] || ''"
+              type: "type"
+
+            request:
+              __copy: [id, name, description, timeZone, redemptions, status, schedulings, distributionListId, distributionChannel]
+              startDate: "startDate | amDateFormat: 'YYYY-MM-DD'"
+              endDate: "endDate | amDateFormat: 'YYYY-MM-DD'"
+              merchantId: "'userService'| get_service_var: 'user_id'"
+              type: "type"
+              campaignType: "type"

@@ -1,0 +1,59 @@
+<div class="pp-popup__header">Copy Link</div>
+<div class="pp-popup__inner">
+    <div class="row">
+        <div class="col-md-4">
+            <figure class="img-box">
+                <img pp-src="/assets/img/channels/copy-link.png" />
+            </figure>
+        </div>
+
+        <div class="col-md-8 description">
+            <slide-panels title="title">
+                <panel
+                        title="Copy Link"
+                        is-open="{{controls.step === 'main'}}">
+                    <div class="panel-scroller">
+
+                        <p class="copy-message">Copy this URL and share it with the world:</p>
+                        <div class="row-buttons">
+                            <button class="pp-btn lgreen"
+                                    clip-click-fal="vm.clipFal(copy)"
+                                    clip-copy="vm.offer.shortUrl"
+                                    clip-click="vm.onCopyToClip()"
+                                    ng-click="vm.onCopyClicked()"
+                                    >
+                                Copy
+                            </button>
+                            <df-input ng-model="vm.offer.shortUrl" ng-disabled="true" label=""> </df-input>
+                        </div>
+                    </div>
+                </panel>
+                <panel
+                        title="Copy Link"
+                        is-open="{{controls.step === 'copied'}}">
+                    <div class="panel-scroller">
+                        <p class="copied-message">Your offer's link has been <strong class="green">successfully copied</strong>. You may now paste and share it.</p>
+                    </div>
+                </panel>
+                <panel
+                        title="Copy Link"
+                        is-open="{{controls.step === 'noFlash'}}">
+                    <div class="panel-scroller">
+                        <p class="no-flash">Unable copy to clipboard url <strong> {{vm.shortUrl}} </strong> because Adobe Flash is disabled!</p>
+                    </div>
+                </panel>
+                <panel
+                        title="Copy Link"
+                        is-open="{{controls.step === 'unavailable'}}">
+                    <div class="panel-scroller">
+                        <span class="error color-red">
+                        Only running offers can be shared!
+                    </span>
+                    </div>
+                </panel>
+
+
+            </slide-panels>
+        </div>
+    </div>
+</div>

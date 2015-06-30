@@ -1,0 +1,28 @@
+<div class="pp-popup__header">
+    <b ng-if="title">{{title}} - </b>
+    What are Offers?
+</div>
+<div class="pp-popup__inner">
+    <slide-panels headline="title">
+        <panel
+                headline=""
+                is-open="{{controls.step === 0}}">
+            <div ng-include="'app/bundle/offerBundle/template/dialog/tutorial-offer/step-0.tpl.html'"></div>
+        </panel>
+        <panel
+                headline="Tutorial"
+                is-open="{{controls.step === 1}}">
+            <div ng-include="'app/bundle/offerBundle/template/dialog/tutorial-offer/step-1.tpl.html'"></div>
+        </panel>
+        <panel
+                headline="Tutorial"
+                is-open="{{controls.step === 2}}">
+            <div ng-include="'app/bundle/offerBundle/template/dialog/tutorial-offer/step-2.tpl.html'"></div>
+        </panel>
+        <panel
+                headline="Tutorial"
+                is-open="{{controls.step === 3}}">
+            <div ng-include="'app/bundle/offerBundle/template/dialog/tutorial-offer/step-3.tpl.html'"></div>
+        </panel>
+    </slide-panels>
+</div>

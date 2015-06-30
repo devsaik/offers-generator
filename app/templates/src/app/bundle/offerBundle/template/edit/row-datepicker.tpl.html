@@ -1,0 +1,31 @@
+<div class="row row-datepicker">
+    <div class="col-xs-6">
+        <df-datepicker class="gray-icon"
+                       name="startTime"
+                       init-date="item.startTime"
+                       min-date="controls.offerMinDate"
+                       format="yyyy/MM/dd"
+                       ng-disabled="item.isFieldReadonly('startTime')"
+                       df-required="{rule: true, message: 'Please select a start date for the offer'}"
+                       df-dateDiff="{rule: { range: -1, more: true }, message: 'Start date cannot be back dated'}"
+                       df-linked-with="endTime"
+                       ng-model="item.startTime">
+        </df-datepicker>
+        <df-error for-name="startTime"></df-error>
+    </div>
+
+    <span class="to">to</span>
+
+    <div class="col-xs-6">
+        <df-datepicker class="gray-icon right"
+                       name="endTime"
+                       ng-disabled="item.isFieldReadonly('startTime')"
+                       min-date="item.startTime"
+                       format="yyyy/MM/dd"
+                       df-required="{rule: true, message: 'Please select a end date for the offer'}"
+                       df-dateDiff="{rule: { field: 'startTime', more: true }, message: 'Offer end date must be before offer start date'}"
+                       ng-model="item.endTime">
+        </df-datepicker>
+        <df-error for-name="endTime"></df-error>
+    </div>
+</div>

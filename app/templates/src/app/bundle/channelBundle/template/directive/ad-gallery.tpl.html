@@ -1,0 +1,31 @@
+<div class="ad-gallery">
+    <div class="ad-gallery__list">
+        <div class="inner" ng-style="carouselStyle">
+            <ul class="inner-row">
+                <li class="ad-gallery__item"></li>
+                <li class="ad-gallery__item"
+                    ng-repeat="image in images.first"
+                    ng-click='setSelectedImage(image, $index + 1, 0)'>
+                    <img ng-src="{{image.url || image.base64}}" alt="uploaded images"/>
+                </li>
+            </ul>
+
+            <ul class="inner-row" ng-if="images.second">
+                <li class="ad-gallery__item"
+                    ng-repeat="image in images.second"
+                    ng-click='setSelectedImage(image, $index, 1)'>
+                    <img ng-src="{{image.url || image.base64}}"
+                         alt="uploaded images"/>
+                </li>
+            </ul>
+        </div>
+        <a href=""
+           class="add"
+           gallery-popup
+           on-image-chosen="addImage(image)">
+            +
+        </a>
+    </div>
+    <a href class="arrow arrow-left" ng-click="moveThumbs(83)"></a>
+    <a href class="arrow arrow-right" ng-click="moveThumbs(-83)"></a>
+</div>

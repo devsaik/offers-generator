@@ -1,0 +1,43 @@
+.loading-container {
+  position: relative;
+  .loading {
+    &:before {
+      background-color: white;
+      opacity: 0.5;
+    }
+  }
+}
+
+.loading-container .loading:before, .loading-container .loading:after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 50px;
+  min-width: 50px;
+}
+
+slide-panels {
+  display: block;
+}
+panel {
+  display: block;
+}
+
+.slide-panels-container {
+  .panel-title {
+    display: none;
+  }
+  .panel-content {
+    .panel {
+      background: transparent;
+      margin: 0px;
+
+      .panel-body{
+        padding: 0px;
+      }
+    }
+  }
+}

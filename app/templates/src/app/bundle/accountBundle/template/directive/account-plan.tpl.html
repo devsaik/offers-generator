@@ -1,0 +1,41 @@
+<div class="plan-block">
+    <dl>
+        <dd>Current Plan:</dd>
+        <dt>{{plan.title}} ({{getFormatDate(plan.startDate)}})</dt>
+    </dl>
+    <ul class="account-block">
+        <li><strong>${{currentPlan.monthlyFee}} Monthly Fee</strong></li>
+        <li>{{currentPlan.swipeRate}}% Swipe Rate</li>
+        <li>{{currentPlan.aeSwipeRate}}% American Express Swipe Rate</li>
+        <li>{{currentPlan.keyRate}}% Key Rate</li>
+    </ul>
+</div>
+<div class="plan-block switch-plan-block" ng-click="plan.view = true;">
+    <dl>
+        <dd>Switch Plan To:</dd>
+        <dt>{{plan.title.toLowerCase() == 'pro' ? 'go' : 'pro'}}</dt>
+    </dl>
+    <ul class="account-block">
+        <li><strong>${{anotherPlan.monthlyFee}} Monthly Fee</strong></li>
+        <li>{{anotherPlan.swipeRate}}% Swipe Rate</li>
+        <li>{{anotherPlan.aeSwipeRate}}% American Express Swipe Rate</li>
+        <li>{{anotherPlan.keyRate}}% Key Rate</li>
+    </ul>
+</div>
+<div class="popup-confirm" ng-show="plan.view === true;">
+    <div class="bg" ng-click="plan.view = false;"></div>
+    <div class="form">
+        <div class="row-header">
+            Change Price Plan
+            <a href="" ng-click="plan.view = false;" class="btn-close">
+               <i class="pp-icon close"></i>
+            </a>
+        </div>
+        <div class="row-text"> Are you sure you would like to change your price plan? Your current Pro plan subscription ends on 2015-04-22.</div>
+        <div class="row-buttons">
+            <a href="" class="btn white" ng-click="plan.view = false;">Cancel</a>
+            <a href="" class="btn green" ng-click="switchPlanHide();">Yes, change my plan!</a>
+        </div>
+    </div>
+</div>
+

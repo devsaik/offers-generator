@@ -1,0 +1,5 @@
+<p ng-if="_message && _message.is_simple" class="message">
+    {{_message.text}}
+</p>
+<ul ng-if="_message && !_message.is_simple" class="message-list" ng-bind-html="_message.text">
+</ul>

@@ -1,0 +1,149 @@
+appConfig:
+  ENTITY:
+    offer:
+################DEFAULTS####################
+      defaults:
+        timeZone: "US/Pacific"
+        status: "INCOMPLETE"
+        promoType: "OFFER"
+        activeTimings:
+          - "ALLDAY"
+        offerRadius: 5
+        discount:
+          discountType: "PERCENTAGE"
+        extDiscountCode: "discode"
+        siteUrl: "http://www.pushpointmobile.com/"
+#        companyLogoUrl: "http://s3.amazonaws.com/ppmcdnint/merchant/f302ccea-c79c-4949-91fd-e9d40f945076.jpg"
+#        offerStartDate: "2014-11-13"
+#        offerEndDate: "2014-11-28"
+#        locationIds:
+#          - "386cd29f-ec4a-4bf4-b6f2-63b36b77277d"
+        template: "SPARKPAY_1"
+        timeRestrictions:
+          -
+            restrictionType: "WEEKLY"
+            frequency: 1
+            weekDays:
+              - "MONDAY"
+              - "TUESDAY"
+              - "WEDNESDAY"
+              - "THURSDAY"
+              - "FRIDAY"
+              - "SATURDAY"
+              - "SUNDAY"
+            startTime: "12:00 AM"
+            endTime: "11:59 PM"
+            duration: "23:59"
+
+################VALIDATORS####################
+      validators:
+        merchantId:
+          -
+            name: required
+            rule: true
+        redemptionTarget:
+          -
+            name: offer_redemption
+            message: "Please enter a number for max redemptions on the offer"
+          -
+            name: more
+            rule: 0
+            message: "Redemtion value must be more then 0"
+        companyName:
+          -
+            name: required
+            rule: true
+        title:
+          -
+            name: required
+            rule: true
+            message: "Please enter a title for the offer"
+          -
+            name: minlength
+            rule: 3
+            message: "Title must be more than 3 characters long"
+          -
+            name: maxlength
+            rule: 50
+            message: "Title must be less than 50 characters long"
+        description:
+          -
+            name: required
+            rule: true
+            message: "Please enter a description for the offer"
+          -
+            name: maxlength
+            rule: 200
+            message: "Description must be less than 200 characters long"
+        name:
+          -
+            name: required
+            rule: true
+            message: "Please enter a nickname for the offer"
+          -
+            name: minlength
+            rule: 3
+            message: "Nickname must be more than 3 characters long"
+          -
+            name: maxlength
+            rule: 50
+            message: "Nickname must be less than 50 characters long"
+#        startTime:
+#          -
+#            name: required
+#            rule: true
+#            message: "Please select a start date for the offer"
+#          -
+#            name: dateDiff
+#            rule:
+#                  range: -1
+#                  more: true
+#            message: "Start date cannot be back dated"
+#        endTime:
+#          -
+#            name: required
+#            rule: true
+#            message: "Please select a end date for the offer"
+#          -
+#            name: dateDiff
+#            rule:
+#              field: "startTime"
+#              more: true
+#            message: "Offer end date must be before offer start date"
+        timeZone:
+          -
+            name: required
+            rule: true
+#          minlength: 10
+        discount:
+          -
+            name: offer_discount
+            messages:
+              one: "asd"
+        restrictions:
+          -
+            name: maxlength
+            rule: 300
+            message: "Restrictions must be less than 300 characters long"
+        status:
+          -
+            name: offer_status_map
+            message: "Unable to change status"
+            map:
+              incomplete: [approve]
+              approved: []
+              pending: [expire]
+              rejected: [expire, pause]
+              running: [expire, pause]
+              paused: [expire, running]
+              expired: [archive]
+              archived: []
+
+#########################OTHER###########################
+      autoRestrictionMessage: "* Only the first 5 offers are eligible so make sure you redeem yours right away. This QR code can only be used one time."
+      status_default_flow:
+        incomplete: "approve"
+        pending: "expire"
+        running: "expire"
+        paused: "expire"
+        expired: "archive"

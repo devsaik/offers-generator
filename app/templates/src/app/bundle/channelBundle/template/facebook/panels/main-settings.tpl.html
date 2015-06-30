@@ -1,0 +1,149 @@
+<div class="campaign-form facebook-form">
+    <form class="pp-form display-campaign-form facebook-form col-xs-12 col-md-7"
+          name="facebook_campaign_form"
+          object="channel"
+          df-form-disabled="{{channel.status && channel.status !== 'INCOMPLETE'}}"
+            >
+
+        <p class="title">{{offer.name}}</p>
+
+        <div class="items-row row">
+            <div class="col-xs-6">
+                <div class="pp-form__row mb15">
+                    <df-label tooltip="{{geo.tooltip}}" label="{{geo.label}}"></df-label>
+                    <df-selectbox class="h-none" ng-model="channel.geoActive" allow-empty="true">
+                        <option-item class="sub-item" ng-repeat="opt in geo.options" label="opt.label" value="opt.value"
+                                     default="opt.default">
+                            <span>{{opt.label}}</span>
+                        </option-item>
+                    </df-selectbox>
+                </div>
+                <div class="pp-form__row mb15">
+                    <df-label tooltip="{{ages.tooltip}}" label="{{ages.label}}"></df-label>
+                    <df-selectbox class="h-none" ng-model="channel.ageGroup" allow-empty="true">
+                        <option-item class="sub-item" ng-repeat="opt in ages.options" label="opt.label"
+                                     value="opt.value"
+                                     default="opt.default">
+                            <span>{{opt.label}}</span>
+                        </option-item>
+                    </df-selectbox>
+                </div>
+                <div class="pp-form__row mb15">
+                    <df-label tooltip="{{gender.tooltip}}" label="{{gender.label}}"></df-label>
+                    <df-selectbox class="h-none" ng-model="channel.gender" allow-empty="true">
+                        <option-item class="sub-item" ng-repeat="opt in gender.options" label="opt.label"
+                                     value="opt.value"
+                                     default="opt.default">
+                            <span>{{opt.label}}</span>
+                        </option-item>
+                    </df-selectbox>
+                </div>
+                <div class="pp-form__row mb15">
+                    <df-label tooltip="{{controls.fields.interests.tooltip}}"
+                              label="{{controls.fields.interests.label}}"></df-label>
+                    <df-selectbox ng-model="channel.interests"
+                                  type="multi"
+                                  allow-empty="false"
+                                  allow-filter="true"
+                                  allow-placeholder="true"
+                                  allow-icon="true"
+                                  filter="interestFilter"
+                                  placeholder="{{controls.fields.interests.placeholder}}"
+                                  icon-class="fa fa-search">
+                        <option-item class="sub-item" ng-repeat="opt in interests | filter: interestFilter"
+                                     label="opt.label" value="opt.id">
+                            <span class="fake-radio"></span>
+                            <span>{{opt.description}}</span>
+                        </option-item>
+                    </df-selectbox>
+                </div>
+                <div class="pp-form__row mb15">
+                    <df-label tooltip="{{controls.fields.behaviors.tooltip}}"
+                              label="{{controls.fields.behaviors.label}}"></df-label>
+                    <df-selectbox ng-model="channel.behaviors"
+                                  type="multi"
+                                  allow-empty="false"
+                                  allow-filter="true"
+                                  allow-placeholder="true"
+                                  allow-icon="true"
+                                  filter="behaviorFilter"
+                                  placeholder="{{controls.fields.behaviors.placeholder}}"
+                                  icon-class="fa fa-search">
+                        <option-item class="sub-item" ng-repeat="opt in behaviors | filter: behaviorFilter"
+                                     label="opt.label" value="opt.id">
+                            <span class="fake-radio"></span>
+                            <span>{{opt.description}}</span>
+                        </option-item>
+                    </df-selectbox>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="pp-form__row mb15">
+                    <df-label tooltip="{{controls.fields.budgetType.tooltip}}"
+                              label="{{controls.fields.budgetType.label}}"></df-label>
+                    <radio-group ng-model="channel.budgetType" name="budgetType"
+                                 options="controls.fields.budgetType.options"></radio-group>
+                </div>
+                <div class="pp-form__row mb15">
+                    <df-field
+                            label="{{controls.fields.totalBudget.label}}"
+                            tooltip="{{controls.fields.totalBudget.tooltip}}">
+                        <df-input name="budget"
+                                  ng-model="channel.totalBudget"
+                                  symbol="$"></df-input>
+                </div>
+                <div>
+                    <df-label
+                            label="{{controls.fields.schedule.label}}"
+                            tooltip="{{controls.fields.schedule.tooltip}}">
+                    </df-label>
+                    <div class="pp-form__row mb10 row-datepicker">
+                        <span class="label">Start:</span>
+                        <df-datepicker class="gray-icon"
+                                       name="startDate"
+                                       min-date="channel.initStartDate"
+                                       format="yyyy/MM/dd"
+                                       help="When offer will avaliable"
+                                       ng-model="channel.startDate">
+                        </df-datepicker>
+                    </div>
+                    <!--end row-->
+                    <!--row-->
+                    <div class="pp-form__row row-datepicker mb15">
+                        <span class="label tar">End:</span>
+                        <df-datepicker class="gray-icon"
+                                       name="endDate"
+                                       min-date="channel.startDate"
+                                       format="yyyy/MM/dd"
+                                       help="When offer will expired"
+                                       ng-model="channel.endDate"
+                                >
+                        </df-datepicker>
+                    </div>
+                    <div class="pp-form__row mb15">
+                        <div class="estimated">
+                            <df-label ng-click="showCustomersInfo()" label="Estimated Reach:"
+                                      tooltip="Capital One estimates the number of people you can potentially reach with your ad, based on the size of the area you are targeting your ad to."></df-label>
+                            <!--<label> <span class="tooltip-icon" ><i class="fa fa-info"></i></span></label>-->
+                            <span class="value">{{controls.estimatedCustomers || 43233 | number:0}} Customers</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row-buttons row">
+            <div class="col-xs-6">
+                <a href="" ui-sref="ppp.offer.list.item.channels" class="pp-btn dgray">Go Back</a>
+            </div>
+            <div class="col-xs-6">
+                <df-button class="flr" label="Next" primary="true" ng-click="save(channel)"
+                           disable-on-invalid="true"></df-button>
+            </div>
+        </div>
+        <!--end buttons-->
+    </form>
+
+    <figure class="col-md-5 hidden-xs hidden-sm img-box">
+        <img pp-src="/assets/img/channels/ad-fake-prev.png"/>
+    </figure>
+</div>

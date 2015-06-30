@@ -1,0 +1,43 @@
+<div class="pp-form h100">
+    <span class="close-panel" ng-click="vm.onBackClick(controls.activePanel)">X</span>
+    <p class="title">Find an Item</p>
+
+    <!--row-->
+    <div class="pp-form__input row-search">
+        <input type="text" id="lineItemSearchText" ng-model="lineItemSearchText" placeholder="Type search ...">
+        <i class="fa fa-search"></i>
+    </div>
+    <!--end row-->
+
+    <!--list-->
+    <div class="list">
+        <ul ui-scroll>
+            <li class="radio" ng-repeat="item in lineItems | filter: lineItemSearchText | limitTo : 25">
+                <label>
+                    <input type="radio" name="item" id="item{{$index}}" ng-model="controls.lineItemId"
+                           value="{{item.$getId()}}">
+                    <span class="name">{{item.name}}</span>
+                    <span class="price">{{item.price | currency}}</span>
+                </label>
+            </li>
+        </ul>
+    </div>
+    <!--end list-->
+
+    <!--row-->
+    <div class="form-row row-buttons mb0">
+        <a class="pp-btn lgreen"
+           ng-click="vm.onLineItemChooseClick(controls.lineItemId)">
+            Add Item
+        </a>
+        <a class="pp-btn red"
+           ng-click="vm.onLineItemRemoveClick()">
+            Remove Item
+        </a>
+        <a ng-click="vm.onBackClick(controls.activePanel)"
+           class="pp-btn gray">
+            Cancel
+        </a>
+    </div>
+    <!--end row-->
+</div>

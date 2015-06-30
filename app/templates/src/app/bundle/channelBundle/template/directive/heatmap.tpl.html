@@ -1,0 +1,33 @@
+<div class="pp-heatmap">
+
+    <div class="range">
+        <!--<div class="pp-form__row row mb30" ng-if="channel.geoActive == 'GEO'">-->
+            <!--<div class="col-xs-10">-->
+                <!--<range-slider max-value="filter.radius" min="1" max="9" default="6"-->
+                              <!--points="[1, 3, 6, 9]"></range-slider>-->
+            <!--</div>-->
+            <!--<div class="col-xs-2">-->
+                <!--<df-input name="filter.radius"-->
+                          <!--ng-model="filter.radius"-->
+                          <!--symbol="KM"-->
+                        <!-- ></df-input>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="estimated">
+            <df-label ng-click="showCustomersPopup()" label="Estimated Reach:"
+                      tooltip="Capital One estimates the number of people you can potentially reach with your ad, based on the size of the area you are targeting your ad to."></df-label>
+            <!--<label> <span class="tooltip-icon" ><i class="fa fa-info"></i></span></label>-->
+            <span class="value">{{estimatedCustomers | number:0}} Customers</span>
+        </div>
+    </div>
+
+    <div class="pp-heatmap__map">
+        <!--<label>show debug <input type="checkbox" ng-model="controls.debug.labels"-->
+                                 <!--ng-change="vm.refreshHeatmap()"/></label>-->
+        <leaflet layers="controls.layers" width="100%" height="{{::mapHeight || '100%'}}" markers="controls.markers"
+                 defaults="controls.mapDefaults" center="controls.center" event-broadcast="controls.events"
+                 controls="controls.controls"
+                 geojson="controls.geojson"
+                ></leaflet>
+    </div>
+</div>

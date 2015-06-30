@@ -7,35 +7,20 @@ var $ = require('gulp-load-plugins')();
 var wiredep = require('wiredep').stream;
 
 module.exports = function(options) {
-    var injectOptions = {
-      ignorePath: [options.config.srcDir, options.config.tempServe],
-      addRootSlash: false
-    };
-    var injectAssetOptions = {
-      ignorePath: [options.config.srcDir, options.config.tempServe],
-      addRootSlash: false,
-      name: 'head'
-    };
-    var injectAssetScripts = gulp.src([
-      options.config.assetsJS,
-      // options.config.assetsJS,
-      '!' + options.config.assetsOffersJS
-    ]);
-    var injectMainOptions= {
-      ignorePath: [options.config.srcDir, options.config.tempServe],
-      addRootSlash: false,
-      name: 'main' };
-
-    var injectMainCSS = gulp.src([
-      options.config.inject.mainCSS
-    ]);
-    var injectCustomThemeOptions= {
+  var injectOptions = {
+    ignorePath: [options.config.srcDir, options.config.tempServe],
+    addRootSlash: false
+  };
+  var injectAssetOptions = {
     ignorePath: [options.config.srcDir, options.config.tempServe],
     addRootSlash: false,
-    name: 'custom' };
-    var injectCustomThemeCSS = gulp.src([
-      options.config.inject.customThemeCSS
-    ]);
+    name: 'head'
+  };
+  var injectAssetScripts = gulp.src([
+    options.config.assetsJS,
+    // options.config.assetsJS,
+    '!' + options.config.assetsOffersJS
+  ]);
 
 
   gulp.task('inject:assetjs',function(){
@@ -44,6 +29,22 @@ module.exports = function(options) {
 
   });
   gulp.task('inject', ['scripts', 'styles', 'yml', 'templates' ], function () {
+    var injectMainOptions= {
+      ignorePath: [options.config.srcDir, options.config.tempServe],
+      addRootSlash: false,
+      name: 'main' };
+
+    var injectMainCSS = gulp.src([
+      options.config.inject.mainCSS
+    ], { read: false });
+    var injectCustomThemeOptions= {
+      ignorePath: [options.config.srcDir, options.config.tempServe],
+      addRootSlash: false,
+      name: 'custom' };
+    var injectCustomThemeCSS = gulp.src([
+      options.config.inject.customThemeCSS
+    ], { read: false });
+
     var injectStyles = gulp.src([
       options.config.inject.tempCSS,
       '!' + options.config.inject.mainCSS,
@@ -57,14 +58,14 @@ module.exports = function(options) {
       '!' + options.config.appSpecJS,
       '!' + options.config.appMockJS
     ])
-    .pipe($.angularFilesort()).on('error', options.errorHandler('AngularFilesort'));
+      .pipe($.angularFilesort()).on('error', options.errorHandler('AngularFilesort'));
 
 
 
     return gulp.src(options.config.srcHTML)
-      .pipe($.inject(injectStyles, injectOptions))
       .pipe($.inject(injectMainCSS, injectMainOptions))
       .pipe($.inject(injectCustomThemeCSS, injectCustomThemeOptions))
+      .pipe($.inject(injectStyles, injectOptions))
       .pipe($.inject(injectScripts, injectOptions))
       .pipe($.inject(injectAssetScripts, injectAssetOptions))
       .pipe(wiredep(options.wiredep))

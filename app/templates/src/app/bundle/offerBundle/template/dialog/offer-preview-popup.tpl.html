@@ -1,0 +1,35 @@
+<div class="pp-popup__header">Offer Details and Offer Web Page</div>
+<div class="pp-popup__inner">
+    <!--<p class="ml30 mr30 mt10 mb10">-->
+        <!--<button class="pp-btn dgray" ng-click="changePopupClass('mobile')">Mobile</button>-->
+        <!--<button class="pp-btn dgray" ng-click="changePopupClass('desktop')">Desktop</button>-->
+        <!--<button class="pp-btn dgray" ng-click="changePopupClass('tablet')">Tablet</button>-->
+        <!--<button class="pp-btn dgray" ng-click="bitPreview = true">Bit.ly</button>-->
+    <!--</p>-->
+
+    <!--<div ng-if="offer.shortUrl && bitPreview">-->
+        <!--<iframe width="100%" height="800" ng-src="{{offer.shortUrl}}" frameborder="0"></iframe>-->
+    <!--</div>-->
+
+    <!--<div offer-landing-preview-->
+         <!--ng-if="!bitPreview"-->
+         <!--offer="ngDialogData.offer"-->
+         <!--type="spark">-->
+    <!--</div>-->
+    <div class="content">
+        <div class="col">
+            <div class="preview-desktop">
+                <div ng-show="loading" class="loading-preview"><img pp-src="{{'/assets/img/preloader-inline.GIF'}}" alt=""/></div>
+                <div ng-show="!loading" class="preview" ng-style="{'background-image': 'url('+ images.tablet +')' }"></div>
+            </div>
+            <img pp-src="{{'assets/img/offers/preview-for-desktop.png'}}" alt=""/>
+        </div>
+        <div class="col">
+            <div class="preview-mobile">
+                <div ng-show="loading" class="loading-preview"><img pp-src="{{'/assets/img/preloader-inline.GIF'}}" alt=""/></div>
+                <div ng-show="!loading" class="preview" ui-scroll><img ng-src="{{images.mobile}}" alt=""/></div>
+            </div>
+            <img pp-src="{{'assets/img/offers/preview-for-mobile.png'}}" alt=""/>
+        </div>
+    </div>
+</div>

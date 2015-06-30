@@ -1,0 +1,24 @@
+<div class="modal_header">
+    <span class="name">Campaign Performance - </span>
+    <span class="current">{{offer.name}}</span>
+</div>
+
+<div class="modal-content">
+    <statistic-chart-control statistic_data="statistic_data" options="{fromDate: offer.startTime, toDate: offer.endTime}" on-filter-changed="vm.onFilterChanged(filter)">
+        <div class="metrics-text">
+            {{controls.activeMetric.x.label}} <span ng-hide="controls.activeMetric.x.label === controls.activeMetric.y.label">to {{controls.activeMetric.y.label}} </span> for
+            <span ng-show="controls.filter.type === 'month'">{{controls.filter.fromDate | amDateFormat:'MMMM'}}</span>
+            <span ng-show="controls.filter.type !== 'month'">{{controls.filter.fromDate | amDateFormat:'MMMM D'}} - {{controls.filter.toDate | amDateFormat:'D, YYYY'}}</span>
+        </div>
+        <statistic-chart metrics="vm.metrics" offer="offer" on-metric-changed="vm.onMetricChanged(x,y)"></statistic-chart>
+    </statistic-chart-control>
+
+    <div class="withoutStatistic" ng-if="noData">
+        <div class="icon fa"></div>
+        <div class="fleft">
+            <div class="small">This statistic is</div>
+            <div class="big">CURRENTLY</div>
+            <div class="big">UNAVAILABLE.</div>
+        </div>
+    </div>
+</div>

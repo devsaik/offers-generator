@@ -1,0 +1,48 @@
+<div class="banner-form row">
+    <form class="pp-form facebook-campaign-ad-form"
+          name="display_campaign_form_ad"
+          object="ad"
+          validation-rules="{}"
+          df-form-disabled="{{channel.status && channel.status !== 'INCOMPLETE'}}"
+            >
+        <div class="col-xs-6">
+            <p class="title">Edit Ad Content</p>
+
+            <ad-settings
+                    fields-params="controls.fields"
+                    channel="channel"
+                    ad-title="previewEditorSettings.adTitle"
+                    ad-description="previewEditorSettings.adDescription"
+                    allow-edit="true"
+                    ad-banner-image="controls.adPreviewImage"
+                    ad-banner-type="controls.adBannerType"
+                    default-banner-type="FACEBOOK"
+                    is-not-valid="isNotValid"
+                    on-ad-change="enableEditor()">
+                    </ad-settings>
+            <div class="row-buttons">
+                <a class="pp-btn dgray fll" ng-click="prev()">Go Back</a>
+                <df-button class="flr" label="Use This Ad" primary="true" ng-click="useThisAd()"
+                           ng-disabled="isNotValid && (channel.status == 'INCOMPLETE')"></df-button>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <ad-preview
+                    settings="previewEditorSettings"
+                    channel-type="facebook"
+                    ad-title="previewEditorSettings.adTitle"
+                    ad-desc="previewEditorSettings.adDescription"
+                    ad-banner-image="controls.adPreviewImage"
+                    ad-banner-type="controls.adBannerType"
+                    on-save="afterCrop(image)"
+                    on-cancel="cancelPreview()">
+                    </ad-preview>
+        </div>
+
+        <div class="clear"></div>
+
+
+    </form>
+</div>
+
+

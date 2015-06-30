@@ -7,7 +7,7 @@ module.exports = function(GulpAngularGenerator) {
    * and the css preprocessor
    */
   GulpAngularGenerator.prototype.uiFiles = function uiFiles() {
-    this.files.push({
+   /* this.files.push({
       src: 'src/app/components/navbar/__' + this.props.ui.key + '-navbar.html',
       dest: 'src/app/components/navbar/navbar.html',
       template: false
@@ -37,7 +37,7 @@ module.exports = function(GulpAngularGenerator) {
       src: 'src/app/components/navbar/__navbar.' + this.props.cssPreprocessor.extension,
       dest: 'src/app/components/navbar/navbar.' + this.props.cssPreprocessor.extension,
       template: false
-    });
+    });*/
   };
 
   /**

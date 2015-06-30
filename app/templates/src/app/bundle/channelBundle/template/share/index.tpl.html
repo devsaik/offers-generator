@@ -1,0 +1,90 @@
+<div class="pp-popup__header">
+    <b>{{offer.name}}</b>
+    - Post or Copy
+</div>
+<div class="pp-popup__inner" loading-container="isLoading">
+    <div class="box-images mb0 tac">
+        <div class="col-xs-4 item">
+            <figure class="img-box">
+                <img pp-src="/assets/img/channels/fb.png" />
+            </figure>
+            <button class="pp-btn lgreen"
+                    ng-disabled="disableButtons.facebook || !offer.isActive()"
+                    ng-click="vm.shareByFB(offer)">
+                Post to Facebook
+            </button>
+        </div>
+        <div class="col-xs-4 item">
+            <figure class="img-box">
+                <img pp-src="/assets/img/channels/tw.png" />
+            </figure>
+            <button class="pp-btn lgreen"
+                    ng-disabled="disableButtons.twitter || !offer.isActive()"
+                    ng-click="vm.shareBy('twitter', offer)">
+                        Post to Twitter
+            </button>
+        </div>
+        <div class="col-xs-4 item">
+            <figure class="img-box">
+                <img pp-src="/assets/img/channels/copy-link.png" />
+            </figure>
+            <button class="pp-btn lgreen"
+                    ng-disabled="disableButtons.copy || !offer.shortUrl || !offer.isStatus('RUNNING')"
+                    ng-click="vm.onCopyClicked('preCopy')">
+                Copy link
+            </button>
+        </div>
+    </div>
+
+    <div class="box-messages"
+         ng-if="shareMessages.active"
+         ng-switch="shareMessages.type">
+            <p ng-switch-when="facebook">
+                <span class="success" ng-if="shareMessages.response">
+                    Your offer is <b class="color-lgreen">successfully posted on your Facebook page</b>.
+                </span>
+                <span class="error" ng-if="!shareMessages.response">
+                    <!--You cancel sharing <b>cancelled</b>-->
+                </span>
+            </p>
+            <p ng-switch-when="twitter">
+                <span class="success" ng-if="shareMessages.response">
+                    Your offer is <b class="color-lgreen">successfully posted to your Twitter feed</b>.
+                </span>
+                <span class="error" ng-if="!shareMessages.response">
+                    Share <b>cancelled</b>
+                </span>
+            </p>
+            <p ng-switch-when="preCopy">
+                Copy this URL and share it with the world:
+                <span class="row-share">
+                     <button class="pp-btn lgreen ng-isolate-scope"
+                             clip-click-fal="vm.clipFal(copy)"
+                             clip-copy="offer.shortUrl"
+                             clip-click="vm.onCopyToClip()"
+                             ng-click="vm.onCopyClicked('copy')">
+                         Copy
+                     </button>
+                    <a ng-href="{{offer.shortUrl}}" target="_blank"><df-input ng-model="offer.name" ng-disabled="true"></df-input></a>
+                </span>
+            </p>
+            <p ng-switch-when="copy">
+                <span class="success" ng-if="shareMessages.response">
+                    Your offer’s link has been <b class="color-lgreen">successfully copied</b>. You may now paste and share it.
+                </span>
+                <span class="error color-red" ng-if="!shareMessages.response">
+                    Unable copy to clipboard url {{offer.shortUrl}} because Adobe Flash is disabled!
+                </span>
+            </p>
+            <p ng-switch-when="disabled">
+                    <span class="error color-red">
+                        Only running offers can be shared!
+                    </span>
+            </p>
+    </div>
+    <div class="box-messages" ng-if="!supportFlash">
+        <p>
+            <span class="error color-red"> To copy the link, set the flash player </span>
+        </p>
+    </div>
+</div>

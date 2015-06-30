@@ -1,0 +1,17 @@
+<div class="geo-form">
+    <form class="pp-form free-campaign-form"
+          name="free_campaign_form_map"
+          form-for="channel"
+          submit-with="save(data)">
+
+        <heatmap ng-model="channel.location" locations="locations" estimated-customers="controls.estimatedCustomers"></heatmap>
+
+        <div class="row-buttons">
+            <a class="pp-btn dgray col-xs-2" ng-click="prev()">Go Back</a>
+            <p class="col-xs-8 about">
+                Estimated Reach: <b>{{controls.estimatedCustomers | number:0}} Customers</b>
+            </p>
+            <submit-button button-class="pp-btn lgreen col-xs-2" label="Next"></submit-button>
+        </div>
+    </form>
+</div>

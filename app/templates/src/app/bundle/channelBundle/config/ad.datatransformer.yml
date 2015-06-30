@@ -1,0 +1,19 @@
+appConfig:
+  channelBundle:
+    ads:
+      display:
+        transformers:
+          displayAd:
+            response:
+              __copy: [id, bannerImageId, linkedCampaigns, merchantId, name]
+              type: "type || 'DISPLAY'"
+              bannerType: "bannerType.replace('TYPE_','')"
+              editorJson : "'{}'"
+              url: "bannerPublicUrl"
+
+            request:
+              __copy: [id, bannerImageId, linkedCampaigns, name, type, body, title]
+              bannerType: "type == 'DISPLAY' ? 'TYPE_'+bannerType : undefined"
+              editorJson : "'{}'"
+              merchantId: "'userService'| get_service_var: 'user_id'"
+              bannerPublicUrl: "url"

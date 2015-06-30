@@ -1,0 +1,21 @@
+<div ng-class="{disabled: isDisabled(), 'has-error': ngModel.$dirty && ngModel.$invalid}">
+
+    <div class="wrap-input">
+        <datepicker class="pp-form__input" date-min-limit="{{minDate}}" date-max-limit="{{maxDate}}" date-set="{{initDate}}" date-format="{{format}}">
+            <input aria-manager
+                   id="{{fid}}"
+                   type="text"
+                   tabindex="{{tabIndex}}"
+                   placeholder="{{placeholder}}"
+                   ng-disabled="isDisabled()"
+                   datepicker-popup="shortDate"
+                   is-open="opened"
+                   ng-change="onValueChanged()"
+                   ng-model="value">
+            <span class="wrap-icon" ng-click="open($event)">
+                <i class="fa fa-calendar"></i>
+            </span>
+        </datepicker>
+    </div>
+
+</div>

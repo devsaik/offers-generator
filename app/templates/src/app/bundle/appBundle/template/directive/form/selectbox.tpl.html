@@ -1,0 +1,32 @@
+<div class="pp-selectbox__wrapper"
+     ng-class="{disabled: view.disabled, active: view.show}"
+     ng-switch="view.type">
+
+    <ul class="tags-selected" ng-switch-when="multi" ng-click="vm.toggleList()">
+        <li class="tag" ng-repeat="(id, item) in selectedItems">
+            {{item.label}}
+            <span class="tag-close" ng-click="vm.deselectById(id)">x</span>
+        </li>
+        <!--<input ng-model="search" ng-show="view.isFilterEnabled  && view.show"-->
+               <!--ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }">-->
+    </ul>
+
+    <div class="item-selected" ng-switch-default="" ng-click="vm.toggleList()">
+        <!--<input ng-model="search" ng-show="view.isFilterEnabled  && view.show"-->
+               <!--ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }">-->
+        <span ng-hide="view.isFilterEnabled  && view.show">{{ label || view.placeholder || 'Select' }}</span>
+        <i class="arrow" > > </i>
+    </div>
+
+    <div ng-show="view.show" class="pp-selectbox__dropdown items-container">
+        <p class="pp-selectbox__search pp-form__input" ng-show="view.isFilterEnabled">
+            <input ng-model="view.search" ng-show="view.isFilterEnabled  && view.show"
+            ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }">
+        </p>
+        <div class="pp-selectbox__list">
+            <ng-transclude>
+                <p class="sub-item empty">The list is empty</p>
+            </ng-transclude>
+        </div>
+    </div>
+</div>
