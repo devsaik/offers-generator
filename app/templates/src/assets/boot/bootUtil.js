@@ -113,7 +113,7 @@ $(function (window, undefined){
       config.appRootUrl = this.ENV[config.env.toUpperCase()] || this.ENV.DEV;
       window.ppPortableClientCfg = config;
       //todo:sai need to remove below bootstrap line as it is already done in HTML
-     // angular.bootstrap(element, [config.appName || 'PPPortable']);
+      angular.bootstrap(element, [config.appName || 'PPPortable']);
       callback(true);
     }
   };
