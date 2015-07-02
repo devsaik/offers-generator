@@ -13,6 +13,7 @@ Offers you a Yeoman generator to initiate a Web application with Angular powered
 ![Logo](app/templates/src/assets/images/generator-gulp-angular-logo-200x200.png)
 
 ## Why generator-gulp-angular ?
+It's a custom generator which loads offers module 
 
 This generator combines the best features of other generators like [generator-angular](https://github.com/yeoman/generator-angular), [ngTailor](https://github.com/lauterry/generator-ngtailor) and [generator-gulp-webapp](https://github.com/yeoman/generator-gulp-webapp) into an optimal workflow for starting applications with AngularJS powered by Gulp!
 
@@ -34,7 +35,7 @@ npm install -g yo gulp bower
 
 Install `generator-gulp-angular`:
 ```
-npm install -g generator-gulp-angular
+npm install -g generator-offers
 ```
 
 Make a new directory, and `cd` into it:
@@ -89,10 +90,11 @@ The root directory generated for a app with name `gulpAngular` :
 │   │   │   └──  navbar/
 │   │   │   │   ├──  navbar.controller.js
 │   │   │   │   └──  navbar.html
-│   │   ├──  main/
-│   │   │   ├──  main.controller.js
-│   │   │   ├──  main.controller.spec.js
-│   │   │   └──  main.html
+│   │   ├──  bundle/
+│   │   │   ├──  
+│   │   │   ├──  
+│   │   │   └──  
+|   |   |--
 │   │   └──  index.js
 │   │   └──  index.(css|less|scss)
 │   │   └──  vendor.(css|less|scss)
@@ -129,20 +131,6 @@ The root directory generated for a app with name `gulpAngular` :
 * *e2e test (protractor)* : out of the box e2e test configuration with protractor
 * *browser sync* : full-featured development web server with livereload and devices sync
 * *angular-templatecache* : all HTML partials will be converted to JS to be bundled in the application
-* **TODO** lazy : don't process files which haven't changed when possible
-
-## Questions the generator will ask
-* *jQuery*: jQuery 1.x, 2.x, Zepto, none
-* *Angular modules*: animate, cookies, touch, sanitize
-* *Resource handler*: ngResource, Restangular, none
-* *Router*: ngRoute, UI Router, none
-* *UI Framework*: Bootstrap, Foundation, Angular Material, none (depends on the chosen CSS preprocessor)
-* *UI directives* : UI Bootstrap, Angular Strap, official Bootstrap JavaScript, Angular Foundation, official Foundation JavaScript, none (depends on the UI framework)
-* *CSS pre-processor*: Less, Sass with Ruby and Node, Stylus, none
-* *JS preprocessor*: CoffeeScript, TypeScript, ECMAScript 6 (Traceur and Babel), none
-* *HTML preprocessor*: Jade, Haml, Handlebars, none
-* **TODO** Script loader: Require, Webpack, none
-* **TODO** Test framework: Jasmine, Mocha, Qunit
 
 ## Changelog
 

@@ -76,40 +76,6 @@ module.exports = function(GulpAngularGenerator) {
     if (this.skipConfig || this.options['default']) {
       return;
     }
-
-    var done = this.async();
-
-    _.findWhere(prompts, {name: 'bootstrapComponents'}).when = function(props) {
-      return props.ui.key === 'bootstrap';
-    };
-
-    _.findWhere(prompts, {name: 'foundationComponents'}).when = function(props) {
-      return props.ui.key === 'foundation';
-    };
-
-    this.prompt(prompts, function (props) {
-      if(props.ui.key !== 'bootstrap') {
-        props.bootstrapComponents = {
-          name: null,
-          version: null,
-          key: null,
-          module: null
-        };
-      }
-
-      if(props.ui.key !== 'foundation') {
-        props.foundationComponents = {
-          name: null,
-          version: null,
-          key: null,
-          module: null
-        };
-      }
-
-      this.props = _.merge(this.props, props);
-
-      done();
-    }.bind(this));
   };
 
   /**

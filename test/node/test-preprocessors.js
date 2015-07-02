@@ -93,23 +93,7 @@ describe('gulp-angular generator preprocessors script', function () {
     });
   });
 
-  describe('add lint configuration files for preprocessors different from es6', function() {
-    it('should add coffeelint for coffee preprocessor', function() {
-      generator.props = {
-        jsPreprocessor: { key: 'coffee' }
-      };
-      generator.lintCopies();
-      generator.files[6].src.should.match(/coffeelint/);
-    });
 
-    it('should add tslint for typescript preprocessor', function() {
-      generator.props = {
-        jsPreprocessor: { key: 'typescript' }
-      };
-      generator.lintCopies();
-      generator.files[6].src.should.match(/tslint/);
-    });
-  });
 
   describe('add travis files', function() {
     it('should not add file if there is no travis env', function() {

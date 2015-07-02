@@ -2,7 +2,7 @@
   "name": "<%- appName %>",
   "version": "0.0.1",
   "dependencies": {
-    "jquery": "1.9.1",
+    "jquery": "*",
     "underscore": "*",
     "angular-animate": "1.4",
     "angular-cookies": "1.4",
@@ -47,7 +47,7 @@
   },
   "resolutions": {
     "zeroclipboard": "~2.2.0",
-    "jquery": "1.7.1",
+    "jquery": "*",
     "angular": "1.4",
     "font-awesome": "4.3.0"
   },

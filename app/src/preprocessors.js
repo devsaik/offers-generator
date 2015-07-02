@@ -64,9 +64,7 @@ module.exports = function(GulpAngularGenerator) {
         rejectWithRegexp.call(this, /tsd\.json/);
       }
 
-      if(this.props.jsPreprocessor.srcExtension === 'es6' || this.props.jsPreprocessor.key === 'typescript') {
-        rejectWithRegexp.call(this, /index\.constants\.js/);
-      }
+
 
       if(this.props.htmlPreprocessor.key === 'none') {
         rejectWithRegexp.call(this, /markups\.js/);
@@ -80,23 +78,7 @@ module.exports = function(GulpAngularGenerator) {
   /**
    * Copy additional lint files if needed
    */
-  GulpAngularGenerator.prototype.lintCopies = function lintCopies() {
-    if(this.props.jsPreprocessor.key === 'coffee') {
-      this.files.push({
-        src: 'coffeelint.json',
-        dest: 'coffeelint.json',
-        template: false
-      });
-    }
 
-    if(this.props.jsPreprocessor.key === 'typescript') {
-      this.files.push({
-        src: 'tslint.json',
-        dest: 'tslint.json',
-        template: false
-      });
-    }
-  };
 
   /**
    * Copy additional files for Travis

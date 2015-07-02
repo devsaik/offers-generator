@@ -14,3 +14,5 @@ else
   cp $SHRINKWRAP_FILE $SHRINKWRAP_CACHED_FILE
   echo 'npm install successful!'
 fi
+
+gulp serve
